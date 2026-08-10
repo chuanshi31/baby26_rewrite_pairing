@@ -10,10 +10,23 @@ This repository contains the BabyLM 2026 simplification data package and evaluat
 - `03_openstax_sentences_bccampus_pairs_10m_40k/`: OpenStax + BCcampus sentence-pair runs and evaluation results.
 - `RESULTS_SUMMARY.md`: standalone copy of the project result tables.
 - `results_summary.csv`: machine-readable result summary.
+- `tokenizers/`: SentencePiece tokenizers used by the three training sets.
 - `train_mask.py`: original training script used for regular MLM / WWM curriculum runs.
 - `train_mask_wwm_token.py`: clean cut of `train_mask.py` that keeps only ordinary token masking and whole-word masking.
 
 Model checkpoints are intentionally not included in this repository.
+
+## Tokenizers
+
+Each training set has a corresponding tokenizer in `tokenizers/`:
+
+| Training set | Tokenizer |
+| --- | --- |
+| `fw_simp_v1_sl_10m_40k` | `tokenizers/fw_simp_v1_40k.model` |
+| `simple_wiki_pairs_10m_40k` | `tokenizers/simple_wiki_sentences_10m_40k.model` |
+| `openstax_sentences_bccampus_pairs_10m_40k` | `tokenizers/openstax_bccampus_original_10m_dedup_40k.model` |
+
+The matching `.vocab` files are included next to each `.model` file.
 
 # Using `train_mask.py` for WWM7 -> Token3
 
