@@ -1,4 +1,4 @@
-# Baby26 Simplification
+# Baby26 Rewrite Pairing
 
 This repository contains the BabyLM 2026 simplification data package and evaluation results for three 10M-token simplification-pair training sets. It also includes the original `train_mask.py` script and the exact notes for running WWM7 -> Token3 with regular MLM.
 
