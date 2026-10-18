@@ -3482,9 +3482,9 @@
     },
     {
       "path": "README.md",
-      "bytes": 7839,
-      "sha256": "9be29bc1a79acc0312a1a7c779e61adcd7adf328586e2ead62aa737180f37851",
-      "git_blob": "178f16bbdf04f1895d506670cd6ba06831a70880"
+      "bytes": 8388,
+      "sha256": "63de0794e643ceb83737481aa99955fcf0933b1a7b8d5ee2fa98293713ca56f1",
+      "git_blob": "8b3e8b52282560dc00e402bca6c67bf361f001eb"
     },
     {
       "path": "RESULTS_SUMMARY.md",
@@ -3527,6 +3527,12 @@
       "bytes": 63895064,
       "sha256": "4a8edefd1d622cd6485ece398665bc89e4c3c442add95f06af8b5a4a33945c7d",
       "git_blob": "f7963c42a905037d87e597742d6705ea76d7d287"
+    },
+    {
+      "path": "data/fw_para_neg_pure_10m.train",
+      "bytes": 63439985,
+      "sha256": "7d7e188ff8a7d746e54665e922f2f5a5d2dcb9015c04b3efee39a08718230745",
+      "git_blob": "ca7dcff5bdc43f57af638c15534cde682ce9e9be"
     },
     {
       "path": "data/fw_simp_v1_sl_10m.train",
@@ -3595,6 +3601,12 @@
       "git_blob": "ac90926544a92e3698b178a9825ca99e3604eb38"
     },
     {
+      "path": "reproduction/PAPER_NUMERICAL_AUDIT.json",
+      "bytes": 16781,
+      "sha256": "115fe8f8fc633821576e974ebde1ab23aabf40187b378ff7365d79dfc72684dc",
+      "git_blob": "3ee7913b8f2baa477bffbd311289d786b1b13d1e"
+    },
+    {
       "path": "reproduction/PUBLISHED_MODELS.json",
       "bytes": 3653,
       "sha256": "30cda770af1f58147175eaf6a65c115fa789a1762dd8219c68b81f97043ab160",
@@ -3602,15 +3614,1167 @@
     },
     {
       "path": "reproduction/README.md",
-      "bytes": 6374,
-      "sha256": "7397e8f0ca25dbd73fe771e30f534b63754c90722b91e460dce7aea748c73d8b",
-      "git_blob": "3b3f33b18a622cc74fef3e1641d57381ac157073"
+      "bytes": 7184,
+      "sha256": "cc1b52df117e85fbf24bc962c3d99ea39c9dd9a6c968e168d87f6a9c36e66bf3",
+      "git_blob": "988050d8e05ab2512b2687acbf14bb3481ce0cc2"
     },
     {
       "path": "reproduction/TRAIN_INPUTS.json",
       "bytes": 1997,
       "sha256": "7a652809fe205e215b05636a65851a11f20d9f462e7a35e73dd70c40610163fc",
       "git_blob": "009da6b6788fdfe0a6ace3bbfa26d16df3b032d9"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed0_mig20/main/finetune/boolq/predictions.json",
+      "bytes": 52873,
+      "sha256": "4aa38dd385bd0e6274c4b433562af03920d24d6b1b6443808063abac02d6c6bc",
+      "git_blob": "445649e710e5eb3bd2c01334fda87d51903509bb"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed0_mig20/main/finetune/boolq/results.txt",
+      "bytes": 76,
+      "sha256": "af4fa55a589fbe547cc5f1b4c0df2a93e9e82ecacae63868c26f4fedd15120a4",
+      "git_blob": "57041a8205149c23a550d5e1a636260907002701"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed0_mig20/main/finetune/mnli/predictions.json",
+      "bytes": 155973,
+      "sha256": "ae6d5b2160844195b4d0f3eb34d54c1d7c97df96ddc20769d939d75992bda124",
+      "git_blob": "38a1225a6f38077c205df17b7d12553d2de2748c"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed0_mig20/main/finetune/mnli/results.txt",
+      "bytes": 28,
+      "sha256": "14e0e857c8b7f498fbb0376b7e257f1b520d9364dd85069430f46121efe2c602",
+      "git_blob": "a1b659d7bd7b8cfcb4f0f112297de255e42ad970"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed0_mig20/main/finetune/mrpc/predictions.json",
+      "bytes": 6241,
+      "sha256": "aa4b342a2a451fd3212112c20051262363adde7610ce298562ddc4e3f6dddd7a",
+      "git_blob": "0a969899b48b72d62b63e945a9d2a88ab4b69450"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed0_mig20/main/finetune/mrpc/results.txt",
+      "bytes": 75,
+      "sha256": "7e1263a84d88b8e4a0fd6ea8d3e3e45c362f26db2af689322442238ba3ae8287",
+      "git_blob": "7709b10e4f6c41cd27c0e1dcbb677fb295c2e865"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed0_mig20/main/finetune/multirc/predictions.json",
+      "bytes": 83760,
+      "sha256": "a6a37449e1b6b6fbaf32fc0cc22d5560a2128eb88ca0831cae15f46e55174cc2",
+      "git_blob": "1f5402fb5799ec31d89628474660d2986480ab4a"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed0_mig20/main/finetune/multirc/results.txt",
+      "bytes": 76,
+      "sha256": "c1e8fc9b03429c7684ce55214bf46834916349a80248ad89b9e5ea5efa357c7c",
+      "git_blob": "42ae833d312cbba15067e7e08bfe206aa37acbc5"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed0_mig20/main/finetune/qqp/predictions.json",
+      "bytes": 635796,
+      "sha256": "63f7c265038babb446da90d84999b6eb0227dad27f540650508671dcb2dc94c6",
+      "git_blob": "333dfb048e12e70be3676521bc14450ce6b59c1b"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed0_mig20/main/finetune/qqp/results.txt",
+      "bytes": 75,
+      "sha256": "5c5211d1e21f5b8552823898f52949b3712fcefc0ce894e7dd64f98ed71375ce",
+      "git_blob": "cc2271c31e2b897143dc6c09142f2a9ec09c8eb7"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed0_mig20/main/finetune/rte/predictions.json",
+      "bytes": 4086,
+      "sha256": "35a15b5a8addbc1abd1840c339e3828426740a36a6c932a9521a3043ff4cdb78",
+      "git_blob": "34b934e2b8bb20ccf8bc5108b69ac602b7fa5553"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed0_mig20/main/finetune/rte/results.txt",
+      "bytes": 76,
+      "sha256": "c8f915a372592a46a20d300f0432dbc3d980d3efd4319cabcc2113afa0679f1a",
+      "git_blob": "33c635b92e63840e6d974e84afdc19c371de777f"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed0_mig20/main/finetune/wsc/predictions.json",
+      "bytes": 1524,
+      "sha256": "7cdf53035d21e7b0ca67528d39810b37c41eff5f67053c701938344167581ccc",
+      "git_blob": "c0c8f2939d80a38f39ad8043223618fc02e3f3e8"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed0_mig20/main/finetune/wsc/results.txt",
+      "bytes": 60,
+      "sha256": "e4601d4f27ab627b2f4d129094bd485ca07499edacfefeb35567536044512fa8",
+      "git_blob": "7a4aca760a007f78261d84be7217f8c1a721c04a"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed0_mig20/main/zero_shot/mlm/blimp/blimp_filtered/best_temperature_report.txt",
+      "bytes": 2787,
+      "sha256": "9a48f19747f2e1b9956ff467974bb07722d64468cedb66a0d23f888d2f7563eb",
+      "git_blob": "184bedd8cb23ff696c1ae168da26dfa13bf8c1ea"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed0_mig20/main/zero_shot/mlm/blimp/blimp_filtered/predictions.json",
+      "bytes": 5993234,
+      "sha256": "ac7826091f6855618fbfdc19b27bbe31d7db16d902c0f01904b6f13ddc8b9294",
+      "git_blob": "b246ceee408a06f86a442fe1ee3dc90ae54ac187"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed0_mig20/main/zero_shot/mlm/blimp/supplement_filtered/best_temperature_report.txt",
+      "bytes": 270,
+      "sha256": "5969831a4737a5abcf366990a54520b10696994645e758b3578d59f9e00d4a5e",
+      "git_blob": "a698dc1d984b9a36c2d68064f8e1327adecc6584"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed0_mig20/main/zero_shot/mlm/blimp/supplement_filtered/predictions.json",
+      "bytes": 637302,
+      "sha256": "e189afbe947b32ca5a6ebf9a7a122c763255581e4dbd6450b949bc0a6cad9ae9",
+      "git_blob": "2797c9ebe484a381c1ef8b0a471c039c51f10b9a"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed0_mig20/main/zero_shot/mlm/comps/comps/best_temperature_report.txt",
+      "bytes": 141,
+      "sha256": "79ea47769a636abaa22f6ab32aa8840739d30c8837ddc2561787f9dab5d4280a",
+      "git_blob": "69448b1ca9ebc32db095cbd47ca77ffa5b790552"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed0_mig20/main/zero_shot/mlm/comps/comps/predictions.json",
+      "bytes": 7584868,
+      "sha256": "e20bf760f08e1af3d90cf95c1518662ce5320f9fcc7199aa7cb1a4c37df729ab",
+      "git_blob": "bf43d307658044f75735494109fb7608ba9080cf"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed0_mig20/main/zero_shot/mlm/entity_tracking/entity_tracking/best_temperature_report.txt",
+      "bytes": 530,
+      "sha256": "aa12dfaeb7ad7495cba89fb255051c909879a4868be7606f588e2e4478604477",
+      "git_blob": "1c331df7fda36966e7e714f090f50babd63ea750"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed0_mig20/main/zero_shot/mlm/entity_tracking/entity_tracking/predictions.json",
+      "bytes": 609318,
+      "sha256": "fc4d2b6e7832b51c3906707184ac591c9f14dc8c590d3fc6696c91724057ec03",
+      "git_blob": "2081daca23322f8271931aacabd33909def8730b"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed0_mig20/main/zero_shot/mlm/ewok/ewok_filtered/best_temperature_report.txt",
+      "bytes": 662,
+      "sha256": "0e9f29bede77009b349f88cca33c2c85b1527c071aed6fa284edae7022be6ad4",
+      "git_blob": "f204cedacce0288312ca12eab593082df06a243a"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed0_mig20/main/zero_shot/mlm/ewok/ewok_filtered/predictions.json",
+      "bytes": 931036,
+      "sha256": "0ed33d296e492d70dfc071e7a5b92f77f2921d3fa9280c598054724a77006ad5",
+      "git_blob": "2845ecc0966a62fce53d2d0681f3f09d23323c88"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed0_mig20/main/zero_shot/mlm/global_piqa_nonparallel/global_piqa_nonparallel/best_temperature_report.txt",
+      "bytes": 4055,
+      "sha256": "050bcd6c4e3297edb0cc776daaac62293e7c9ac04e39e90739228f6a1d7924cc",
+      "git_blob": "9fc7951ec6cae16c22e9ddeaee166c78c2df3326"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed0_mig20/main/zero_shot/mlm/global_piqa_parallel/global_piqa_parallel/best_temperature_report.txt",
+      "bytes": 3524,
+      "sha256": "ce0c9ac53ba79183d00693aec9d46daef94492977bfdc5638bf5bfcbedb988e7",
+      "git_blob": "e4b7d76f82ae189d2de74d7334eb41cd5866c115"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed0_mig20/main/zero_shot/mlm/reading/correlations.txt",
+      "bytes": 174,
+      "sha256": "77ae3f8fff24cf5bb5a7af79ac67c0b31e9da09ba6640ff6b249f9c9d7b552ea",
+      "git_blob": "04b8c93222f70904bbc64a4ecb985fd4d3c08617"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed0_mig20/main/zero_shot/mlm/reading/prediction.jsonl",
+      "bytes": 234260,
+      "sha256": "1e93164152134ae19f1e4dfb14140686488674a1f4b2f1846aca49333a5438d7",
+      "git_blob": "be323768d849090bc0855b094f77d1d96f81bd81"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed0_mig20/main/zero_shot/mlm/reading/predictions.json",
+      "bytes": 123195,
+      "sha256": "06851b98b9e7886138a5543c45d22c4fe5b35913eab6082fc1788928c5caf5c2",
+      "git_blob": "373b8b278844f7351d41f2bb9cc44346bfa34d03"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed0_mig20/main/zero_shot/mlm/reading/predictive_power.jsonl",
+      "bytes": 3435,
+      "sha256": "89d282fe6a16e26bc86fe153850a3feb6613c2201fa02a1bbf7f8daf5d4d558b",
+      "git_blob": "4ee9b304cf704bae6460f3a1dae7506a90a409e2"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed0_mig20/main/zero_shot/mlm/reading/predictive_power_spillover.jsonl",
+      "bytes": 3444,
+      "sha256": "18f70d2c267d8fa0aed7d3dcee123dbb0f1d6121d9c2b7eed8fae61a05fdb521",
+      "git_blob": "dd684f3aeba839da60a23f4755edcebb54a54fea"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed0_mig20/main/zero_shot/mlm/reading/report.txt",
+      "bytes": 56,
+      "sha256": "b1cca2bb54740c438c4ec7d0095541d6293705741f7df39f31921658bc60a153",
+      "git_blob": "0b83059195de3541f28a50d56a8ca31e4c431525"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed1_mig20/main/finetune/boolq/predictions.json",
+      "bytes": 52873,
+      "sha256": "bbe09317ebcd57d46c0aa5e2761512a86fb95c8bfa96581336504431ae48ed82",
+      "git_blob": "3ae5bd530dcdde519385fcb89a14468fa85f1265"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed1_mig20/main/finetune/boolq/results.txt",
+      "bytes": 75,
+      "sha256": "e8433bc575e564435ae96b9e3c3ac8e0cb6ea29644d20764e2ca1335369ec2aa",
+      "git_blob": "8cb3593ed1f570c2881ccb945a153509d4f1c9f9"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed1_mig20/main/finetune/mnli/predictions.json",
+      "bytes": 155973,
+      "sha256": "096dcf3f91469b449a893c9f291a2f931fd6e6b9d7a87e31b05898a0e0241507",
+      "git_blob": "91c9b8a2f203f1435b950f6def50d02c706ddedd"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed1_mig20/main/finetune/mnli/results.txt",
+      "bytes": 28,
+      "sha256": "73217e5da352bb8d1017ff8659ccc1f4c0a49baef17dc2806d7cde92d353c3da",
+      "git_blob": "90bc76891f0be7e20493eccc1092955d5ec2b4ea"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed1_mig20/main/finetune/mrpc/predictions.json",
+      "bytes": 6241,
+      "sha256": "3dee0250925cb7e6a4c532074d6264d10e758cb3203f19b416e1b395279974ca",
+      "git_blob": "31fec561589b795eb24b0fa0f3683f249566130a"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed1_mig20/main/finetune/mrpc/results.txt",
+      "bytes": 75,
+      "sha256": "9a6d6940bfdec0691093f3a5f71b01d0e218395eb709b0bcdfe45b0bd8af62d4",
+      "git_blob": "01915df9419a1eb7129986beca387c3590654963"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed1_mig20/main/finetune/multirc/predictions.json",
+      "bytes": 83760,
+      "sha256": "e8874c0085944f58ebba78c6af27b00c6ca94c8550737781d85c14ea0560b645",
+      "git_blob": "abab0d9495e9f14ad72bc190efcf2c1c2ae34f47"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed1_mig20/main/finetune/multirc/results.txt",
+      "bytes": 75,
+      "sha256": "52a3dd690008d9536f259e69e3f3c9c10348f816d07f2c064cf8b3c0032f8480",
+      "git_blob": "a5d4c1997f534e248a2c8a99b5533b2ee95da5d6"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed1_mig20/main/finetune/qqp/predictions.json",
+      "bytes": 635796,
+      "sha256": "45ce14742ae31f5947871889dd882c3026d0ad5603b22245c342ace7290c3012",
+      "git_blob": "07f532d9995535a9910e8df9c88232be536c22b7"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed1_mig20/main/finetune/qqp/results.txt",
+      "bytes": 75,
+      "sha256": "1cac5479b8b5eacd1d74d7298954e5904204f5006699403126d447c4f8adbf39",
+      "git_blob": "ad782b34c9c17cf0224c5b7674ddcb8b192f3cc9"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed1_mig20/main/finetune/rte/predictions.json",
+      "bytes": 4086,
+      "sha256": "eff7af3bedb81c38c490c8e4c452731d86d83540461bea2d25b62ed7494e6c47",
+      "git_blob": "47b2aa0f0297bac69c3149f30629f54d6604e605"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed1_mig20/main/finetune/rte/results.txt",
+      "bytes": 76,
+      "sha256": "310ec766cc5373ae6559ea45f408d7036e90575eebd4c0ef9f403239af453cd1",
+      "git_blob": "53ec4e299c5113abceb816891f33a419483b2d8f"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed1_mig20/main/finetune/wsc/predictions.json",
+      "bytes": 1524,
+      "sha256": "da113dd2f3d558023925ad9ee06a062bbb80fa1615404c9cef7a715baae5c119",
+      "git_blob": "c92b4306c110e10135691ede241394284d41e739"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed1_mig20/main/finetune/wsc/results.txt",
+      "bytes": 63,
+      "sha256": "5f332d4c6d6b8513fb640210409ff500e2db92021ae4957d966dfb3a07d5fc8a",
+      "git_blob": "2e9b55452961fe1b2c626e5435f683e6008ba425"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed1_mig20/main/zero_shot/mlm/blimp/blimp_filtered/best_temperature_report.txt",
+      "bytes": 2785,
+      "sha256": "6055d0a9cc54ec115078be3091259c4997ecd1bb1d11984297fd37b8776a4ccb",
+      "git_blob": "b148f14e9317ada29bfa7180c576281ecda46334"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed1_mig20/main/zero_shot/mlm/blimp/blimp_filtered/predictions.json",
+      "bytes": 5994403,
+      "sha256": "ad2f38c7390169f15b653ae817c17ac6c927337c7fbe728b4d8bbba91f629287",
+      "git_blob": "d0f7c14cb6367d499b410e7161c7c405c640f3f4"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed1_mig20/main/zero_shot/mlm/blimp/supplement_filtered/best_temperature_report.txt",
+      "bytes": 270,
+      "sha256": "2e9fcf05586367a2661102eb7ba75ac84bd4894da6a6bc75013af60e01f99a31",
+      "git_blob": "e029f5557929badc34e3e57933f3dfceaba90e2a"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed1_mig20/main/zero_shot/mlm/blimp/supplement_filtered/predictions.json",
+      "bytes": 637347,
+      "sha256": "a08128905f217e0c6908a1641397017fbef3fde25050fa7545b28dc6cb90b05e",
+      "git_blob": "8b5450d607f178089bf70e5b455caddc0426f080"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed1_mig20/main/zero_shot/mlm/comps/comps/best_temperature_report.txt",
+      "bytes": 141,
+      "sha256": "f330e63871ac2a0751b191ff5ca47fd0a17fa18d846a642691b786f261c358ef",
+      "git_blob": "b37c658e0361603c1f893a7b831f225e1f5b4a24"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed1_mig20/main/zero_shot/mlm/comps/comps/predictions.json",
+      "bytes": 7575368,
+      "sha256": "69b333539a2cc573342076f146381f77bcd5c326da8bb120cd24975bb37e1185",
+      "git_blob": "45ba63bdbcf24bb47ad898e04c57e060266e52de"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed1_mig20/main/zero_shot/mlm/entity_tracking/entity_tracking/best_temperature_report.txt",
+      "bytes": 527,
+      "sha256": "f8156f8e8a886fe24384dc1490ddccfa6d914f06d2428231eff86e8bbb985ed2",
+      "git_blob": "42d502f1f366ab52b7eae278f473181b525a2a88"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed1_mig20/main/zero_shot/mlm/entity_tracking/entity_tracking/predictions.json",
+      "bytes": 607963,
+      "sha256": "27a9e667a83e5fe4228778632c9fc160572a734b964b12d35e86b24b683a1011",
+      "git_blob": "f2d6abc51f260dc2cd906e684993de8a7d95b0bb"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed1_mig20/main/zero_shot/mlm/ewok/ewok_filtered/best_temperature_report.txt",
+      "bytes": 662,
+      "sha256": "41d5ede04c9a35ed0cef439123b98f588bfc01f5b3248b881cf3d9d9de55aba9",
+      "git_blob": "6307b734b4849cd0c64db376b440c2b6e0e9e16f"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed1_mig20/main/zero_shot/mlm/ewok/ewok_filtered/predictions.json",
+      "bytes": 930446,
+      "sha256": "63ea3b364940e74b82d1c8a0b40beb0171c5174884a66c406bcf4cbffe8b82d6",
+      "git_blob": "02924b5478fea22b5c252852efaad96baf79957c"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed1_mig20/main/zero_shot/mlm/global_piqa_nonparallel/global_piqa_nonparallel/best_temperature_report.txt",
+      "bytes": 4065,
+      "sha256": "8881bc63cb5a544290ace59228934bc8bbdc0518abc97b8c57973bc8f6fe0cd3",
+      "git_blob": "8bc749bd67268097e2945d614cf9a64e001f849a"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed1_mig20/main/zero_shot/mlm/global_piqa_parallel/global_piqa_parallel/best_temperature_report.txt",
+      "bytes": 3518,
+      "sha256": "ba2f9669c6fe9b2b3294c606a4dd843c3ad8cf87331aaf20d835c6aee31748f0",
+      "git_blob": "01541479ab7799e1fb4f405fd14be2406d03c6c6"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed1_mig20/main/zero_shot/mlm/reading/correlations.txt",
+      "bytes": 174,
+      "sha256": "9fcc6b39921c265a732264b3e7bf912b2ecaf7d9dcf24b9621cafba8630f1a08",
+      "git_blob": "d3cc5deebeec641e727d2f4e47d309b6be82ac7b"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed1_mig20/main/zero_shot/mlm/reading/prediction.jsonl",
+      "bytes": 234320,
+      "sha256": "305975a9180c4cb247bfa43b3232af617081ef9a56bb79d77b10b64a923aeccb",
+      "git_blob": "8b6dd7b9f8bac4f3a59d9f6eee383c84f4033a86"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed1_mig20/main/zero_shot/mlm/reading/predictions.json",
+      "bytes": 123255,
+      "sha256": "432cc0c1556843f1bdc80fd5e4984c0d808778915d4e5b4a283b0ab7cd4319ae",
+      "git_blob": "77a1597893a4c79711836d84b5038afab9b0ffef"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed1_mig20/main/zero_shot/mlm/reading/predictive_power.jsonl",
+      "bytes": 3441,
+      "sha256": "86f8dd1abd786a48da8d645de8ae5d85af221a735637094ed97a3fd605b15272",
+      "git_blob": "90759dad8b6cfb331e58e0ab0f75f8176601e85d"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed1_mig20/main/zero_shot/mlm/reading/predictive_power_spillover.jsonl",
+      "bytes": 3441,
+      "sha256": "3672b1b6c101e357e2a29a1c80a68033b74040b321c54c6dd4fbd0d098c93937",
+      "git_blob": "cbe1013fed7ec6813148a95d066c9adeaf8b4a5c"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed1_mig20/main/zero_shot/mlm/reading/report.txt",
+      "bytes": 56,
+      "sha256": "b09d2a130340347088c09acb2dd1f3ebcb13447c53a4403a1f69fcf28b157929",
+      "git_blob": "35cab9c21abc291bb213b06b6ec28fde276796b9"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed2_mig20/main/finetune/boolq/predictions.json",
+      "bytes": 52873,
+      "sha256": "fe57ef64d3e9f77ea355f3deebca26594b23d45198ddc61d0ea14ce9ec96c580",
+      "git_blob": "6c01d2a0212b7ebc1062cf47abf9f27e9e497da5"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed2_mig20/main/finetune/boolq/results.txt",
+      "bytes": 76,
+      "sha256": "2fbf48669863e95b03c58d679b8069d48a8bb88b47fc3a87a5b6e01f26b6b26e",
+      "git_blob": "e0af6c36b9bd45c70ea44fb8c06cf900f14ccfde"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed2_mig20/main/finetune/mnli/predictions.json",
+      "bytes": 155973,
+      "sha256": "62be34d98e08843876d19fd7edf32c8c9d1044c02a84f495a5520debe8b00ddb",
+      "git_blob": "b46264c48004b4f24ad645f53630e6803f970256"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed2_mig20/main/finetune/mnli/results.txt",
+      "bytes": 28,
+      "sha256": "122df872ad1a87e462849682f6ee3d225cbc6becb9c9159fcbe992fb90a6f876",
+      "git_blob": "054ea0aace8619b0161c1d82eee07fccf10a05e7"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed2_mig20/main/finetune/mrpc/predictions.json",
+      "bytes": 6241,
+      "sha256": "a9d84ce2b6693b18f42de5b8345ce5b695182c78c47acfc4c22c4440250d3637",
+      "git_blob": "b78e11a53983d846b761577e714c85e4df00e426"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed2_mig20/main/finetune/mrpc/results.txt",
+      "bytes": 73,
+      "sha256": "3269e08f8958369d6cafdd52af02959886e3b7fd79411cfba70284c0b82ea484",
+      "git_blob": "836dac8edc932c139b0a46ccd053990ebf0c06fe"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed2_mig20/main/finetune/multirc/predictions.json",
+      "bytes": 83760,
+      "sha256": "9c917fc5c0e272343f73eb855c57171e61e9cd551c3b6dc6fbd60d8c8a4a558d",
+      "git_blob": "e55b60e4bed89696dbc9cbb668ff18f0b49abe9d"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed2_mig20/main/finetune/multirc/results.txt",
+      "bytes": 75,
+      "sha256": "72e42307ee491cff9dcfc3524a5ab1e26f3eb9c9a66888f2cb67f02395e089b1",
+      "git_blob": "11dce2fb10bdfdcc5a3e59c8b99f1a29275d1126"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed2_mig20/main/finetune/qqp/predictions.json",
+      "bytes": 635796,
+      "sha256": "4eac35ffcaa0a05457cd4bde4491460110efe776b70a48bb954efd5bd353d048",
+      "git_blob": "cbcc1f05f79aed5ccfea1a68eb8cc9b0d43c216c"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed2_mig20/main/finetune/qqp/results.txt",
+      "bytes": 74,
+      "sha256": "6cdd4525b579a6d72dc0a1bfdc78ee3d710c2787c51e97e4331a87d4f4b68613",
+      "git_blob": "13823469457e5691fc5261006830e5cba1cebc54"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed2_mig20/main/finetune/rte/predictions.json",
+      "bytes": 4086,
+      "sha256": "7827147af81ff7b7be3f3279fc862e0660c8866a178e277eeaf2cef4e06fd528",
+      "git_blob": "e43db8a83e30c9c3f2f5b28189f0ad4067ce78b9"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed2_mig20/main/finetune/rte/results.txt",
+      "bytes": 76,
+      "sha256": "a60542b3c34d753ae028b2684385492ad02a41c2a19425d33a36ec652385ca92",
+      "git_blob": "12373f8fa7ff45099f809b05084535bff76fa199"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed2_mig20/main/finetune/wsc/predictions.json",
+      "bytes": 1524,
+      "sha256": "6db960668f62d3ac352da4368db13960986d00f625fb1dd8dbf226c170c4f915",
+      "git_blob": "4688f4722329530cb50363386f78752b2d66b7b5"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed2_mig20/main/finetune/wsc/results.txt",
+      "bytes": 77,
+      "sha256": "bfc57d3714526422698f43b0ba8e770758182d17b6241ac4aab7c411517f9ad6",
+      "git_blob": "d9c1ef6044ab607223403da36d1151b918352e2e"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed2_mig20/main/zero_shot/mlm/blimp/blimp_filtered/best_temperature_report.txt",
+      "bytes": 2789,
+      "sha256": "29e6dc6f249bd2368e707fdab17ef412f62ded7467ff9943aac89ff8c391555e",
+      "git_blob": "d43a18cfbc5d6028e8d68c17eb5b0c519b86c8c4"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed2_mig20/main/zero_shot/mlm/blimp/blimp_filtered/predictions.json",
+      "bytes": 5995251,
+      "sha256": "29e99fdd415996c296f1646ffc9841fe978940b129dd8f27271d64ddf3acb220",
+      "git_blob": "496ce8e623804070b75dbd901750cd2b3097fe22"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed2_mig20/main/zero_shot/mlm/blimp/supplement_filtered/best_temperature_report.txt",
+      "bytes": 270,
+      "sha256": "23ae35e88345a2413942d117e194307079f521d8299cc40a09d1c1e1fc01142e",
+      "git_blob": "f6767fe841bd3e96efbca6fd1a3caf84e207a6c9"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed2_mig20/main/zero_shot/mlm/blimp/supplement_filtered/predictions.json",
+      "bytes": 637057,
+      "sha256": "39e792cf820d40672185cae2bc3494fd2443568a2747b637c28a05b8725abe25",
+      "git_blob": "f00cef9ee10cf8eee6fe75186f507c3afac6cbbd"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed2_mig20/main/zero_shot/mlm/comps/comps/best_temperature_report.txt",
+      "bytes": 141,
+      "sha256": "d1603e2cba75552cac7082528cd293257ae20b2e033d77383b85fb1da6f5d1b9",
+      "git_blob": "568b8304fefe403e3349db86aa05e66439c0c126"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed2_mig20/main/zero_shot/mlm/comps/comps/predictions.json",
+      "bytes": 7584023,
+      "sha256": "f07c19c168d23dc26d1755b2d73e35a2d7732979a04574dd3d038181e7dfd103",
+      "git_blob": "278f2cf72ce6c37b9d6525c23f9862298fce6bfa"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed2_mig20/main/zero_shot/mlm/entity_tracking/entity_tracking/best_temperature_report.txt",
+      "bytes": 527,
+      "sha256": "e01f0f672ed6157aba5c6be715c60bab053c71f107ca234e3fd9ce0417d835da",
+      "git_blob": "affca7dc6b5350aa638d58bd2add03a8478ddd1e"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed2_mig20/main/zero_shot/mlm/entity_tracking/entity_tracking/predictions.json",
+      "bytes": 607194,
+      "sha256": "445b89b1c222026911acd71d8285109c9ec0079cf59b0b28746a0c1cb04108f7",
+      "git_blob": "9a4c5984e63d27eb997bcf92418ca83e62843000"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed2_mig20/main/zero_shot/mlm/ewok/ewok_filtered/best_temperature_report.txt",
+      "bytes": 662,
+      "sha256": "ebec5cfc6a266274fecf964f38624e419dc2d00f8e442b4f5d95d807ba080e2e",
+      "git_blob": "95ffc75060a36d836a161117bf61249609e356e7"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed2_mig20/main/zero_shot/mlm/ewok/ewok_filtered/predictions.json",
+      "bytes": 931500,
+      "sha256": "b835ae8e7738b94ef778c038115549db24ea85a56a9a82dc72a7c13689371dec",
+      "git_blob": "80cdc255f1ecbaaab426bf2e344900e24866dcc9"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed2_mig20/main/zero_shot/mlm/global_piqa_nonparallel/global_piqa_nonparallel/best_temperature_report.txt",
+      "bytes": 4079,
+      "sha256": "36cceea4d35668b40ae00c2371076cb30fe755a5986072dc4c69b740904def09",
+      "git_blob": "ee11909c606e791251a0d0ac62584f57bf0c9345"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed2_mig20/main/zero_shot/mlm/global_piqa_parallel/global_piqa_parallel/best_temperature_report.txt",
+      "bytes": 3524,
+      "sha256": "3db2970870cbd79a556ae9fe5a22903143bf49599f6834314035c2a3326e3ddc",
+      "git_blob": "51713f196ea83a59fecb45592c9f7f926981cd81"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed2_mig20/main/zero_shot/mlm/reading/correlations.txt",
+      "bytes": 174,
+      "sha256": "efd7c6f47d0249cfd3f98f03c1d1cfb0f4e595b1a8331fbf2a4c7883569dce5a",
+      "git_blob": "f7ae3c96c774dfdf9cf82551337a7878250c1135"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed2_mig20/main/zero_shot/mlm/reading/prediction.jsonl",
+      "bytes": 234322,
+      "sha256": "70a1880ebdaede0f98701db323787bc514eca669a20babeef21aeebd84237ed4",
+      "git_blob": "3fcf77ae59894ef1f5b694d80963526498297d23"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed2_mig20/main/zero_shot/mlm/reading/predictions.json",
+      "bytes": 123257,
+      "sha256": "9dbe7b9ddf3b2b4a5d01cf6d438497d561e6525390548b946dfec13df0467925",
+      "git_blob": "d5e431cb4b881961e41d361f600256b84503cdd7"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed2_mig20/main/zero_shot/mlm/reading/predictive_power.jsonl",
+      "bytes": 3432,
+      "sha256": "4b6f081a82490880f11d5ad265ef2ad5bbf5305ef74cd7db78928c3e64d1a040",
+      "git_blob": "73919e2e8389f27ef88efd7712f52e81b6e8f92f"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed2_mig20/main/zero_shot/mlm/reading/predictive_power_spillover.jsonl",
+      "bytes": 3444,
+      "sha256": "dbb8e9229a9a55cde1df0e277d371802931c1dd17e3bddf642972632e1585c19",
+      "git_blob": "67a87211bd04db68b3d6dbbae9a94a304f5f100e"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed2_mig20/main/zero_shot/mlm/reading/report.txt",
+      "bytes": 56,
+      "sha256": "48e6046878e099f47cb54eaa4e259713c2546cea0bc8babf73fcde244e4dd640",
+      "git_blob": "62c4c52b4d727b2530caa565004fd18dc4d2284b"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed0_mig20/main/finetune/boolq/predictions.json",
+      "bytes": 52873,
+      "sha256": "7391786937eb5568d755fbb94990aa58eeef97e683a98205da26ce06cda394a2",
+      "git_blob": "de14ab46ec6e2f2c9ec2dc2d0a7d548225f86a62"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed0_mig20/main/finetune/boolq/results.txt",
+      "bytes": 76,
+      "sha256": "a96c7530ce09e53879f18a826bfc6da8b035d515ea0ce69deee0a5a29bdd8f3a",
+      "git_blob": "15418162ca14ba2a3ae9a94e577eb86201d613d2"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed0_mig20/main/finetune/mnli/predictions.json",
+      "bytes": 155973,
+      "sha256": "d146dee777a702bbc9f96c91630f86ad8a538f16e9c46f55d189aa4df9aff969",
+      "git_blob": "78613b87fc7f90d2179325666029a5f9df1a0101"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed0_mig20/main/finetune/mnli/results.txt",
+      "bytes": 28,
+      "sha256": "4edd0bebb40466405e4681ec777de77857602e88cbf0ae7b70b8afcb0472de53",
+      "git_blob": "272639e1a5eeeb9a8ad11feb2b001e4ab5cb4334"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed0_mig20/main/finetune/mrpc/predictions.json",
+      "bytes": 6241,
+      "sha256": "eabacd8fdd0cd755e0427cfbc842fa3c0572f0e0362a2f6786bf68cddecaff02",
+      "git_blob": "35f19c72608fbdaea37113982b9a763747faa89e"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed0_mig20/main/finetune/mrpc/results.txt",
+      "bytes": 74,
+      "sha256": "efa6dc077e1527a2b583f0903c807d33268591101979b108d0bc410230cc2e0e",
+      "git_blob": "72004eedb692a9f5acab7e57853c15bb11e6e746"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed0_mig20/main/finetune/multirc/predictions.json",
+      "bytes": 83760,
+      "sha256": "f4026059e77328a155640946428afa7e17a0a4eb95e56a1773799f8daeeea014",
+      "git_blob": "f985c6d0f30c506494277eb940140841a4406230"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed0_mig20/main/finetune/multirc/results.txt",
+      "bytes": 75,
+      "sha256": "651528eced8dbe507c25943b73ff0e538803110a9fec28000a0dd4aa73c542ec",
+      "git_blob": "00a8f5a1009663b6723e90684ee645e06cc0613c"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed0_mig20/main/finetune/qqp/predictions.json",
+      "bytes": 635796,
+      "sha256": "9e69e6fc7998de408fe03ce886c3d1f9e30aa0bbb614d04a9c9a189e3352cff5",
+      "git_blob": "2c2a0e3d3e1b4877e5c8db187f6a62b9a445679a"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed0_mig20/main/finetune/qqp/results.txt",
+      "bytes": 75,
+      "sha256": "792a0cd3f12fedd4237d1269ad942c333c35474bf7fcd70a26625217b62dc7f0",
+      "git_blob": "17e57f6c3243666245a7afe9fb96b8409ac57eb1"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed0_mig20/main/finetune/rte/predictions.json",
+      "bytes": 4086,
+      "sha256": "4cb9ac8c18a7f6c8b237f281af25b100e41017ecdd8288d347b4df99294f72b7",
+      "git_blob": "918c045806148fa7b16a50cafd005f055b8753b8"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed0_mig20/main/finetune/rte/results.txt",
+      "bytes": 76,
+      "sha256": "0724db6d1148ddb1c8e8e1a4eb5e0220de3b06923b63bef32da060ff6ed2fc02",
+      "git_blob": "74dc6a4675136fbd7c4626746017b38fc38a7d77"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed0_mig20/main/finetune/wsc/predictions.json",
+      "bytes": 1524,
+      "sha256": "b516f738ce9a26771cd6b556ec1f98c7e62f11ebd411ed6b09c443166b838d5f",
+      "git_blob": "3c6ef97d00112a337fa0f80e694b0bc2887f992a"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed0_mig20/main/finetune/wsc/results.txt",
+      "bytes": 45,
+      "sha256": "f4580dae9fef4cbd2c938cffecba906a0a2c6919e278bc0c96661fa6e84b10a1",
+      "git_blob": "168a8dab3b8c2a86022741e623adab2f03e898a9"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed0_mig20/main/zero_shot/mlm/blimp/blimp_filtered/best_temperature_report.txt",
+      "bytes": 2786,
+      "sha256": "826e0f09893f065e58cc2fcf5afd1527475c27bf4a8797c3d3934e5eb0a84ac1",
+      "git_blob": "42c494dba252a6aa1fcd82a6489cd0f492321365"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed0_mig20/main/zero_shot/mlm/blimp/blimp_filtered/predictions.json",
+      "bytes": 5995878,
+      "sha256": "e73b63d83f0539baf1295322076619183fefd62059e7d407842d4e0e22e06120",
+      "git_blob": "7d784dabb043ecb9f405df19c35ba8c49b7b53ac"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed0_mig20/main/zero_shot/mlm/blimp/supplement_filtered/best_temperature_report.txt",
+      "bytes": 270,
+      "sha256": "0d8733673b708a8a389b4d7af8372878a83791867098bae2fe8bb0f82e984d30",
+      "git_blob": "f5017ac1ea5098c1829acb285efe9dbd88004faa"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed0_mig20/main/zero_shot/mlm/blimp/supplement_filtered/predictions.json",
+      "bytes": 637208,
+      "sha256": "cfca94d379ae3ca68742eff603dbd1118c966a1a2bd60d2a9377e514181592cf",
+      "git_blob": "ad7d7e2a65b95760ce42c790290a7e1d67ead5f4"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed0_mig20/main/zero_shot/mlm/comps/comps/best_temperature_report.txt",
+      "bytes": 141,
+      "sha256": "feb22f3eeaea679f2b849d6e994bcaf4c52a713c41b5b48e5562fe37a6880f03",
+      "git_blob": "37fed3c36b2306523cff5cea17f23c627c2e7230"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed0_mig20/main/zero_shot/mlm/comps/comps/predictions.json",
+      "bytes": 7577259,
+      "sha256": "276fb046620a7ce7fd599ac7b4403d7d616b993296f963cd142df295fb67a471",
+      "git_blob": "4f182f7c262bfe887c74b1c6f921346337200986"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed0_mig20/main/zero_shot/mlm/entity_tracking/entity_tracking/best_temperature_report.txt",
+      "bytes": 530,
+      "sha256": "91159232fbfb45f3d90e5e7cd655e90381f1c3a6de436be2c17228425c11098b",
+      "git_blob": "1645cfcf890637144c3c7c9f3198777d88dcf067"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed0_mig20/main/zero_shot/mlm/entity_tracking/entity_tracking/predictions.json",
+      "bytes": 607304,
+      "sha256": "abbac64c9f7ba38f41b8512fe98b9652deb744d9f1497fc73aec96d73aeb16c0",
+      "git_blob": "33282c7d5e22803117d14136548f79dc46914498"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed0_mig20/main/zero_shot/mlm/ewok/ewok_filtered/best_temperature_report.txt",
+      "bytes": 662,
+      "sha256": "8d66b5af82657410e9019346a491696b82c17c47d845504e378445f5224f2333",
+      "git_blob": "8a69eea0c4cb27e2a5cbf194b9cd97bd3fa69477"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed0_mig20/main/zero_shot/mlm/ewok/ewok_filtered/predictions.json",
+      "bytes": 931203,
+      "sha256": "eb0ff8d635d5e406235d0a9475c4c1f0fff9b6e91feaa10cc37219aef4dd9a3f",
+      "git_blob": "a09e69e94ec6825a05dfd2f21009d242a8103589"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed0_mig20/main/zero_shot/mlm/global_piqa_nonparallel/global_piqa_nonparallel/best_temperature_report.txt",
+      "bytes": 4067,
+      "sha256": "c3a59dceb0752224d07fce2464369204adc246634db5adc5f041ba97ef760282",
+      "git_blob": "997e201154c334678271afae2796e72dedfe6702"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed0_mig20/main/zero_shot/mlm/global_piqa_parallel/global_piqa_parallel/best_temperature_report.txt",
+      "bytes": 3512,
+      "sha256": "32691eda6c7ea1893bb261d6fa7019bd7495b9717a97dfbe260176fef4a95e42",
+      "git_blob": "67ab80ad0e8563620066c7880141f66978d5e81f"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed0_mig20/main/zero_shot/mlm/reading/correlations.txt",
+      "bytes": 174,
+      "sha256": "9b7ab633fba2a4c81103946a036f884b10dcaffa97edda67c890dd0a348a8131",
+      "git_blob": "ccec1acb8269c373a1f45888e6680dd279779dd7"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed0_mig20/main/zero_shot/mlm/reading/prediction.jsonl",
+      "bytes": 234312,
+      "sha256": "324ae863f5693b64dcb35c88af128931bf1cc26cb7bef2ead2722a1a645bfaba",
+      "git_blob": "70c74f0053d2e1a7aa3c7231137c8d814a93a043"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed0_mig20/main/zero_shot/mlm/reading/predictions.json",
+      "bytes": 123247,
+      "sha256": "5e74ff4f57786771bb7f996472b0b4e078288716050974d9aef1bb6842662614",
+      "git_blob": "1785408d6e5ee0bfaa045244d45cf6f8a52cfc83"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed0_mig20/main/zero_shot/mlm/reading/predictive_power.jsonl",
+      "bytes": 3434,
+      "sha256": "299bfd74d92d07a627f9be7ea8bcc9c3118599eba6997633f0eb1a44e88b7aa3",
+      "git_blob": "c2e20c3a0488b21872909a270997bacabd802816"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed0_mig20/main/zero_shot/mlm/reading/predictive_power_spillover.jsonl",
+      "bytes": 3439,
+      "sha256": "7b1189f90d2de390b88dcdf954205d384d69252700e8fea4072d4029e632161d",
+      "git_blob": "31b3d839d822844497f03c88028eb958cc836b97"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed0_mig20/main/zero_shot/mlm/reading/report.txt",
+      "bytes": 56,
+      "sha256": "6981a358923fa777c1c71d339d9a891f23ff610fab4352df0bee841efa15b2c7",
+      "git_blob": "229769fb08b2ae9e476f6e47033822baf3eb454e"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed1_mig20/main/finetune/boolq/predictions.json",
+      "bytes": 52873,
+      "sha256": "936df2c5b075f3e5d7e431b01264b4026bec06a29d08ef8c0088904168eeabf2",
+      "git_blob": "dd4351016fac86d76f792f425e7b542b5970e0b4"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed1_mig20/main/finetune/boolq/results.txt",
+      "bytes": 75,
+      "sha256": "2273e6bd0fc56a910387532615893a03cdfd44f4c6a88df1fb6b57780764219b",
+      "git_blob": "056d449aa4dfc7bf302d6fc6a35d7c78aa3b4c58"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed1_mig20/main/finetune/mnli/predictions.json",
+      "bytes": 155973,
+      "sha256": "aed76ec983ecb8fcdf67719fdb2530884848dae86a7e9bb700f9780d29382746",
+      "git_blob": "af719c106d55d4e2d89f2b3ede0be9ef970ca24d"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed1_mig20/main/finetune/mnli/results.txt",
+      "bytes": 28,
+      "sha256": "cc219a41fe7f2cb0e2790bb3beaa5c2d5621999e91266f43b0fa3f30ea6f35c6",
+      "git_blob": "f5a7370cd0c34dfb46fe2cf199b32bc8db8ba9f1"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed1_mig20/main/finetune/mrpc/predictions.json",
+      "bytes": 6241,
+      "sha256": "9fd69ac93b7b69a1e80ed887e495cdab5e4548d13543c8cce7b4c66dfa44c51c",
+      "git_blob": "460cfdb6c93901c8e7becc578c890f20b19d1455"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed1_mig20/main/finetune/mrpc/results.txt",
+      "bytes": 75,
+      "sha256": "972efa0ed69851cdfc27591d8831f6a252e70571d603024c8f808a9887447de0",
+      "git_blob": "c42fc42a1056f48d4a12e793accbddf7906132c7"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed1_mig20/main/finetune/multirc/predictions.json",
+      "bytes": 83760,
+      "sha256": "e8f4158e3c3fcd889eea2df584b32a633e051b769f03d61980f4fb1c922c5fd1",
+      "git_blob": "5d89171b1352fe1b2546ea5ea8b51108ffc023fa"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed1_mig20/main/finetune/multirc/results.txt",
+      "bytes": 75,
+      "sha256": "ffd17d3132dee4b5cfb82d2c4dd180f87d9ece26a1272f445f5ddc369aa901fd",
+      "git_blob": "a032902e9d9f78a12dfe8f6bf3117f52a6194ca1"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed1_mig20/main/finetune/qqp/predictions.json",
+      "bytes": 635796,
+      "sha256": "35191909cb1211762b611c91eb1e44a910d984b94feae4807998cb0f60a198bd",
+      "git_blob": "c500ca09f45d1b448a0e6ea285dc840636eb2bb9"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed1_mig20/main/finetune/qqp/results.txt",
+      "bytes": 74,
+      "sha256": "a8e5d1b89699c9a20e8c90ffe5e230f3dd52e9a2fe0230bb5e316ba7f259b5f6",
+      "git_blob": "981d1f213479e8a8fd57f383d4b781b5c6d61d5c"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed1_mig20/main/finetune/rte/predictions.json",
+      "bytes": 4086,
+      "sha256": "d719e5d45b67f35374fa35bc02d7056a9d667b5a66835ee7f51ed4c3ba46a3e2",
+      "git_blob": "fe40ece10a3bfdcaff6f03eb217fe02b8e77a4f2"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed1_mig20/main/finetune/rte/results.txt",
+      "bytes": 76,
+      "sha256": "6b937f11c9c753ef83ba91e44faf5115beb8af789fde5a0341027915f401fc5b",
+      "git_blob": "4f34779e0f8ef4eed7f89e94e2e2101443c0b18c"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed1_mig20/main/finetune/wsc/predictions.json",
+      "bytes": 1524,
+      "sha256": "b516f738ce9a26771cd6b556ec1f98c7e62f11ebd411ed6b09c443166b838d5f",
+      "git_blob": "3c6ef97d00112a337fa0f80e694b0bc2887f992a"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed1_mig20/main/finetune/wsc/results.txt",
+      "bytes": 45,
+      "sha256": "f4580dae9fef4cbd2c938cffecba906a0a2c6919e278bc0c96661fa6e84b10a1",
+      "git_blob": "168a8dab3b8c2a86022741e623adab2f03e898a9"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed1_mig20/main/zero_shot/mlm/blimp/blimp_filtered/best_temperature_report.txt",
+      "bytes": 2788,
+      "sha256": "8a7e8d9d003569113dd1f1d792a36ecb0579f624ecdd84378848223945696505",
+      "git_blob": "12c21b8e5bbe8c7a6f87d7609ff7c2827d0fda1c"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed1_mig20/main/zero_shot/mlm/blimp/blimp_filtered/predictions.json",
+      "bytes": 5995580,
+      "sha256": "24f3f4cfd70395c2b39feca582307f3100603b545cef98390849fa0a34072e4e",
+      "git_blob": "909beb61fea0a9d2cfd5313e6a790efe2c703ccd"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed1_mig20/main/zero_shot/mlm/blimp/supplement_filtered/best_temperature_report.txt",
+      "bytes": 270,
+      "sha256": "61bbdffe96ba2cc74d6bec22ea8fc4269f00b54044b5da5c33cfceac13e1dd17",
+      "git_blob": "36b29422eb78d2a7dc4bad9d1dd077ee836fb5a0"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed1_mig20/main/zero_shot/mlm/blimp/supplement_filtered/predictions.json",
+      "bytes": 637530,
+      "sha256": "a47c1547233445f0ba13d6e39015e008c304a9d98b6b2c8ead3f1845d9023a7f",
+      "git_blob": "5f413c5b8b3383dfd92544dd0fd275799efd00d5"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed1_mig20/main/zero_shot/mlm/comps/comps/best_temperature_report.txt",
+      "bytes": 141,
+      "sha256": "e5daa4254ab8179344cce71dd937be8fd22796d3cdf6252b3b8ace7b9650a46f",
+      "git_blob": "9fca141a65ffdc188f1a8d7eaad5ee22274ae6c8"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed1_mig20/main/zero_shot/mlm/comps/comps/predictions.json",
+      "bytes": 7580093,
+      "sha256": "e83751f43099350e396cc02616b4c04133432869d60add2bb1495c1f822bbbf5",
+      "git_blob": "bfd6d304f4c9e277b1612b4c1a4301ca0dbe7a6c"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed1_mig20/main/zero_shot/mlm/entity_tracking/entity_tracking/best_temperature_report.txt",
+      "bytes": 529,
+      "sha256": "7af8af31d90f485629edf693343ccac91c17caae6edd80ee545f16af8738b788",
+      "git_blob": "8f1080ff78c933ed1120212d86100e20d51c8725"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed1_mig20/main/zero_shot/mlm/entity_tracking/entity_tracking/predictions.json",
+      "bytes": 607898,
+      "sha256": "fb17c94bb26733dd3dfba6cb66ae2f2ca95b45e679f9bf204b804178ef0c0bda",
+      "git_blob": "3187f1f86b963eca97ea0c03505f20cda638db08"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed1_mig20/main/zero_shot/mlm/ewok/ewok_filtered/best_temperature_report.txt",
+      "bytes": 662,
+      "sha256": "6adae56367c5fc0aed83fbb2f431f47f276b6a93bfd547eeef05cbb5c6573995",
+      "git_blob": "3b8649ee274844836137ecb65a9a5b5aa2d7a998"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed1_mig20/main/zero_shot/mlm/ewok/ewok_filtered/predictions.json",
+      "bytes": 931112,
+      "sha256": "a0b394ce606dd7888dcd2d7d2f2e9599f79cb2bf267b919439183d71a83392f6",
+      "git_blob": "1d1a12d83071a5b4a32321cc1d433efe71568297"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed1_mig20/main/zero_shot/mlm/global_piqa_nonparallel/global_piqa_nonparallel/best_temperature_report.txt",
+      "bytes": 4077,
+      "sha256": "d1ff2200e5d5f591e779a17bd08be2090661dcda15829f3229f8d6455b4ecac2",
+      "git_blob": "57bae470f923a1059e64a7c4d0fe7c7278183304"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed1_mig20/main/zero_shot/mlm/global_piqa_parallel/global_piqa_parallel/best_temperature_report.txt",
+      "bytes": 3518,
+      "sha256": "81ae1dece7621c2b24dc763061861ce864fc5e6d099c443c6de8a1295ac572d1",
+      "git_blob": "5ac9ba562a8fd553f3204df22b3943a7df07406c"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed1_mig20/main/zero_shot/mlm/reading/correlations.txt",
+      "bytes": 174,
+      "sha256": "69e911baedc43a7e1e9b794d953e30d16baa605092f5b403e17e8a173d24f1bd",
+      "git_blob": "0395a12facabc0913021b1da96fd9abcb9aee44a"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed1_mig20/main/zero_shot/mlm/reading/prediction.jsonl",
+      "bytes": 234281,
+      "sha256": "9f58ffc983c74529f011d4cda278b46e1496fce945f98945f3ed8490dac1ec56",
+      "git_blob": "7c15e1337ce0f107538b64fe4c43ce62948b3681"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed1_mig20/main/zero_shot/mlm/reading/predictions.json",
+      "bytes": 123216,
+      "sha256": "c3057ea1fb56a99d6c538f3c7bee287d06d6c768839710af99d7e7732bec5f64",
+      "git_blob": "b87301fe139768781cf2897d72833c40d9839af2"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed1_mig20/main/zero_shot/mlm/reading/predictive_power.jsonl",
+      "bytes": 3440,
+      "sha256": "aa63d1332c22a4b8d33584f34552dbe49486dedde00aba6f7a01bbbc4adfa0e9",
+      "git_blob": "39241e30b70101cb3606a8ed376da9e59fd9fae2"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed1_mig20/main/zero_shot/mlm/reading/predictive_power_spillover.jsonl",
+      "bytes": 3442,
+      "sha256": "e180742f2da7b0cd72046fee72be18e0fb4213675a256866ebdbddf390ca8612",
+      "git_blob": "302faff2bdf430b778bf15eb5e7417d08b2cf5b1"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed1_mig20/main/zero_shot/mlm/reading/report.txt",
+      "bytes": 56,
+      "sha256": "5ae4769766e8023c157d25b7563f4ceb08b562d46fb1117b1b0f863aa9c183cd",
+      "git_blob": "ecf442a78fe46c901cd0358b7a010d35faefdd20"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed2_mig20/main/finetune/boolq/predictions.json",
+      "bytes": 52873,
+      "sha256": "261ff9c4a354eccc357c37a0a8e5142c3ae6b326cf6925ea0902cd3d143a58f6",
+      "git_blob": "d12e7c0d7064b8eceaa8814930c1312666be7e94"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed2_mig20/main/finetune/boolq/results.txt",
+      "bytes": 74,
+      "sha256": "0841875f36b8be93f7c35c812f5a09dcf34a4c641092bfb4879dcd612de113c5",
+      "git_blob": "69b630b5c75288745b7ed9ad8c19e31569159d53"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed2_mig20/main/finetune/mnli/predictions.json",
+      "bytes": 155973,
+      "sha256": "cd81f9331f6251b84519c05ac277de09d85cf5571b357b6e63c8c7d7a28cb0ba",
+      "git_blob": "9cdfb5be8116923730cb329be9b7ea58d5aee2bf"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed2_mig20/main/finetune/mnli/results.txt",
+      "bytes": 28,
+      "sha256": "1a84f3fb98980ce54c3903a564946c5f612fa19d1d7ad212ac085c9a08ff3dbb",
+      "git_blob": "426807d50c272fcf2571d1dc5376334d0befefb4"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed2_mig20/main/finetune/mrpc/predictions.json",
+      "bytes": 6241,
+      "sha256": "7d96021fc219a7036be1be79ea29dbab592594cea429f5123d5303c072ed5e66",
+      "git_blob": "1b540dee6a33c89f955964ce2d2a21c361317823"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed2_mig20/main/finetune/mrpc/results.txt",
+      "bytes": 75,
+      "sha256": "9a6d6940bfdec0691093f3a5f71b01d0e218395eb709b0bcdfe45b0bd8af62d4",
+      "git_blob": "01915df9419a1eb7129986beca387c3590654963"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed2_mig20/main/finetune/multirc/predictions.json",
+      "bytes": 83760,
+      "sha256": "5a76ab71e65bcdae588b70024aba0ddd180de962c3c6b0ebb0361ba90f0f2ebf",
+      "git_blob": "bc298ec8ffb334b3b90893a667757aa0a4db7960"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed2_mig20/main/finetune/multirc/results.txt",
+      "bytes": 75,
+      "sha256": "60ce9671fafa307c6ade3f291c4aa9a87e0db0370af59cc7076acf1e48f41498",
+      "git_blob": "c491b4a1aa293d60a4ebbabd24e60cbea15822b5"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed2_mig20/main/finetune/qqp/predictions.json",
+      "bytes": 635796,
+      "sha256": "5efee8d55c2e84a2643a3adc7044222f62703ac54256371c7b0cb067b2380343",
+      "git_blob": "0637de0259555c274fd7c624675a5457df044ea8"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed2_mig20/main/finetune/qqp/results.txt",
+      "bytes": 74,
+      "sha256": "8cd40394ef1b2106b22048b793c9fdf78cbb4076702adf32fe829d96b1a6d0cb",
+      "git_blob": "b049a62787fc738fa89dd1cb345367a606ed3918"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed2_mig20/main/finetune/rte/predictions.json",
+      "bytes": 4086,
+      "sha256": "edeeaa24c9175f8a9de94a647b99796f6f8a9e8f3b7f325d7a8fc9995e0406ac",
+      "git_blob": "6bd263e3af87800e27c408e454449b7ccac6c6cf"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed2_mig20/main/finetune/rte/results.txt",
+      "bytes": 76,
+      "sha256": "6b937f11c9c753ef83ba91e44faf5115beb8af789fde5a0341027915f401fc5b",
+      "git_blob": "4f34779e0f8ef4eed7f89e94e2e2101443c0b18c"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed2_mig20/main/finetune/wsc/predictions.json",
+      "bytes": 1524,
+      "sha256": "cbe62dc2f7510ad8b0162c318276b1b58cb7be68e9a9c10be45bfaef5b95ff57",
+      "git_blob": "04be4d7fe1121c70ea9f40d06bb78f4da7e8f6a9"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed2_mig20/main/finetune/wsc/results.txt",
+      "bytes": 62,
+      "sha256": "ca46f01deadfe1ad1befb4eb47335904f2eb182c53d3831c43fe52b9c9862603",
+      "git_blob": "e24983c79fb1088d082bbd86eb8d22fea0462db2"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed2_mig20/main/zero_shot/mlm/blimp/blimp_filtered/best_temperature_report.txt",
+      "bytes": 2788,
+      "sha256": "3ea10a6c0d7fa44048a2d45a706fa3be769302b1b6aa20ec7a4d3f11c8b51d38",
+      "git_blob": "c16eb2db41b3e2f5dd1a3d9084f8048892aae394"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed2_mig20/main/zero_shot/mlm/blimp/blimp_filtered/predictions.json",
+      "bytes": 5993784,
+      "sha256": "00bfdcc3963d2b86dd6382e88d51aeaf474fa0219b80beff3bea7191419fc20a",
+      "git_blob": "43415c41f17fdd92c9269948dda3382a3469d705"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed2_mig20/main/zero_shot/mlm/blimp/supplement_filtered/best_temperature_report.txt",
+      "bytes": 270,
+      "sha256": "12afb4d1efe0c58abdf9b73ff388dcd8e6bcc8f3e12d654afcb5127008d4343f",
+      "git_blob": "14bcac8b603fa8c6d0ec0c65f687be7263c5a493"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed2_mig20/main/zero_shot/mlm/blimp/supplement_filtered/predictions.json",
+      "bytes": 637643,
+      "sha256": "d50beffc0c4baf3ca9961e85f5278f1cb2bf93e1b1ee631cf4aa29d5b754da3e",
+      "git_blob": "2e84df5455fc036a61960fceb8132a2fe3151f49"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed2_mig20/main/zero_shot/mlm/comps/comps/best_temperature_report.txt",
+      "bytes": 141,
+      "sha256": "42504b720c0d535f7b8d55307d3900ee953db05901d53e094a3c9e38cd61803c",
+      "git_blob": "9469c735c847d742e20b26b504e560b89528819e"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed2_mig20/main/zero_shot/mlm/comps/comps/predictions.json",
+      "bytes": 7580549,
+      "sha256": "1ca4623fd1398c5f3eb5854b81078399421559d9dbdf3964f4e2933c4756a25a",
+      "git_blob": "aa7cda5fb739b7d8c8ee8ca20684dc5e2c3b8a77"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed2_mig20/main/zero_shot/mlm/entity_tracking/entity_tracking/best_temperature_report.txt",
+      "bytes": 529,
+      "sha256": "5f81e69203ab8e1ddd1003c0334332f984a3b882574a283b781fc41c22fb438c",
+      "git_blob": "343b2b7a25e6d681f2e39df2cb7a840998baccd4"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed2_mig20/main/zero_shot/mlm/entity_tracking/entity_tracking/predictions.json",
+      "bytes": 607860,
+      "sha256": "9da30866b77e0cd0996e2ea1630b2c33e8c569680a5f433cbf1b4bde134199b1",
+      "git_blob": "cb18abd0810622617662fdcc73c465fcfde1f5dc"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed2_mig20/main/zero_shot/mlm/ewok/ewok_filtered/best_temperature_report.txt",
+      "bytes": 662,
+      "sha256": "5891ac530e2373c07b1059e103e2d00c5f46677678129b370c25d0f6fc1adc00",
+      "git_blob": "2d8a67b0e379593bd770b50dfc2c9e44adbfe4a8"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed2_mig20/main/zero_shot/mlm/ewok/ewok_filtered/predictions.json",
+      "bytes": 931814,
+      "sha256": "5a34e3be319f0a4b68be651dccd92e5bd485dd27f9b89f8788a9707c173a8720",
+      "git_blob": "3594badcb432aa1c6a4add645023c7770070f89a"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed2_mig20/main/zero_shot/mlm/global_piqa_nonparallel/global_piqa_nonparallel/best_temperature_report.txt",
+      "bytes": 4057,
+      "sha256": "b8a63d45ee0dd43b8c6b1bbcd665a261555cafd2d815faeb91fbcb02e9e5d5e0",
+      "git_blob": "d892abda9861cf3a39f8c8304b0a16a513d075f9"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed2_mig20/main/zero_shot/mlm/global_piqa_parallel/global_piqa_parallel/best_temperature_report.txt",
+      "bytes": 3526,
+      "sha256": "463082a060aa4bf4ac4a3b5e408af8f67d1c721882a29dbb9c39a95559fc2a81",
+      "git_blob": "71dbb170852bd7ac5f7d7b596ada62792bea7795"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed2_mig20/main/zero_shot/mlm/reading/correlations.txt",
+      "bytes": 174,
+      "sha256": "4dfb37ba4429038a8cea383c0e4b503e97ec973058e8e339acbf36663fd54bcd",
+      "git_blob": "c41cba3b53bf9b25ec70630f5fa7c7e3716dbba9"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed2_mig20/main/zero_shot/mlm/reading/prediction.jsonl",
+      "bytes": 234310,
+      "sha256": "ae100cc663842ce5757224f73deef756f2025156a0597f2b3ef6e13451161a6d",
+      "git_blob": "43fd8360e4376c3c3ac50bc9b18ab1cdd3e448fb"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed2_mig20/main/zero_shot/mlm/reading/predictions.json",
+      "bytes": 123245,
+      "sha256": "ea36ba7f5654940e7f4279adf4262a71767378c02b0dc15dcb5fbeba0ce9d07d",
+      "git_blob": "bf118dc272f2d382583daf14ac5915fe4facefb6"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed2_mig20/main/zero_shot/mlm/reading/predictive_power.jsonl",
+      "bytes": 3433,
+      "sha256": "7a8c19f50bcca1d1824ab2fdb8717079e377448159b639c50db4b25b01967d96",
+      "git_blob": "a34fe8235149b2f6fe2276abe42e7f61e7541a5e"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed2_mig20/main/zero_shot/mlm/reading/predictive_power_spillover.jsonl",
+      "bytes": 3439,
+      "sha256": "fb0f7f4b1ce36e8101e121b53a127d872aa6ebc17651440aaff83a024d8832ef",
+      "git_blob": "eb38a60038fc50535cd75b2894ad15be30167420"
+    },
+    {
+      "path": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed2_mig20/main/zero_shot/mlm/reading/report.txt",
+      "bytes": 56,
+      "sha256": "14d4b49cbb8e867f8ab1d50485c1a334d76a8ced694b2eec17f54d8199903a06",
+      "git_blob": "ac6e53183ba0b6f486c2159582eedc104b3449e1"
     },
     {
       "path": "reproduction/bootstrap_seeds.py",
@@ -4211,6 +5375,12 @@
       "bytes": 702,
       "sha256": "1f7d9446917dc029e262e7de7e804a9d3609828b1d2b0a33636c9f2ea20dbf94",
       "git_blob": "38f7c99de8856908db73e4ed90441b8ecbb2873b"
+    },
+    {
+      "path": "reproduction/provenance/fw_para_neg_pure_10m_manifest.json",
+      "bytes": 417,
+      "sha256": "9bb19ee8eb35973331b63d29012582d619ad1e6e7dc92b12966d32d65f1b1759",
+      "git_blob": "cc77f208357e5ff34b5e8007c4926be1b82a25a8"
     },
     {
       "path": "reproduction/provenance/openstax_bccampus_original_10m_dedup_manifest.json",
@@ -9511,6 +10681,18 @@
       "git_blob": "878f10580fcca0726adb6eeb5b0a7b8b458b7f26"
     },
     {
+      "path": "tokenizers/fw_para_neg_pure_40k.model",
+      "bytes": 927424,
+      "sha256": "8a80f101dd88174b631d2932fbff249d92add6fdbcff247791233a5aed8e7665",
+      "git_blob": "2957478e858e4c322f5127307f9ba9cb16cb840d"
+    },
+    {
+      "path": "tokenizers/fw_para_neg_pure_40k.vocab",
+      "bytes": 634323,
+      "sha256": "73b8c78acc8426778f48ef6d5efe6e63ad4070cbfeb05bdff3b0ebbb61450c0f",
+      "git_blob": "715ba5d4cd56b5f19441100fcd68f99694759523"
+    },
+    {
       "path": "tokenizers/fw_simp_v1_40k.model",
       "bytes": 918622,
       "sha256": "1157bea377197596bde9a6f612a9fdcd0af3e51610ceb2b932b2120696dd3c64",
@@ -9559,6 +10741,6 @@
       "git_blob": "da559bfb5cfafbf7efaffc9b5e2afa30fb9ee871"
     }
   ],
-  "total_bytes": 1676561975,
-  "note": "Manifest excludes itself; exact file bytes bound by SHA-256 and Git blob hashes."
+  "total_bytes": 1843995299,
+  "note": "Excludes itself. Includes six necessary historical negation-control runs to investigate the paper/report discrepancy."
 }

@@ -1,0 +1,548 @@
+{
+  "status": "UNRESOLVED_PAPER_TO_REPORT_MISMATCH",
+  "description": "Paper Table 5 paraphrase Entity values match the historical paraphrase+negation series, while EWoK/GLUE means match the paraphrase-only series. This is evidence of a provenance discrepancy, not proof of its cause; evaluation-version differences or table bookkeeping must be checked. The paper has not been changed. Both relevant training inputs, tokenizers, and seed reports are retained. Some paraphrase standard deviations also differ from recomputation.",
+  "details": [
+    {
+      "masking": "token",
+      "paper_table_5": {
+        "ewok_mean": 52.7,
+        "ewok_std": 0.7,
+        "entity_mean": 19.0,
+        "entity_std": 1.0,
+        "glue_mean": 68.5,
+        "glue_std": 0.3
+      },
+      "saved_reports": {
+        "paraphrase_only": {
+          "ewok": {
+            "seeds": [
+              52.53,
+              52.41,
+              53.13
+            ],
+            "mean": 52.69,
+            "sample_std": 0.38574603043972067
+          },
+          "entity": {
+            "seeds": [
+              38.85,
+              34.72,
+              36.85
+            ],
+            "mean": 36.806666666666665,
+            "sample_std": 2.065340972656413
+          },
+          "glue": {
+            "seeds": [
+              68.27780823304504,
+              68.34417645515542,
+              68.83499855162587
+            ],
+            "mean": 68.4856610799421,
+            "sample_std": 0.3043496132219101
+          }
+        },
+        "paraphrase_plus_negation": {
+          "ewok": {
+            "seeds": [
+              52.63,
+              51.15,
+              51.62
+            ],
+            "mean": 51.8,
+            "sample_std": 0.7562407024221874
+          },
+          "entity": {
+            "seeds": [
+              20.02,
+              18.96,
+              18.1
+            ],
+            "mean": 19.026666666666667,
+            "sample_std": 0.9617345441094084
+          },
+          "glue": {
+            "seeds": [
+              69.76970020295751,
+              69.48076107628076,
+              70.14847372519992
+            ],
+            "mean": 69.79964500147939,
+            "sample_std": 0.33486200680362177
+          }
+        }
+      }
+    },
+    {
+      "masking": "wwm7tok3",
+      "paper_table_5": {
+        "ewok_mean": 54.2,
+        "ewok_std": 0.6,
+        "entity_mean": 19.1,
+        "entity_std": 0.6,
+        "glue_mean": 69.2,
+        "glue_std": 0.0
+      },
+      "saved_reports": {
+        "paraphrase_only": {
+          "ewok": {
+            "seeds": [
+              54.53,
+              54.64,
+              53.32
+            ],
+            "mean": 54.163333333333334,
+            "sample_std": 0.7324160930327336
+          },
+          "entity": {
+            "seeds": [
+              41.35,
+              38.17,
+              35.36
+            ],
+            "mean": 38.29333333333334,
+            "sample_std": 2.996903957976188
+          },
+          "glue": {
+            "seeds": [
+              68.40298010082492,
+              69.6630804297191,
+              69.57288096451836
+            ],
+            "mean": 69.21298049835413,
+            "sample_std": 0.7029292061642705
+          }
+        },
+        "paraphrase_plus_negation": {
+          "ewok": {
+            "seeds": [
+              51.7,
+              52.21,
+              51.02
+            ],
+            "mean": 51.64333333333334,
+            "sample_std": 0.5970203793283207
+          },
+          "entity": {
+            "seeds": [
+              18.55,
+              19.01,
+              19.79
+            ],
+            "mean": 19.116666666666667,
+            "sample_std": 0.626843946555546
+          },
+          "glue": {
+            "seeds": [
+              69.55004072573087,
+              69.4780536031466,
+              69.55696762068072
+            ],
+            "mean": 69.52835398318607,
+            "sample_std": 0.04369887461362279
+          }
+        }
+      }
+    }
+  ],
+  "negative_seed_metrics": [
+    {
+      "condition": "fw_para_negation_audit",
+      "masking": "token",
+      "seed": 0,
+      "run": "mlm_token_fw_para_neg_pure_10m_40k_seed0_mig20",
+      "blimp": 64.83,
+      "supplement": 54.01,
+      "ewok": 52.63,
+      "entity": 20.02,
+      "comps": 51.76,
+      "global_piqa_parallel": 29.13,
+      "global_piqa_nonparallel": 45.0,
+      "global_piqa": 37.065,
+      "glue_boolq": 68.19571865443424,
+      "glue_mnli": 60.33007334963325,
+      "glue_mrpc": 88.65979381443299,
+      "glue_qqp": 72.89453380022553,
+      "glue_multirc": 68.89438943894389,
+      "glue_rte": 64.02877697841727,
+      "glue_wsc": 65.38461538461539,
+      "glue": 69.76970020295751,
+      "ewok_sections": {
+        "UID ACCURACY": {
+          "social-interactions": 54.76,
+          "material-dynamics": 49.74,
+          "physical-relations": 48.66,
+          "social-relations": 50.52,
+          "physical-dynamics": 69.17,
+          "physical-interactions": 52.7,
+          "material-properties": 53.53,
+          "social-properties": 51.22,
+          "agent-properties": 49.37,
+          "quantitative-properties": 54.14,
+          "spatial-relations": 45.1
+        },
+        "CONTEXT_TYPE ACCURACY": {
+          "direct": 51.99,
+          "indirect": 49.47
+        },
+        "CONTEXT_CONTRAST ACCURACY": {
+          "antonym": 50.68,
+          "variable swap": 50.31,
+          "other": 50.61,
+          "material": 49.76,
+          "negation": 52.11,
+          "active-passive": 46.67,
+          "variable_swap": 46.67,
+          "game": 45.0,
+          "number": 48.75
+        },
+        "TARGET_CONTRAST ACCURACY": {
+          "concept swap": 50.82,
+          "variable swap": 49.76
+        },
+        "AVERAGE ACCURACY": {}
+      }
+    },
+    {
+      "condition": "fw_para_negation_audit",
+      "masking": "token",
+      "seed": 1,
+      "run": "mlm_token_fw_para_neg_pure_10m_40k_seed1_mig20",
+      "blimp": 64.5,
+      "supplement": 53.48,
+      "ewok": 51.15,
+      "entity": 18.96,
+      "comps": 51.6,
+      "global_piqa_parallel": 26.21,
+      "global_piqa_nonparallel": 50.0,
+      "global_piqa": 38.105000000000004,
+      "glue_boolq": 68.13455657492355,
+      "glue_mnli": 61.06356968215159,
+      "glue_mrpc": 90.47619047619048,
+      "glue_qqp": 72.5825656451714,
+      "glue_multirc": 67.82178217821783,
+      "glue_rte": 64.74820143884892,
+      "glue_wsc": 61.53846153846154,
+      "glue": 69.48076107628076,
+      "ewok_sections": {
+        "UID ACCURACY": {
+          "social-interactions": 53.06,
+          "material-dynamics": 48.18,
+          "physical-relations": 50.73,
+          "social-relations": 51.29,
+          "physical-dynamics": 64.17,
+          "physical-interactions": 52.88,
+          "material-properties": 43.53,
+          "social-properties": 53.35,
+          "agent-properties": 49.05,
+          "quantitative-properties": 54.78,
+          "spatial-relations": 41.63
+        },
+        "CONTEXT_TYPE ACCURACY": {
+          "direct": 51.85,
+          "indirect": 49.03
+        },
+        "CONTEXT_CONTRAST ACCURACY": {
+          "antonym": 50.74,
+          "variable swap": 50.35,
+          "other": 49.39,
+          "material": 47.86,
+          "negation": 47.89,
+          "active-passive": 50.0,
+          "variable_swap": 50.0,
+          "game": 40.0,
+          "number": 50.0
+        },
+        "TARGET_CONTRAST ACCURACY": {
+          "concept swap": 49.85,
+          "variable swap": 50.49
+        },
+        "AVERAGE ACCURACY": {}
+      }
+    },
+    {
+      "condition": "fw_para_negation_audit",
+      "masking": "token",
+      "seed": 2,
+      "run": "mlm_token_fw_para_neg_pure_10m_40k_seed2_mig20",
+      "blimp": 64.88,
+      "supplement": 54.27,
+      "ewok": 51.62,
+      "entity": 18.1,
+      "comps": 51.33,
+      "global_piqa_parallel": 29.13,
+      "global_piqa_nonparallel": 57.0,
+      "global_piqa": 43.065,
+      "glue_boolq": 68.07339449541284,
+      "glue_mnli": 61.20619396903015,
+      "glue_mrpc": 89.419795221843,
+      "glue_qqp": 73.59572897143181,
+      "glue_multirc": 67.65676567656766,
+      "glue_rte": 67.62589928057554,
+      "glue_wsc": 63.46153846153846,
+      "glue": 70.14847372519992,
+      "ewok_sections": {
+        "UID ACCURACY": {
+          "social-interactions": 57.48,
+          "material-dynamics": 49.48,
+          "physical-relations": 47.56,
+          "social-relations": 50.13,
+          "physical-dynamics": 60.0,
+          "physical-interactions": 53.6,
+          "material-properties": 52.94,
+          "social-properties": 44.82,
+          "agent-properties": 49.0,
+          "quantitative-properties": 58.28,
+          "spatial-relations": 44.49
+        },
+        "CONTEXT_TYPE ACCURACY": {
+          "direct": 50.7,
+          "indirect": 49.52
+        },
+        "CONTEXT_CONTRAST ACCURACY": {
+          "antonym": 49.79,
+          "variable swap": 49.84,
+          "other": 51.43,
+          "material": 49.52,
+          "negation": 48.95,
+          "active-passive": 40.0,
+          "variable_swap": 53.33,
+          "game": 55.0,
+          "number": 60.0
+        },
+        "TARGET_CONTRAST ACCURACY": {
+          "concept swap": 50.61,
+          "variable swap": 48.89
+        },
+        "AVERAGE ACCURACY": {}
+      }
+    },
+    {
+      "condition": "fw_para_negation_audit",
+      "masking": "wwm7tok3",
+      "seed": 0,
+      "run": "mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed0_mig20",
+      "blimp": 64.69,
+      "supplement": 53.88,
+      "ewok": 51.7,
+      "entity": 18.55,
+      "comps": 52.09,
+      "global_piqa_parallel": 23.3,
+      "global_piqa_nonparallel": 51.0,
+      "global_piqa": 37.15,
+      "glue_boolq": 69.60244648318043,
+      "glue_mnli": 61.858190709046454,
+      "glue_mrpc": 88.8135593220339,
+      "glue_qqp": 73.12266394835201,
+      "glue_multirc": 68.60561056105611,
+      "glue_rte": 63.30935251798561,
+      "glue_wsc": 61.53846153846154,
+      "glue": 69.55004072573087,
+      "ewok_sections": {
+        "UID ACCURACY": {
+          "social-interactions": 55.78,
+          "material-dynamics": 48.31,
+          "physical-relations": 49.14,
+          "social-relations": 49.55,
+          "physical-dynamics": 60.0,
+          "physical-interactions": 50.36,
+          "material-properties": 51.18,
+          "social-properties": 52.44,
+          "agent-properties": 50.72,
+          "quantitative-properties": 58.92,
+          "spatial-relations": 42.24
+        },
+        "CONTEXT_TYPE ACCURACY": {
+          "direct": 51.78,
+          "indirect": 49.35
+        },
+        "CONTEXT_CONTRAST ACCURACY": {
+          "antonym": 50.59,
+          "variable swap": 49.38,
+          "other": 53.06,
+          "material": 48.69,
+          "negation": 50.53,
+          "active-passive": 56.67,
+          "variable_swap": 50.0,
+          "game": 45.0,
+          "number": 62.5
+        },
+        "TARGET_CONTRAST ACCURACY": {
+          "concept swap": 50.61,
+          "variable swap": 49.69
+        },
+        "AVERAGE ACCURACY": {}
+      }
+    },
+    {
+      "condition": "fw_para_negation_audit",
+      "masking": "wwm7tok3",
+      "seed": 1,
+      "run": "mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed1_mig20",
+      "blimp": 65.3,
+      "supplement": 53.06,
+      "ewok": 52.21,
+      "entity": 19.01,
+      "comps": 51.82,
+      "global_piqa_parallel": 26.21,
+      "global_piqa_nonparallel": 56.0,
+      "global_piqa": 41.105000000000004,
+      "glue_boolq": 68.62385321100918,
+      "glue_mnli": 62.06193969030155,
+      "glue_mrpc": 90.10238907849829,
+      "glue_qqp": 73.13612176002746,
+      "glue_multirc": 67.57425742574257,
+      "glue_rte": 63.30935251798561,
+      "glue_wsc": 61.53846153846154,
+      "glue": 69.4780536031466,
+      "ewok_sections": {
+        "UID ACCURACY": {
+          "social-interactions": 56.8,
+          "material-dynamics": 44.42,
+          "physical-relations": 53.55,
+          "social-relations": 49.87,
+          "physical-dynamics": 74.17,
+          "physical-interactions": 52.88,
+          "material-properties": 54.12,
+          "social-properties": 40.85,
+          "agent-properties": 49.14,
+          "quantitative-properties": 55.1,
+          "spatial-relations": 43.47
+        },
+        "CONTEXT_TYPE ACCURACY": {
+          "direct": 51.15,
+          "indirect": 49.12
+        },
+        "CONTEXT_CONTRAST ACCURACY": {
+          "antonym": 51.57,
+          "variable swap": 50.08,
+          "other": 47.35,
+          "material": 45.48,
+          "negation": 48.95,
+          "active-passive": 50.0,
+          "variable_swap": 36.67,
+          "game": 50.0,
+          "number": 41.25
+        },
+        "TARGET_CONTRAST ACCURACY": {
+          "concept swap": 49.94,
+          "variable swap": 49.79
+        },
+        "AVERAGE ACCURACY": {}
+      }
+    },
+    {
+      "condition": "fw_para_negation_audit",
+      "masking": "wwm7tok3",
+      "seed": 2,
+      "run": "mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed2_mig20",
+      "blimp": 66.02,
+      "supplement": 54.71,
+      "ewok": 51.02,
+      "entity": 19.79,
+      "comps": 51.5,
+      "global_piqa_parallel": 30.1,
+      "global_piqa_nonparallel": 46.0,
+      "global_piqa": 38.05,
+      "glue_boolq": 67.1559633027523,
+      "glue_mnli": 61.980440097799516,
+      "glue_mrpc": 90.47619047619048,
+      "glue_qqp": 73.22980994064392,
+      "glue_multirc": 67.28547854785478,
+      "glue_rte": 63.30935251798561,
+      "glue_wsc": 63.46153846153846,
+      "glue": 69.55696762068072,
+      "ewok_sections": {
+        "UID ACCURACY": {
+          "social-interactions": 52.04,
+          "material-dynamics": 48.83,
+          "physical-relations": 51.96,
+          "social-relations": 50.9,
+          "physical-dynamics": 58.33,
+          "physical-interactions": 50.36,
+          "material-properties": 50.59,
+          "social-properties": 49.39,
+          "agent-properties": 50.5,
+          "quantitative-properties": 55.41,
+          "spatial-relations": 42.86
+        },
+        "CONTEXT_TYPE ACCURACY": {
+          "direct": 51.85,
+          "indirect": 49.54
+        },
+        "CONTEXT_CONTRAST ACCURACY": {
+          "antonym": 50.62,
+          "variable swap": 49.49,
+          "other": 51.84,
+          "material": 48.81,
+          "negation": 57.37,
+          "active-passive": 50.0,
+          "variable_swap": 50.0,
+          "game": 50.0,
+          "number": 62.5
+        },
+        "TARGET_CONTRAST ACCURACY": {
+          "concept swap": 50.78,
+          "variable swap": 49.79
+        },
+        "AVERAGE ACCURACY": {}
+      }
+    }
+  ],
+  "audit_runs": [
+    {
+      "condition": "fw_para_negation_audit",
+      "masking": "token",
+      "seed": 0,
+      "run": "mlm_token_fw_para_neg_pure_10m_40k_seed0_mig20",
+      "results": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed0_mig20",
+      "train_data": "data/fw_para_neg_pure_10m.train",
+      "tokenizer": "tokenizers/fw_para_neg_pure_40k.model"
+    },
+    {
+      "condition": "fw_para_negation_audit",
+      "masking": "token",
+      "seed": 1,
+      "run": "mlm_token_fw_para_neg_pure_10m_40k_seed1_mig20",
+      "results": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed1_mig20",
+      "train_data": "data/fw_para_neg_pure_10m.train",
+      "tokenizer": "tokenizers/fw_para_neg_pure_40k.model"
+    },
+    {
+      "condition": "fw_para_negation_audit",
+      "masking": "token",
+      "seed": 2,
+      "run": "mlm_token_fw_para_neg_pure_10m_40k_seed2_mig20",
+      "results": "reproduction/audit_results/mlm_token_fw_para_neg_pure_10m_40k_seed2_mig20",
+      "train_data": "data/fw_para_neg_pure_10m.train",
+      "tokenizer": "tokenizers/fw_para_neg_pure_40k.model"
+    },
+    {
+      "condition": "fw_para_negation_audit",
+      "masking": "wwm7tok3",
+      "seed": 0,
+      "run": "mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed0_mig20",
+      "results": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed0_mig20",
+      "train_data": "data/fw_para_neg_pure_10m.train",
+      "tokenizer": "tokenizers/fw_para_neg_pure_40k.model"
+    },
+    {
+      "condition": "fw_para_negation_audit",
+      "masking": "wwm7tok3",
+      "seed": 1,
+      "run": "mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed1_mig20",
+      "results": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed1_mig20",
+      "train_data": "data/fw_para_neg_pure_10m.train",
+      "tokenizer": "tokenizers/fw_para_neg_pure_40k.model"
+    },
+    {
+      "condition": "fw_para_negation_audit",
+      "masking": "wwm7tok3",
+      "seed": 2,
+      "run": "mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed2_mig20",
+      "results": "reproduction/audit_results/mlm_wwm7tok3_fw_para_neg_pure_10m_40k_seed2_mig20",
+      "train_data": "data/fw_para_neg_pure_10m.train",
+      "tokenizer": "tokenizers/fw_para_neg_pure_40k.model"
+    }
+  ]
+}

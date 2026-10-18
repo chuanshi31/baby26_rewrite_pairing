@@ -1,0 +1,15 @@
+{
+  "source": "data/fineweb_paraphrase_negation.jsonl",
+  "output": "data/fw_para_neg_pure_10m.train",
+  "format": "one shuffled line per record: original + paraphrase + negation",
+  "target_words": 10000000,
+  "output_words": 10000102,
+  "source_records": 159271,
+  "output_records": 136517,
+  "source_words": {
+    "original": 4069422,
+    "paraphrase": 3804962,
+    "negation": 3785630
+  },
+  "shuffle_seed": 42
+}

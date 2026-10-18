@@ -12,7 +12,7 @@ This release preserves the fixed inputs and evidence needed for the paper, rathe
 
 The training corpora are **10 million words**, not 10 million tokenizer tokens. Some corpora end at a complete pair and slightly exceed the nominal budget; exact bytes/hashes define the released inputs.
 
-Names are historical: the condition called “FineWeb Explanation” uses the supplied FineWeb explanation corpus with OpenStax fill (see its source manifest), and the paraphrase-only condition uses `fw_os_para_pure_10m.train` with the recorded OpenStax fill. The older `fw_para_neg_pure` experiment contains negation and is **not** the paper's paraphrase-only condition. The global BB26 baseline's recovered tokenizer is `bb24.model`; its SHA matches the saved global-baseline checkpoint. Do not infer tokenizers from a run name.
+Names are historical: the condition called “FineWeb Explanation” uses the supplied FineWeb explanation corpus with OpenStax fill (see its source manifest), and the paraphrase-only condition uses `fw_os_para_pure_10m.train` with the recorded OpenStax fill. The older `fw_para_neg_pure` experiment contains negation. The paper’s Entity values match that older series rather than the saved paraphrase-only reports, although EWoK/GLUE means match the paraphrase-only series. The reason is unresolved; see `PAPER_NUMERICAL_AUDIT.json`. Its six seed runs, tokenizer and training file are retained as necessary audit evidence. The global BB26 baseline's recovered tokenizer is `bb24.model`; its SHA matches the saved global-baseline checkpoint. Do not infer tokenizers from a run name.
 
 ## Fixed training inputs
 
@@ -62,3 +62,7 @@ python reproduction/readability.py reproduction/pairs/fineweb_simplified.jsonl.g
 Prompts from paper Appendix B are in `prompts/`; recovered generation/extraction code is in `source_scripts/`. Exact final training files are preserved because stochastic generation and historical preprocessing cannot be certified to regenerate the same bytes. The original temporary readability/bootstrap scripts and their exact dependency/RNG states were not retained. The new analysis scripts explicitly label this limitation. Report-based means use saved rounded scores, so the last decimal may differ from unrounded prediction-based recomputation. No training, model scoring or full historical environment reproduction was rerun as part of preparing this release.
 
 `FILE_MANIFEST.json` supplies SHA-256 and Git blob hashes for the published files. Development caches, unrelated experiments, duplicate models, intermediate checkpoints, private settings, logs and Git garbage are intentionally outside this retention scope.
+
+## Material numerical discrepancy
+
+The pure paraphrase runs have saved Entity means about 36.81 (Token) and 38.29 (WWM), whereas paper Table 5 reports 19.0 and 19.1. The older negation-triplet runs match the latter values. Do not infer that the paper’s selective Entity Tracking conclusion has been reproduced. This release preserves both relevant alternatives and identifies the discrepancy without changing the paper or inventing missing results. The exact cause, including possible evaluation-version differences, is not established by this release.

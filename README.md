@@ -2,6 +2,10 @@
 
 This repository contains the BabyLM 2026 simplification data package and evaluation results for three 10M-word simplification-pair training sets. It also includes the original `train_mask.py` script and the exact notes for running WWM7 -> Token3 with regular MLM.
 
+## Paper/results discrepancy
+
+The published paper’s Paraphrase Entity Tracking values do not match the saved paraphrase-only reports. They match a historical paraphrase+negation series instead. Evaluation-version differences or table bookkeeping remain unresolved; the paper’s selective Entity Tracking interpretation is not reproduced by the saved paraphrase-only reports. Both sets of relevant evidence are preserved in [reproduction/PAPER_NUMERICAL_AUDIT.json](reproduction/PAPER_NUMERICAL_AUDIT.json). The paper itself has not been edited.
+
 ## Paper reproduction release
 
 The paper resources now include the source-matched raw baselines, explanation and paraphrase controls, 51 seed runs for the 10M experiments, and the exact 100M submission corpus (losslessly split into gzip chunks). See [reproduction/README.md](reproduction/README.md) for the run-to-data mapping, commands, dependency snapshots, result aggregation and limitations.
