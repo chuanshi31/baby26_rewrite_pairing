@@ -1,0 +1,461 @@
+[
+  {
+    "condition": "fw_raw",
+    "masking": "token",
+    "seed": 0,
+    "run": "mlm_token_fineweb_10m_combined_source_40k_seed0_mig20",
+    "results": "reproduction/results/mlm_token_fineweb_10m_combined_source_40k_seed0_mig20",
+    "train_data": "data/fineweb_10m_combined_source.txt",
+    "tokenizer": "tokenizers/fineweb_10m_combined_source_40k.model"
+  },
+  {
+    "condition": "fw_raw",
+    "masking": "token",
+    "seed": 1,
+    "run": "mlm_token_fineweb_10m_combined_source_40k_seed1_mig20",
+    "results": "reproduction/results/mlm_token_fineweb_10m_combined_source_40k_seed1_mig20",
+    "train_data": "data/fineweb_10m_combined_source.txt",
+    "tokenizer": "tokenizers/fineweb_10m_combined_source_40k.model"
+  },
+  {
+    "condition": "fw_raw",
+    "masking": "token",
+    "seed": 2,
+    "run": "mlm_token_fineweb_10m_combined_source_40k_seed2_mig20",
+    "results": "reproduction/results/mlm_token_fineweb_10m_combined_source_40k_seed2_mig20",
+    "train_data": "data/fineweb_10m_combined_source.txt",
+    "tokenizer": "tokenizers/fineweb_10m_combined_source_40k.model"
+  },
+  {
+    "condition": "fw_raw",
+    "masking": "wwm7tok3",
+    "seed": 0,
+    "run": "mlm_wwm7tok3_fineweb_10m_combined_source_40k_seed0_fau",
+    "results": "reproduction/results/mlm_wwm7tok3_fineweb_10m_combined_source_40k_seed0_fau",
+    "train_data": "data/fineweb_10m_combined_source.txt",
+    "tokenizer": "tokenizers/fineweb_10m_combined_source_40k.model"
+  },
+  {
+    "condition": "fw_raw",
+    "masking": "wwm7tok3",
+    "seed": 1,
+    "run": "mlm_wwm7tok3_fineweb_10m_combined_source_40k_seed1_fau",
+    "results": "reproduction/results/mlm_wwm7tok3_fineweb_10m_combined_source_40k_seed1_fau",
+    "train_data": "data/fineweb_10m_combined_source.txt",
+    "tokenizer": "tokenizers/fineweb_10m_combined_source_40k.model"
+  },
+  {
+    "condition": "fw_raw",
+    "masking": "wwm7tok3",
+    "seed": 2,
+    "run": "mlm_wwm7tok3_fineweb_10m_combined_source_40k_seed2_fau",
+    "results": "reproduction/results/mlm_wwm7tok3_fineweb_10m_combined_source_40k_seed2_fau",
+    "train_data": "data/fineweb_10m_combined_source.txt",
+    "tokenizer": "tokenizers/fineweb_10m_combined_source_40k.model"
+  },
+  {
+    "condition": "fw_simp",
+    "masking": "token",
+    "seed": 0,
+    "run": "mlm_token_fw_simp_v1_sl_10m_40k",
+    "results": "01_fw_simp_v1_sl_10m_40k/token/eval_results/mlm_token_fw_simp_v1_sl_10m_40k",
+    "train_data": "data/fw_simp_v1_sl_10m.train",
+    "tokenizer": "tokenizers/fw_simp_v1_40k.model"
+  },
+  {
+    "condition": "fw_simp",
+    "masking": "token",
+    "seed": 1,
+    "run": "mlm_token_fw_simp_v1_sl_10m_40k_seed1_v100",
+    "results": "01_fw_simp_v1_sl_10m_40k/token/eval_results/mlm_token_fw_simp_v1_sl_10m_40k_seed1_v100",
+    "train_data": "data/fw_simp_v1_sl_10m.train",
+    "tokenizer": "tokenizers/fw_simp_v1_40k.model"
+  },
+  {
+    "condition": "fw_simp",
+    "masking": "token",
+    "seed": 2,
+    "run": "mlm_token_fw_simp_v1_sl_10m_40k_seed2_v100",
+    "results": "01_fw_simp_v1_sl_10m_40k/token/eval_results/mlm_token_fw_simp_v1_sl_10m_40k_seed2_v100",
+    "train_data": "data/fw_simp_v1_sl_10m.train",
+    "tokenizer": "tokenizers/fw_simp_v1_40k.model"
+  },
+  {
+    "condition": "fw_simp",
+    "masking": "wwm7tok3",
+    "seed": 0,
+    "run": "mlm_wwm7tok3_fw_simp_v1_sl_10m_40k_seed0_v100",
+    "results": "01_fw_simp_v1_sl_10m_40k/wwm7tok3/eval_results/mlm_wwm7tok3_fw_simp_v1_sl_10m_40k_seed0_v100",
+    "train_data": "data/fw_simp_v1_sl_10m.train",
+    "tokenizer": "tokenizers/fw_simp_v1_40k.model"
+  },
+  {
+    "condition": "fw_simp",
+    "masking": "wwm7tok3",
+    "seed": 1,
+    "run": "mlm_wwm7tok3_fw_simp_v1_sl_10m_40k_seed1_v100",
+    "results": "01_fw_simp_v1_sl_10m_40k/wwm7tok3/eval_results/mlm_wwm7tok3_fw_simp_v1_sl_10m_40k_seed1_v100",
+    "train_data": "data/fw_simp_v1_sl_10m.train",
+    "tokenizer": "tokenizers/fw_simp_v1_40k.model"
+  },
+  {
+    "condition": "fw_simp",
+    "masking": "wwm7tok3",
+    "seed": 2,
+    "run": "mlm_wwm7tok3_fw_simp_v1_sl_10m_40k_seed2_v100",
+    "results": "01_fw_simp_v1_sl_10m_40k/wwm7tok3/eval_results/mlm_wwm7tok3_fw_simp_v1_sl_10m_40k_seed2_v100",
+    "train_data": "data/fw_simp_v1_sl_10m.train",
+    "tokenizer": "tokenizers/fw_simp_v1_40k.model"
+  },
+  {
+    "condition": "fw_expl",
+    "masking": "token",
+    "seed": 0,
+    "run": "mlm_token_fineweb_expl_os_ratio_gt1_near20_10m_40k_seed0_v100",
+    "results": "reproduction/results/mlm_token_fineweb_expl_os_ratio_gt1_near20_10m_40k_seed0_v100",
+    "train_data": "data/fineweb_explanation_plus_openstax_ratio_gt1_near20_10m.train",
+    "tokenizer": "tokenizers/fineweb_explanation_40k.model"
+  },
+  {
+    "condition": "fw_expl",
+    "masking": "token",
+    "seed": 1,
+    "run": "mlm_token_fineweb_expl_os_ratio_gt1_near20_10m_40k_seed1_v100",
+    "results": "reproduction/results/mlm_token_fineweb_expl_os_ratio_gt1_near20_10m_40k_seed1_v100",
+    "train_data": "data/fineweb_explanation_plus_openstax_ratio_gt1_near20_10m.train",
+    "tokenizer": "tokenizers/fineweb_explanation_40k.model"
+  },
+  {
+    "condition": "fw_expl",
+    "masking": "token",
+    "seed": 2,
+    "run": "mlm_token_fineweb_expl_os_ratio_gt1_near20_10m_40k_seed2_v100",
+    "results": "reproduction/results/mlm_token_fineweb_expl_os_ratio_gt1_near20_10m_40k_seed2_v100",
+    "train_data": "data/fineweb_explanation_plus_openstax_ratio_gt1_near20_10m.train",
+    "tokenizer": "tokenizers/fineweb_explanation_40k.model"
+  },
+  {
+    "condition": "fw_expl",
+    "masking": "wwm7tok3",
+    "seed": 0,
+    "run": "mlm_wwm7tok3_fineweb_expl_os_ratio_gt1_near20_10m_40k_seed0_v100",
+    "results": "reproduction/results/mlm_wwm7tok3_fineweb_expl_os_ratio_gt1_near20_10m_40k_seed0_v100",
+    "train_data": "data/fineweb_explanation_plus_openstax_ratio_gt1_near20_10m.train",
+    "tokenizer": "tokenizers/fineweb_explanation_40k.model"
+  },
+  {
+    "condition": "fw_expl",
+    "masking": "wwm7tok3",
+    "seed": 1,
+    "run": "mlm_wwm7tok3_fineweb_expl_os_ratio_gt1_near20_10m_40k_seed1_v100",
+    "results": "reproduction/results/mlm_wwm7tok3_fineweb_expl_os_ratio_gt1_near20_10m_40k_seed1_v100",
+    "train_data": "data/fineweb_explanation_plus_openstax_ratio_gt1_near20_10m.train",
+    "tokenizer": "tokenizers/fineweb_explanation_40k.model"
+  },
+  {
+    "condition": "fw_expl",
+    "masking": "wwm7tok3",
+    "seed": 2,
+    "run": "mlm_wwm7tok3_fineweb_expl_os_ratio_gt1_near20_10m_40k_seed2_v100",
+    "results": "reproduction/results/mlm_wwm7tok3_fineweb_expl_os_ratio_gt1_near20_10m_40k_seed2_v100",
+    "train_data": "data/fineweb_explanation_plus_openstax_ratio_gt1_near20_10m.train",
+    "tokenizer": "tokenizers/fineweb_explanation_40k.model"
+  },
+  {
+    "condition": "fw_para",
+    "masking": "token",
+    "seed": 0,
+    "run": "mlm_token_fw_os_para_pure_10m_40k_seed0_mig20",
+    "results": "reproduction/results/mlm_token_fw_os_para_pure_10m_40k_seed0_mig20",
+    "train_data": "data/fw_os_para_pure_10m.train",
+    "tokenizer": "tokenizers/fw_os_para_pure_40k.model"
+  },
+  {
+    "condition": "fw_para",
+    "masking": "token",
+    "seed": 1,
+    "run": "mlm_token_fw_os_para_pure_10m_40k_seed1_mig20",
+    "results": "reproduction/results/mlm_token_fw_os_para_pure_10m_40k_seed1_mig20",
+    "train_data": "data/fw_os_para_pure_10m.train",
+    "tokenizer": "tokenizers/fw_os_para_pure_40k.model"
+  },
+  {
+    "condition": "fw_para",
+    "masking": "token",
+    "seed": 2,
+    "run": "mlm_token_fw_os_para_pure_10m_40k_seed2_mig20",
+    "results": "reproduction/results/mlm_token_fw_os_para_pure_10m_40k_seed2_mig20",
+    "train_data": "data/fw_os_para_pure_10m.train",
+    "tokenizer": "tokenizers/fw_os_para_pure_40k.model"
+  },
+  {
+    "condition": "fw_para",
+    "masking": "wwm7tok3",
+    "seed": 0,
+    "run": "mlm_wwm7tok3_fw_os_para_pure_10m_40k_seed0_mig20",
+    "results": "reproduction/results/mlm_wwm7tok3_fw_os_para_pure_10m_40k_seed0_mig20",
+    "train_data": "data/fw_os_para_pure_10m.train",
+    "tokenizer": "tokenizers/fw_os_para_pure_40k.model"
+  },
+  {
+    "condition": "fw_para",
+    "masking": "wwm7tok3",
+    "seed": 1,
+    "run": "mlm_wwm7tok3_fw_os_para_pure_10m_40k_seed1_mig20",
+    "results": "reproduction/results/mlm_wwm7tok3_fw_os_para_pure_10m_40k_seed1_mig20",
+    "train_data": "data/fw_os_para_pure_10m.train",
+    "tokenizer": "tokenizers/fw_os_para_pure_40k.model"
+  },
+  {
+    "condition": "fw_para",
+    "masking": "wwm7tok3",
+    "seed": 2,
+    "run": "mlm_wwm7tok3_fw_os_para_pure_10m_40k_seed2_mig20",
+    "results": "reproduction/results/mlm_wwm7tok3_fw_os_para_pure_10m_40k_seed2_mig20",
+    "train_data": "data/fw_os_para_pure_10m.train",
+    "tokenizer": "tokenizers/fw_os_para_pure_40k.model"
+  },
+  {
+    "condition": "os_raw",
+    "masking": "token",
+    "seed": 0,
+    "run": "mlm_token_openstax_bccampus_original_10m_40k_seed0_mig20",
+    "results": "reproduction/results/mlm_token_openstax_bccampus_original_10m_40k_seed0_mig20",
+    "train_data": "data/openstax_bccampus_original_10m_dedup.train",
+    "tokenizer": "tokenizers/openstax_bccampus_original_10m_dedup_40k.model"
+  },
+  {
+    "condition": "os_raw",
+    "masking": "token",
+    "seed": 1,
+    "run": "mlm_token_openstax_bccampus_original_10m_40k_seed1_mig20",
+    "results": "reproduction/results/mlm_token_openstax_bccampus_original_10m_40k_seed1_mig20",
+    "train_data": "data/openstax_bccampus_original_10m_dedup.train",
+    "tokenizer": "tokenizers/openstax_bccampus_original_10m_dedup_40k.model"
+  },
+  {
+    "condition": "os_raw",
+    "masking": "token",
+    "seed": 2,
+    "run": "mlm_token_openstax_bccampus_original_10m_40k_seed2_mig20",
+    "results": "reproduction/results/mlm_token_openstax_bccampus_original_10m_40k_seed2_mig20",
+    "train_data": "data/openstax_bccampus_original_10m_dedup.train",
+    "tokenizer": "tokenizers/openstax_bccampus_original_10m_dedup_40k.model"
+  },
+  {
+    "condition": "os_raw",
+    "masking": "wwm7tok3",
+    "seed": 0,
+    "run": "mlm_wwm7tok3_openstax_bccampus_original_10m_40k_seed0_fau",
+    "results": "reproduction/results/mlm_wwm7tok3_openstax_bccampus_original_10m_40k_seed0_fau",
+    "train_data": "data/openstax_bccampus_original_10m_dedup.train",
+    "tokenizer": "tokenizers/openstax_bccampus_original_10m_dedup_40k.model"
+  },
+  {
+    "condition": "os_raw",
+    "masking": "wwm7tok3",
+    "seed": 1,
+    "run": "mlm_wwm7tok3_openstax_bccampus_original_10m_40k_seed1_fau",
+    "results": "reproduction/results/mlm_wwm7tok3_openstax_bccampus_original_10m_40k_seed1_fau",
+    "train_data": "data/openstax_bccampus_original_10m_dedup.train",
+    "tokenizer": "tokenizers/openstax_bccampus_original_10m_dedup_40k.model"
+  },
+  {
+    "condition": "os_raw",
+    "masking": "wwm7tok3",
+    "seed": 2,
+    "run": "mlm_wwm7tok3_openstax_bccampus_original_10m_40k_seed2_fau",
+    "results": "reproduction/results/mlm_wwm7tok3_openstax_bccampus_original_10m_40k_seed2_fau",
+    "train_data": "data/openstax_bccampus_original_10m_dedup.train",
+    "tokenizer": "tokenizers/openstax_bccampus_original_10m_dedup_40k.model"
+  },
+  {
+    "condition": "os_simp",
+    "masking": "token",
+    "seed": 0,
+    "run": "mlm_token_openstax_sentences_bccampus_pairs_10m_40k_seed0_v100",
+    "results": "03_openstax_sentences_bccampus_pairs_10m_40k/token/eval_results/mlm_token_openstax_sentences_bccampus_pairs_10m_40k_seed0_v100",
+    "train_data": "data/openstax_sentences_bccampus_fill_10m_pairs_shuffled.train",
+    "tokenizer": "tokenizers/openstax_bccampus_original_10m_dedup_40k.model"
+  },
+  {
+    "condition": "os_simp",
+    "masking": "token",
+    "seed": 1,
+    "run": "mlm_token_openstax_sentences_bccampus_pairs_10m_40k_seed1_v100",
+    "results": "03_openstax_sentences_bccampus_pairs_10m_40k/token/eval_results/mlm_token_openstax_sentences_bccampus_pairs_10m_40k_seed1_v100",
+    "train_data": "data/openstax_sentences_bccampus_fill_10m_pairs_shuffled.train",
+    "tokenizer": "tokenizers/openstax_bccampus_original_10m_dedup_40k.model"
+  },
+  {
+    "condition": "os_simp",
+    "masking": "token",
+    "seed": 2,
+    "run": "mlm_token_openstax_sentences_bccampus_pairs_10m_40k_seed2_v100",
+    "results": "03_openstax_sentences_bccampus_pairs_10m_40k/token/eval_results/mlm_token_openstax_sentences_bccampus_pairs_10m_40k_seed2_v100",
+    "train_data": "data/openstax_sentences_bccampus_fill_10m_pairs_shuffled.train",
+    "tokenizer": "tokenizers/openstax_bccampus_original_10m_dedup_40k.model"
+  },
+  {
+    "condition": "os_simp",
+    "masking": "wwm7tok3",
+    "seed": 0,
+    "run": "mlm_wwm7tok3_openstax_sentences_bccampus_pairs_10m_40k_seed0_v100",
+    "results": "03_openstax_sentences_bccampus_pairs_10m_40k/wwm7tok3/eval_results/mlm_wwm7tok3_openstax_sentences_bccampus_pairs_10m_40k_seed0_v100",
+    "train_data": "data/openstax_sentences_bccampus_fill_10m_pairs_shuffled.train",
+    "tokenizer": "tokenizers/openstax_bccampus_original_10m_dedup_40k.model"
+  },
+  {
+    "condition": "os_simp",
+    "masking": "wwm7tok3",
+    "seed": 1,
+    "run": "mlm_wwm7tok3_openstax_sentences_bccampus_pairs_10m_40k_seed1_v100",
+    "results": "03_openstax_sentences_bccampus_pairs_10m_40k/wwm7tok3/eval_results/mlm_wwm7tok3_openstax_sentences_bccampus_pairs_10m_40k_seed1_v100",
+    "train_data": "data/openstax_sentences_bccampus_fill_10m_pairs_shuffled.train",
+    "tokenizer": "tokenizers/openstax_bccampus_original_10m_dedup_40k.model"
+  },
+  {
+    "condition": "os_simp",
+    "masking": "wwm7tok3",
+    "seed": 2,
+    "run": "mlm_wwm7tok3_openstax_sentences_bccampus_pairs_10m_40k_seed2_v100",
+    "results": "03_openstax_sentences_bccampus_pairs_10m_40k/wwm7tok3/eval_results/mlm_wwm7tok3_openstax_sentences_bccampus_pairs_10m_40k_seed2_v100",
+    "train_data": "data/openstax_sentences_bccampus_fill_10m_pairs_shuffled.train",
+    "tokenizer": "tokenizers/openstax_bccampus_original_10m_dedup_40k.model"
+  },
+  {
+    "condition": "sw_raw",
+    "masking": "token",
+    "seed": 0,
+    "run": "mlm_token_simple_wiki_sentences_10m_40k_seed0_mig20",
+    "results": "reproduction/results/mlm_token_simple_wiki_sentences_10m_40k_seed0_mig20",
+    "train_data": "data/simple_wiki_sentences_10m.txt",
+    "tokenizer": "tokenizers/simple_wiki_sentences_10m_40k.model"
+  },
+  {
+    "condition": "sw_raw",
+    "masking": "token",
+    "seed": 1,
+    "run": "mlm_token_simple_wiki_sentences_10m_40k_seed1_mig20",
+    "results": "reproduction/results/mlm_token_simple_wiki_sentences_10m_40k_seed1_mig20",
+    "train_data": "data/simple_wiki_sentences_10m.txt",
+    "tokenizer": "tokenizers/simple_wiki_sentences_10m_40k.model"
+  },
+  {
+    "condition": "sw_raw",
+    "masking": "token",
+    "seed": 2,
+    "run": "mlm_token_simple_wiki_sentences_10m_40k_seed2_mig20",
+    "results": "reproduction/results/mlm_token_simple_wiki_sentences_10m_40k_seed2_mig20",
+    "train_data": "data/simple_wiki_sentences_10m.txt",
+    "tokenizer": "tokenizers/simple_wiki_sentences_10m_40k.model"
+  },
+  {
+    "condition": "sw_raw",
+    "masking": "wwm7tok3",
+    "seed": 0,
+    "run": "mlm_wwm7tok3_simple_wiki_sentences_10m_40k_seed0_fau",
+    "results": "reproduction/results/mlm_wwm7tok3_simple_wiki_sentences_10m_40k_seed0_fau",
+    "train_data": "data/simple_wiki_sentences_10m.txt",
+    "tokenizer": "tokenizers/simple_wiki_sentences_10m_40k.model"
+  },
+  {
+    "condition": "sw_raw",
+    "masking": "wwm7tok3",
+    "seed": 1,
+    "run": "mlm_wwm7tok3_simple_wiki_sentences_10m_40k_seed1_fau",
+    "results": "reproduction/results/mlm_wwm7tok3_simple_wiki_sentences_10m_40k_seed1_fau",
+    "train_data": "data/simple_wiki_sentences_10m.txt",
+    "tokenizer": "tokenizers/simple_wiki_sentences_10m_40k.model"
+  },
+  {
+    "condition": "sw_raw",
+    "masking": "wwm7tok3",
+    "seed": 2,
+    "run": "mlm_wwm7tok3_simple_wiki_sentences_10m_40k_seed2_fau",
+    "results": "reproduction/results/mlm_wwm7tok3_simple_wiki_sentences_10m_40k_seed2_fau",
+    "train_data": "data/simple_wiki_sentences_10m.txt",
+    "tokenizer": "tokenizers/simple_wiki_sentences_10m_40k.model"
+  },
+  {
+    "condition": "sw_simp",
+    "masking": "token",
+    "seed": 0,
+    "run": "mlm_token_simple_wiki_pairs_10m_40k_seed0_v100",
+    "results": "02_simple_wiki_pairs_10m_40k/token/eval_results/mlm_token_simple_wiki_pairs_10m_40k_seed0_v100",
+    "train_data": "data/simple_wiki_pairs_10m_shuffled.train",
+    "tokenizer": "tokenizers/simple_wiki_sentences_10m_40k.model"
+  },
+  {
+    "condition": "sw_simp",
+    "masking": "token",
+    "seed": 1,
+    "run": "mlm_token_simple_wiki_pairs_10m_40k_seed1_v100",
+    "results": "02_simple_wiki_pairs_10m_40k/token/eval_results/mlm_token_simple_wiki_pairs_10m_40k_seed1_v100",
+    "train_data": "data/simple_wiki_pairs_10m_shuffled.train",
+    "tokenizer": "tokenizers/simple_wiki_sentences_10m_40k.model"
+  },
+  {
+    "condition": "sw_simp",
+    "masking": "token",
+    "seed": 2,
+    "run": "mlm_token_simple_wiki_pairs_10m_40k_seed2_v100",
+    "results": "02_simple_wiki_pairs_10m_40k/token/eval_results/mlm_token_simple_wiki_pairs_10m_40k_seed2_v100",
+    "train_data": "data/simple_wiki_pairs_10m_shuffled.train",
+    "tokenizer": "tokenizers/simple_wiki_sentences_10m_40k.model"
+  },
+  {
+    "condition": "sw_simp",
+    "masking": "wwm7tok3",
+    "seed": 0,
+    "run": "mlm_wwm7tok3_simple_wiki_pairs_10m_40k_seed0_v100",
+    "results": "02_simple_wiki_pairs_10m_40k/wwm7tok3/eval_results/mlm_wwm7tok3_simple_wiki_pairs_10m_40k_seed0_v100",
+    "train_data": "data/simple_wiki_pairs_10m_shuffled.train",
+    "tokenizer": "tokenizers/simple_wiki_sentences_10m_40k.model"
+  },
+  {
+    "condition": "sw_simp",
+    "masking": "wwm7tok3",
+    "seed": 1,
+    "run": "mlm_wwm7tok3_simple_wiki_pairs_10m_40k_seed1_v100",
+    "results": "02_simple_wiki_pairs_10m_40k/wwm7tok3/eval_results/mlm_wwm7tok3_simple_wiki_pairs_10m_40k_seed1_v100",
+    "train_data": "data/simple_wiki_pairs_10m_shuffled.train",
+    "tokenizer": "tokenizers/simple_wiki_sentences_10m_40k.model"
+  },
+  {
+    "condition": "sw_simp",
+    "masking": "wwm7tok3",
+    "seed": 2,
+    "run": "mlm_wwm7tok3_simple_wiki_pairs_10m_40k_seed2_v100",
+    "results": "02_simple_wiki_pairs_10m_40k/wwm7tok3/eval_results/mlm_wwm7tok3_simple_wiki_pairs_10m_40k_seed2_v100",
+    "train_data": "data/simple_wiki_pairs_10m_shuffled.train",
+    "tokenizer": "tokenizers/simple_wiki_sentences_10m_40k.model"
+  },
+  {
+    "condition": "bb26",
+    "masking": "token",
+    "seed": 0,
+    "run": "mlm_regular_bb26_40k",
+    "results": "reproduction/results/mlm_regular_bb26_40k",
+    "train_data": "data/bb26.train",
+    "tokenizer": "tokenizers/bb24.model"
+  },
+  {
+    "condition": "bb26",
+    "masking": "token",
+    "seed": 1,
+    "run": "mlm_regular_bb26_40k_seed1",
+    "results": "reproduction/results/mlm_regular_bb26_40k_seed1",
+    "train_data": "data/bb26.train",
+    "tokenizer": "tokenizers/bb24.model"
+  },
+  {
+    "condition": "bb26",
+    "masking": "token",
+    "seed": 2,
+    "run": "mlm_regular_bb26_40k_seed2",
+    "results": "reproduction/results/mlm_regular_bb26_40k_seed2",
+    "train_data": "data/bb26.train",
+    "tokenizer": "tokenizers/bb24.model"
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "output": "data/fw_os_para_pure_10m.train",
+  "format": "one shuffled line per record: original + paraphrase (no negation)",
+  "target_words": 10000000,
+  "output_words": 10000012,
+  "output_records": 180077,
+  "sources": {
+    "fineweb_local": {
+      "file": "data/fineweb_paraphrase_negation.jsonl",
+      "records": 159271,
+      "words": 7874384
+    },
+    "fineweb_lrz_2m_batch": {
+      "file": "data/fineweb_2m_new_paraphrase.jsonl",
+      "records": 661,
+      "words": 246020
+    },
+    "openstax_fill": {
+      "file": "data/openstax_paraphrase_negation.jsonl",
+      "records": 20145,
+      "words": 1879608,
+      "selection": "random subset, seed=42"
+    }
+  },
+  "shuffle_seed": 42
+}

@@ -1,0 +1,25 @@
+{
+  "sources": {
+    "openstax_sent": {
+      "path": "data/openstax_processing/openstax_humanities_sentences_simplified.jsonl",
+      "used_records": 75129,
+      "used_words": 3268176,
+      "available_records": 75129,
+      "available_words": 3268176
+    },
+    "bccampus_main": {
+      "path": "data/bccampus_open_textbooks_sentences_simplified.jsonl",
+      "used_records": 139956,
+      "used_words": 5886200,
+      "available_records": 139956,
+      "available_words": 5886200
+    },
+    "bccampus_extra": {
+      "path": "data/bccampus_extra_1m_sentences_simplified.jsonl",
+      "used_records": 21529,
+      "used_words": 845606,
+      "available_records": 34309,
+      "available_words": 1340959
+    }
+  }
+}

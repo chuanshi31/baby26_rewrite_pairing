@@ -1,0 +1,20 @@
+{
+  "description": "100M-word simplification pairs corpus (REBUILT with correct JSON-field-based parsing, no line-index pairing bugs): FineWeb 70M batch + OpenStax/BCCampus fill to reach 100M words",
+  "components": [
+    {
+      "source": "fineweb_70m_sentences_simplified.jsonl (JSON original/simplified fields, no line-position parsing)",
+      "pairs": 2209019,
+      "words": 94581661
+    },
+    {
+      "source": "openstax_simplified.jsonl + bccampus_open_textbooks_sentences_simplified.jsonl (random sample, seed=42)",
+      "pairs": 104690,
+      "words": 5418338,
+      "note": "Overlaps with the OpenStax+BCCampus 10M source condition's simplification data."
+    }
+  ],
+  "total_pairs": 2313709,
+  "total_words": 99999999,
+  "shuffle_seed": 42,
+  "fix_note": "Previous version of this file was built with a buggy line-index-based pairing script that ignored blank-line separators in the source pairs.txt file, causing most original/simplified pairs to be misaligned. This version reads original/simplified directly from JSON fields, guaranteeing correct alignment."
+}

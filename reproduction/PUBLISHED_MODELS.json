@@ -1,0 +1,118 @@
+[
+  {
+    "repo": "go76dof/wwm_curriculum_simplification_40k",
+    "url": "https://huggingface.co/go76dof/wwm_curriculum_simplification_40k",
+    "file_metadata": [
+      {
+        "type": "file",
+        "oid": "a6344aac8c09253b3b630fb776ae94478aa0275b",
+        "size": 1519,
+        "path": ".gitattributes"
+      },
+      {
+        "type": "file",
+        "oid": "435b244ad127ad80db7951847b3e976f9167e37a",
+        "size": 7277,
+        "path": "README.md"
+      },
+      {
+        "type": "file",
+        "oid": "30b18102a76e4f52c0249eca6f26e0447192cbc0",
+        "size": 932,
+        "path": "config.json"
+      },
+      {
+        "type": "file",
+        "oid": "3a55d53a9eef721cb70fb3f26cb49f38cd59a86e",
+        "size": 69380232,
+        "lfs": {
+          "oid": "cebc35d41825c2c17234ecf7de014020ee91879517a92ee912483ca130b6e120",
+          "size": 69380232,
+          "pointerSize": 133
+        },
+        "xetHash": "86533e380eb28d0b5983b7ed7fc94a0ee9e4c46b984f925e437340a7109c1f87",
+        "path": "model.safetensors"
+      },
+      {
+        "type": "file",
+        "oid": "2c9cb07c8fdeeb5ac3ceafb170592e990b204dcd",
+        "size": 286,
+        "path": "special_tokens_map.json"
+      },
+      {
+        "type": "file",
+        "oid": "0cbddb9f5deb830f6c082315fb22c5abbf8ad6c7",
+        "size": 918622,
+        "lfs": {
+          "oid": "1157bea377197596bde9a6f612a9fdcd0af3e51610ceb2b932b2120696dd3c64",
+          "size": 918622,
+          "pointerSize": 131
+        },
+        "xetHash": "bc5e8d357361518c7bfce2993d1e6d5622523b286516f0ea45532d09cdb3ddef",
+        "path": "spm.model"
+      },
+      {
+        "type": "file",
+        "oid": "192c9bb90351007b2b65d64c82e5c528ce0ca856",
+        "size": 1287,
+        "path": "tokenizer_config.json"
+      }
+    ],
+    "verification": "Public metadata checked; weights were not downloaded or numerically rescored during release preparation."
+  },
+  {
+    "repo": "go76dof/spangeo05_simplification",
+    "url": "https://huggingface.co/go76dof/spangeo05_simplification",
+    "file_metadata": [
+      {
+        "type": "file",
+        "oid": "a6344aac8c09253b3b630fb776ae94478aa0275b",
+        "size": 1519,
+        "path": ".gitattributes"
+      },
+      {
+        "type": "file",
+        "oid": "51d66ba9f5b86b8c22a1df05772529070edccafc",
+        "size": 933,
+        "path": "config.json"
+      },
+      {
+        "type": "file",
+        "oid": "e24886b8b759d8045e69701bab177df1faba271d",
+        "size": 214743936,
+        "lfs": {
+          "oid": "1bcee87e336c87ceac5a54f51b6620a21b86201ab9b5cf2a43868ad3efd8c965",
+          "size": 214743936,
+          "pointerSize": 134
+        },
+        "xetHash": "733f961976e6f5d0597187333dc6a71877a8a2dd144b04828de69f5867f340c0",
+        "path": "model.safetensors"
+      },
+      {
+        "type": "file",
+        "oid": "2c9cb07c8fdeeb5ac3ceafb170592e990b204dcd",
+        "size": 286,
+        "path": "special_tokens_map.json"
+      },
+      {
+        "type": "file",
+        "oid": "fe260ca5b994c0c9b811ad47651b492504aa87f8",
+        "size": 906497,
+        "lfs": {
+          "oid": "61dd26790dae90df3ba571b55f6d6db69fc1d45369c64ed6348dd0df047bcbfe",
+          "size": 906497,
+          "pointerSize": 131
+        },
+        "xetHash": "f65328e1f84dd5339106d79ba2883dc3ec93fef5d8fa1e8f5821072eb13f81e4",
+        "path": "spm.model"
+      },
+      {
+        "type": "file",
+        "oid": "192c9bb90351007b2b65d64c82e5c528ce0ca856",
+        "size": 1287,
+        "path": "tokenizer_config.json"
+      }
+    ],
+    "verification": "Public metadata checked; weights were not downloaded or numerically rescored during release preparation."
+  }
+]

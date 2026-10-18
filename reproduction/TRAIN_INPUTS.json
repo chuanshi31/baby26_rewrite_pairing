@@ -1,0 +1,62 @@
+[
+  {
+    "path": "data/bb26.dev",
+    "bytes": 1097177,
+    "sha256": "2d2412d0c56d80cb41a1879c1b117b89a6876c0cf5b99eaedf083882c3b8b79f",
+    "whitespace_words": 193408
+  },
+  {
+    "path": "data/bb26.train",
+    "bytes": 53302663,
+    "sha256": "ded7479f93f4d17766593a80b27cea1ffd3f170728a1bfe8481567f78f87339e",
+    "whitespace_words": 9806592
+  },
+  {
+    "path": "data/fineweb_10m_combined_source.txt",
+    "bytes": 61729539,
+    "sha256": "6de6b350c3cef559ae2a22cc77180ba5d9503b57daa6bcb25f11d78d53ed3c74",
+    "whitespace_words": 10016799
+  },
+  {
+    "path": "data/fineweb_explanation_plus_openstax_ratio_gt1_near20_10m.train",
+    "bytes": 59565763,
+    "sha256": "d069272318374a41d900a1f2b758a59b468ec88d3a8357fa778cefd5a4542a9f",
+    "whitespace_words": 10000168
+  },
+  {
+    "path": "data/fw_os_para_pure_10m.train",
+    "bytes": 63895064,
+    "sha256": "4a8edefd1d622cd6485ece398665bc89e4c3c442add95f06af8b5a4a33945c7d",
+    "whitespace_words": 10000012
+  },
+  {
+    "path": "data/fw_simp_v1_sl_10m.train",
+    "bytes": 60729467,
+    "sha256": "dd56aa313062f346d2919a0b918bbbb824b78a86c5b6392c24c813a256ccda24",
+    "whitespace_words": 9999971
+  },
+  {
+    "path": "data/openstax_bccampus_original_10m_dedup.train",
+    "bytes": 63074774,
+    "sha256": "4208487e72c48f8d3107e6cb54cf9ef2691f44ebe8baabc36dcb7917bc27e98e",
+    "whitespace_words": 10000000
+  },
+  {
+    "path": "data/openstax_sentences_bccampus_fill_10m_pairs_shuffled.train",
+    "bytes": 62575481,
+    "sha256": "1aa36d02d3f95de4f24599edd12df6398bdc73b5de55e4f7aa330695baeb00d7",
+    "whitespace_words": 9999982
+  },
+  {
+    "path": "data/simple_wiki_pairs_10m_shuffled.train",
+    "bytes": 59558880,
+    "sha256": "fae144e68224e9f3873af30a7ec7c01a07af13ea15f32f144ec883903856da81",
+    "whitespace_words": 9999984
+  },
+  {
+    "path": "data/simple_wiki_sentences_10m.txt",
+    "bytes": 60135335,
+    "sha256": "77758c85a1161e6e597b415d463dc2931b8b1b063ffc1f4b26f57cca5e50c99d",
+    "whitespace_words": 10062068
+  }
+]

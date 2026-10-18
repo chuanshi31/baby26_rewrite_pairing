@@ -1,0 +1,11 @@
+You are paraphrasing web text for a
+language model training dataset.
+For each input passage, output exactly
+one line: a paraphrase.
+
+Paraphrase rules:
+- Preserve the full meaning. Change structure and vocabulary significantly.
+- Match the original register and tense.
+- Match the original length as closely as possible -- do not compress or expand.
+- Do NOT add explanations, labels, or meta-commentary.
+- Output exactly one line of text, nothing else.

@@ -1,0 +1,848 @@
+\documentclass[11pt]{article}
+
+% =============================================================
+% BabyLM 2026 Workshop submission draft.
+% Formatting target: EMNLP 2026 workshop style (ACL style files).
+% Replace the \usepackage{acl} line below with the official
+% acl2026.sty / EMNLP 2026 style file once released, and use
+% \acl-style-files' acl_latex.tex as the master file. This draft
+% uses a generic two-column layout as a stand-in so the content
+% can be written and reviewed before the official template drops.
+% =============================================================
+
+% NOTE: [review] mode adds line numbers (required for the reviewing stage of
+% submission). Switch to [review] before actually submitting; [final] (no
+% line numbers) is used here only to make the preview PDF easier to read.
+\usepackage[final]{acl}
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{microtype}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\title{Pairing Original Text with Meaning-Preserving Rewrites for Sample-Efficient Small-Data Language Model Pretraining}
+
+\author{Shaoxiang Wu$^{1}$ \qquad Alexander Fraser$^{1,2,3}$ \qquad Lukas Edman$^{1,2}$ \vspace{.2cm}\\
+$^{1}$School of Computation, Information and Technology, TU Munich \\
+$^{2}$Munich Center for Machine Learning \\
+$^{3}$Munich Data Science Institute \\
+\vspace{.1cm} {\tt \small shaoxiang.wu@tum.de, lukas.edman@tum.de}
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We investigate whether augmenting training data with LLM-generated rewrites can improve performance in small-data language model pretraining. We pair each training sentence with a meaning-preserving rewrite, so that masked tokens can be predicted using both the original and its paired version in the same training window. On FineWeb, we test three rewrite types: \emph{simplification} (shorter and easier), \emph{explanation} (longer and easier), and \emph{paraphrasing} (similar length but harder to read). We also test simplification on OpenStax+BCCampus and Simple Wikipedia. We add a reverse masking curriculum: 7 epochs of whole-word masking (WWM), where entire words are masked instead of individual subword tokens, followed by 3 epochs of standard token-level masking (WWM7$\to$Token3). The masking procedure is not rewrite-aware: it does not use alignments between the original sentence and its rewrite. All three FineWeb rewrite types improve EWoK and GLUE-style fine-tuning over source-matched baselines, and simplification improves Entity Tracking across all three sources. The EWoK and GLUE gains concentrate on concept-swap and sentence-pair tasks, suggesting that rewrite pairing especially helps models link meaning across different surface forms. Despite using only one-tenth as much training data, our best model surpasses the official BabyLM 100M GPT-2 baseline on EWoK, Entity Tracking, and GLUE, suggesting that paired rewrite augmentation can improve sample efficiency under a fixed small-data budget.
+\end{abstract}
+
+\begin{table*}[t]
+\centering
+\begin{minipage}{\textwidth}
+\centering
+\small
+\begin{tabular}{p{3cm}p{4cm}p{7.5cm}}
+\toprule
+\textbf{Source}\footnote{Source websites: \href{https://huggingface.co/datasets/HuggingFaceFW/fineweb-edu}{FineWeb-Edu}, \href{https://openstax.org/subjects}{OpenStax}, \href{https://collection.bccampus.ca/}{BCcampus}, and \href{https://simple.wikipedia.org/}{Simple Wikipedia}.} & \textbf{Origin} & \textbf{Expected strength} \\
+\midrule
+FineWeb & Web sentences from FineWeb-Edu \citep{penedo2024fineweb} & Broad science-popular and educational web text, covering health/medicine, biology/nature, geography, history/politics, education, and physical science \\
+OpenStax+BCCampus & University-level open textbooks from OpenStax and BCcampus & Education and humanities \\
+Simple Wikipedia & Simple Wikipedia sentences & Simple expressions, broad but shallow topical coverage \\
+\bottomrule
+\end{tabular}
+\caption{Three simplification source corpora.}
+\label{tab:simp-sources}
+\end{minipage}
+\end{table*}
+
+
+
+\begin{table*}[t]
+\centering
+\small
+\begin{tabular}{p{0.95\textwidth}}
+\toprule
+\textbf{Original:} Enlightenment thinkers proposed that human reason, coupled with empirical study of the physical world, would lead to progress---the advancement of science and the improvement of the human condition. \\
+\midrule
+\textbf{Simplified:} Enlightenment thinkers believed that using reason and studying the world would lead to scientific progress and better living conditions. \\
+\textbf{Explanation:} Enlightenment thinkers thought that using reason and studying the world could make things better. They believed that reason would help science move forward and improve people's lives. \\
+\textbf{Paraphrase:} Enlightenment thinkers believed reason and science would lead to progress and a better society. \\
+\bottomrule
+\end{tabular}
+\caption{The same FineWeb original rewritten under all three of our rewrite types. Simplification uses simpler wording and a more direct sentence structure; explanation unpacks the content into a more explicit restatement; paraphrase preserves meaning while using different wording and more formal vocabulary, with no instruction to simplify.}
+\label{tab:rewrite-examples}
+\end{table*}
+
+\begin{table*}[t]
+\centering
+\small
+\resizebox{0.98\textwidth}{!}{%
+\begin{tabular}{lccccccccccc}
+\toprule
+& & & & \multicolumn{2}{c}{\textbf{FRE}} & \multicolumn{2}{c}{\textbf{FKGL}} & \multicolumn{2}{c}{\textbf{DaleC}} & \multicolumn{2}{c}{\textbf{DiffWd}} \\
+\textbf{Source} & \textbf{N} & \textbf{Ratio} & \textbf{Lex.\,Ov.} & Orig. & Simp. & Orig. & Simp. & Orig. & Simp. & Orig. & Simp. \\
+\midrule
+FineWeb & 163{,}150 & 0.9 & 0.5 & 43.9 & \textbf{58.9} & 13.1 & \textbf{9.7} & 11.0 & \textbf{10.0} & 0.3 & \textbf{0.2} \\
+OpenStax+BCCampus & 179{,}165 & 0.6 & 0.4 & 39.6 & \textbf{50.2} & 13.6 & \textbf{10.1} & 10.9 & \textbf{10.6} & \textbf{0.3} & 0.3 \\
+Simple Wikipedia & 331{,}074 & 0.8 & 0.6 & 52.8 & \textbf{58.8} & 11.1 & \textbf{8.9} & \textbf{10.8} & 10.8 & \textbf{0.3} & 0.3 \\
+\bottomrule
+\end{tabular}
+}
+\caption{Difficulty metrics for original vs.\ simplified text, computed over each source's pairs (OpenStax and BCCampus pooled together). Ratio and Lex.\,Ov.\ compare the simplified sentence to its original; FRE, FKGL, DaleC, and DiffWd are reported separately for the original and the simplified side of each pair. Higher FRE is easier; lower FKGL, DaleC, and DiffWd are easier. Bold marks the easier side for each readability metric.}
+\label{tab:difficulty-by-source}
+\end{table*}
+
+\begin{table*}[t]
+\centering
+\small
+\begin{tabular}{lccccccccccc}
+\toprule
+& & & & \multicolumn{2}{c}{\textbf{FRE}} & \multicolumn{2}{c}{\textbf{FKGL}} & \multicolumn{2}{c}{\textbf{DaleC}} & \multicolumn{2}{c}{\textbf{DiffWd}} \\
+\textbf{Rewrite} & \textbf{N} & \textbf{Ratio} & \textbf{Lex.\,Ov.} & Orig. & Rewr. & Orig. & Rewr. & Orig. & Rewr. & Orig. & Rewr. \\
+\midrule
+Simplification & 163{,}150 & 0.9 & 0.5 & 43.9 & \textbf{58.9} & 13.1 & \textbf{9.7} & 11.0 & \textbf{10.0} & 0.3 & \textbf{0.2} \\
+Explanation & 162{,}478 & 1.1 & 0.4 & 43.9 & \textbf{67.7} & 13.1 & \textbf{7.7} & 11.0 & \textbf{9.1} & 0.3 & \textbf{0.2} \\
+Paraphrase & 159{,}932 & 1.0 & 0.4 & \textbf{43.9} & 31.4 & \textbf{13.1} & 14.5 & \textbf{11.0} & 12.1 & \textbf{0.3} & 0.4 \\
+\bottomrule
+\end{tabular}
+\caption{Difficulty metrics for FineWeb original vs.\ rewrite text, for each of our three rewrite types. Same metric definitions as Table~\ref{tab:difficulty-by-source}. Bold marks the easier side for each readability metric.}
+\label{tab:difficulty-paraphrase}
+\end{table*}
+
+% =============================================================
+\section{Introduction}
+\label{sec:introduction}
+% =============================================================
+
+
+Language models need far more data than humans do to acquire comparable linguistic ability \citep{warstadt2022artificial}: a 13-year-old has encountered fewer than 100 million words, orders of magnitude less than typical LM pretraining corpora. The BabyLM Challenge and Workshop series \citep{warstadt2023findings,choshen2024call,charpentier2025findings,babylm2026cfp} studies this gap by constraining pretraining to a developmentally plausible scale, including 10M words in the 2026 \textsc{strict-small} track. \citet{edman2024babylms} recently showed that pairing original sentences with paraphrase and hard-negative rewrites can substantially improve GLUE-style fine-tuning under this budget, providing early evidence that transforming sentences and arranging related variants together can matter under a fixed small-data budget.
+
+In this work, we investigate \textbf{meaning-preserving rewrite pairing} as a form of data augmentation under a fixed word budget.  We pair each training sentence with a rewrite so that masked tokens can be predicted from both the original and the paired version. For EWoK and GLUE-style fine-tuning, we find gains across all three FineWeb rewrite types, and simplification replicates this pattern across FineWeb, OpenStax+BCCampus, and Simple Wikipedia. These gains concentrate on EWoK concept swap items and GLUE sentence-pair tasks --- both of which require linking meaning across different expressions. This suggests that the clearest benefit is not a uniform improvement across all evaluations, but an improved ability to link meaning across different surface forms. We also find that simplification improves Entity Tracking across the same three sources, although this effect is more specific to simplification than the broader EWoK and GLUE gains. Adding a whole-word masking curriculum (WWM7$\to$Token3: 7 epochs masking whole words, 3 epochs masking individual tokens) further strengthens these gains in most conditions.
+
+We make five contributions: (i) a \textbf{meaning-preserving rewrite pairing} pretraining strategy, using simplification, explanation, and harder paraphrasing on FineWeb, and simplification on OpenStax+BCCampus and Simple Wikipedia; (ii) evidence that \textbf{EWoK and GLUE gains hold across three rewrite types on FineWeb and, for simplification, across all three sources}; (iii) a more selective \textbf{Entity Tracking improvement across three sources of Simplification}, while the other FineWeb rewrite types do not show the same benefit; (iv) a \textbf{whole-word masking curriculum} (WWM7$\to$Token3) combined with rewrite pairing, which further strengthens gains in most conditions; and (v) a demonstration of \textbf{improved sample efficiency}: our 10M-word model surpasses the official BabyLM 100M GPT-2 baseline on EWoK, Entity Tracking, and GLUE.
+
+% =============================================================
+\section{Data Construction}
+\label{sec:data-construction}
+% =============================================================
+
+\subsection{Three simplification corpora}
+\label{sec:simp-corpora}
+
+We construct sentence-level simplification data from three sources, summarized in Table~\ref{tab:simp-sources}.
+
+For each source, an offline rewrite generator, Qwen2.5-7B-Instruct \citep{qwen2024qwen25}, served with vLLM \citep{kwon2023vllm}, produces a one-line simplified version of each input sentence, instructed to use simpler vocabulary and shorten the sentence without omitting key information (prompt in Appendix~\ref{app:prompts}, Figure~\ref{fig:simp-prompt}). We concatenate \texttt{original + simplified} for each pair, shuffle with a fixed seed, and truncate to a fixed 10M-word budget. For each source, we construct a raw/original-only 10M corpus and a simplified 10M corpus. This setup is not model-level knowledge distillation: the rewrite generator is used only for offline corpus construction and is absent during pretraining. The pretrained model receives no generator logits, probability distributions, hidden representations, task labels, or online supervision; it is trained from scratch with the standard MLM objective on the resulting fixed-budget corpus. We therefore characterize the intervention as offline text augmentation through meaning-preserving rewriting.
+
+Table~\ref{tab:rewrite-examples} contrasts all three of our rewrite types --- simplification, explanation, and paraphrase --- on the same FineWeb original.
+
+\paragraph{Why sentence-level.} We use a 64-token context window for training, so sentence-level pairs usually fit in a single sequence. This means a masked word in one sentence can be predicted using the other sentence in the pair. Paragraph-level pairs would often be too long to fit in one window, reducing this effect.
+
+\paragraph{Simplification.} Simplification is our main rewrite type and is applied to all three source corpora. It preserves the original sentence's meaning while making the wording shorter and easier to read, mainly through simpler vocabulary and more direct phrasing. This gives the model two aligned expressions of the same content: the original sentence, which retains the source style and domain wording, and a simplified version, which exposes the same concepts in a more accessible form. We use this setting to test whether pairing original text with an easier meaning-preserving rewrite improves learning beyond training on the original source text alone.
+
+\paragraph{Explanation.} To test whether the benefit requires making text shorter, we also generate \emph{explanation} rewrites on FineWeb. Explanation rewrites are longer than the original (they add context rather than compressing), but still aim to make the text easier to read. If explanation also helps, the benefit is not about shortening but about making the text simpler.
+
+\paragraph{Paraphrasing.} To test whether the benefit requires the rewrite to be easier to read, we also generate \emph{paraphrases} on FineWeb. Paraphrases keep the same meaning and similar length, but change the wording and sentence structure. As confirmed in \S\ref{sec:difficulty-analysis}, the paraphrases are actually \emph{harder} to read than the originals. If paraphrasing also helps, then the benefit does not require making the text easier --- just different.
+
+\subsection{Raw source-matched baselines}
+\label{sec:paraneg-data}
+
+Each corpus is paired with a source-matched raw Token and WWM curriculum baselines of equal size, which lets us answer: \emph{does any observed gain come from rewriting itself, or from the source domain?}
+
+% =============================================================
+\section{Data Difficulty Analysis}
+\label{sec:difficulty-analysis}
+% =============================================================
+
+This section checks, using automatic readability metrics, that the rewrites change text difficulty in the direction we claim.
+
+\subsection{Automatic metrics}
+
+We use six automatic metrics, computed with the \texttt{textstat} library\footnote{\url{https://github.com/textstat/textstat}}: rewrite ratio (rewrite/original word count), lexical overlap (word-set overlap between original and rewrite), Flesch Reading Ease (FRE; higher is easier) and Flesch-Kincaid Grade (FKGL; lower is easier) \citep{kincaid1975flesch}, and Dale-Chall score and difficult-word ratio (DaleC and DiffWd; both lower is easier) \citep{chall1995dalechall}.
+
+\subsection{Comparison across the three corpora}
+
+We compute these six metrics on both the original and the simplified side of every pair: 163{,}150 FineWeb pairs, 179{,}165 OpenStax+BCCampus pairs (the two textbook sources pooled together), and 331{,}074 Simple Wikipedia pairs (Table~\ref{tab:difficulty-by-source}).
+
+
+All three sources become shorter after simplification (ratio 0.634--0.893) and keep much of the original vocabulary (overlap 0.38--0.56). FineWeb and OpenStax+BCCampus improve on all four readability metrics. OpenStax+BCCampus is compressed the most but remains the hardest to read after simplification, because its source text is very dense. Simple Wikipedia is a partial exception: two metrics improve, but two move slightly in the wrong direction, likely because the original text is already simple.
+
+\subsection{Comparison against explanation and paraphrase}
+\label{sec:difficulty-paraphrase}
+
+We apply the same six metrics to the FineWeb original+explanation and original+paraphrase pairs (\S\ref{sec:simp-corpora}), to see how each rewrite type compares to simplification on the same source (Table~\ref{tab:difficulty-paraphrase}).
+
+The three rewrite types differ clearly. Explanation is longer than the original (ratio 1.104) but becomes much easier to read (FRE goes from 43.87 to 67.74, the largest gain). Paraphrasing keeps a similar length (ratio 0.954) but becomes \emph{harder} to read on all four metrics (FRE drops from 43.90 to 31.38). This confirms that paraphrases are not just simplified text with a different name. Both explanation and paraphrasing also change the wording more than simplification does (lower lexical overlap: 0.383 and 0.354 vs.\ 0.505).
+
+% =============================================================
+\section{Main Experiments}
+% =============================================================
+
+\subsection{Baselines}
+
+We report two families of baselines: (i) global baselines trained on the standard BabyLM-provided corpus (\texttt{mlm\_regular}, multiple seeds), and (ii) source-matched baselines for each of the three dataset sources (\S\ref{sec:paraneg-data}). Official challenge baselines are taken from the BabyLM 2026 evaluation repository \citep{babylm2026eval}.
+
+\subsection{Training and evaluation procedure}
+
+All models share the same encoder architecture and training procedure as our BabyLM \textsc{strict-small} baseline, following the architecture and optimization setup of \citet{edman-fraser-2025-mask} but not their adaptive MLM mechanism: a DeBERTa-style encoder \citep{he2021deberta} (hidden size 384, intermediate size 1280, dropout 0.1), trained with the LAMB optimizer \citep{you2020lamb}, a cosine learning-rate schedule, and a sequence-length curriculum that starts at 64 tokens and increases to 256 tokens partway through training, with batch size scaled inversely to sequence length. We use a 40k-vocabulary SentencePiece BPE tokenizer \citep{kudo2018sentencepiece,sennrich2016bpe} with byte fallback, trained separately for each data condition on its own training corpus.
+
+For each corpus, we train two masking variants: (i) \textbf{Token}, standard token-level MLM with 15\% masking throughout, and (ii) \textbf{WWM7$\to$Token3}, which uses whole-word masking for the first 7 epochs and then switches to token-level masking for the last 3 epochs. Whole-word masking was introduced in Google's subsequent BERT release \citep{devlin2019bert,google2019bertwwm}; our contribution is the 7-epoch WWM to 3-epoch token-level curriculum and its combination with rewrite pairing, rather than WWM itself.
+
+Whole-word masking differs from token masking when a word is split into multiple subword pieces. Because we use SentencePiece BPE, word boundaries are recovered from the tokenizer's word-start marker, shown in tokenizer output as an underscore-like prefix (\texttt{\_}). Pieces with this prefix start a new word span, and following pieces without it are treated as part of the same word. For example, if one word is segmented into several pieces, WWM masks the entire span rather than only one piece. With token masking, the model may see part of the word and only need to recover the missing subword; with WWM, all pieces of the selected word are masked together, so the model must recover the full word from context. We chose the 7/3 split as a practical balance: fewer WWM epochs may not be enough to establish word-level context learning, while using only WWM with no token-level phase loses fine-grained subword prediction.
+
+All models are trained for 10 epochs on a fixed 10M-word budget, with 3 random seeds per condition; we report seed means unless noted. Paired bootstrap tests over seeds (10{,}000 samples) show significant EWoK and GLUE gains, as well as Entity Tracking gains for simplification conditions, over source-matched raw baselines ($p<0.05$; all but FineWeb Explanation Token EWoK reach $p<0.01$).
+
+After training, each model is evaluated with the official BabyLM 2026 strict-track evaluation pipeline \citep{babylm2026eval}. BLiMP \citep{warstadt2020blimp}, BLiMP Supplement \citep{warstadt2023findings}, EWoK \citep{ewok2024}, COMPS \citep{misra2023comps}, Entity Tracking \citep{kim2023entitytracking}, and Eye-tracking and Self-Paced Reading \citep{devarda2023clozeprobability} are scored via the pipeline's standard perplexity-comparison protocol, and GLUE- and SuperGLUE-style tasks \citep{wang2018glue,wang2019superglue} are evaluated by fine-tuning the pretrained encoder with the organizers' default fine-tuning hyperparameters. We report both an aggregate zero-shot average and per-task breakdowns where relevant to our claims (\S\ref{sec:results}, \S\ref{sec:ewok-mechanism}).
+
+% =============================================================
+\section{Results}
+\label{sec:results}
+% =============================================================
+The improvement is most pronounced on EWoK and GLUE-style fine-tuning, so \S\ref{sec:results-ewok} and \S\ref{sec:results-glue} concentrate on these two, before \S\ref{sec:ewok-mechanism} asks why. We also observe a narrower but consistent effect on the Entity Tracking task: simplification improves it across all three sources, while the other FineWeb rewrite types do not show the same benefit (\S\ref{sec:results-entity}). Table~\ref{tab:ewok-glue-std} reports mean$\pm$std for EWoK, Entity Tracking, and GLUE across all conditions where 3 seeds are available. Across the rewrite-pairing conditions, WWM7$\to$Token3 improves performance in most cases. Since WWM masking alone (without rewrite pairing) does not produce meaningful gains over the raw Token baseline, we omit the Raw WWM conditions from all sub-item tables for brevity; full aggregate scores, including Raw WWM and all zero-shot metrics, are reported by source in Appendix~\ref{app:full-aggregate-results}.
+
+\begin{table}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{Condition} & \textbf{EWoK} & $\pm$ & \textbf{Entity} & $\pm$ & \textbf{GLUE} & $\pm$ \\
+\midrule
+FW Raw Token       & 51.2 & 1.2 & 21.2 & 0.3 & 65.1 & 0.3 \\
+FW Simp Token      & 52.9 & 0.3 & 26.1 & 2.3 & 68.3 & 0.1 \\
+FW Simp WWM        & \textbf{55.4} & 0.6 & \textbf{28.9} & 0.4 & \textbf{69.9} & 0.1 \\
+FW Expl Token      & 52.8 & 1.6 & 22.1 & 1.6 & 68.7 & 1.1 \\
+FW Expl WWM        & 54.7 & 0.5 & 22.2 & 2.0 & 69.8 & 1.3 \\
+FW Para Token      & 52.7 & 0.7 & 19.0 & 1.0 & 68.5 & 0.3 \\
+FW Para WWM        & 54.2 & 0.6 & 19.1 & 0.6 & 69.2 & 0.0 \\
+\midrule
+OS+BCC Raw Token   & 50.5 & 0.9 & 20.4 & 1.0 & 66.0 & 0.9 \\
+OS+BCC Simp Token  & 53.7 & 1.7 & 25.5 & 2.5 & \textbf{69.2} & 0.5 \\
+OS+BCC Simp WWM    & \textbf{54.9} & 0.7 & \textbf{25.6} & 2.4 & 69.1 & 0.3 \\
+\midrule
+SW Raw Token       & 50.2 & 0.1 & 20.5 & 0.4 & 65.0 & 0.9 \\
+SW Simp Token      & 51.4 & 0.4 & 23.2 & 1.9 & 68.7 & 0.8 \\
+SW Simp WWM        & \textbf{53.4} & 1.0 & \textbf{23.8} & 1.8 & \textbf{69.8} & 0.5 \\
+\bottomrule
+\end{tabular}
+\caption{EWoK, Entity Tracking, and GLUE mean$\pm$std over 3 seeds for conditions with full seed replication. The FineWeb block includes simplification, explanation, and paraphrasing. EWoK and GLUE gains, and Entity Tracking gains for simplification rows only, are significant over source-matched raw baselines ($p<0.05$, paired bootstrap, 10{,}000 samples).}
+\label{tab:ewok-glue-std}
+\end{table}
+\subsection{EWoK results}
+\label{sec:results-ewok}
+
+Simplification improves EWoK over the raw Token baseline in all three sources.
+Both FineWeb ablations, including paraphrasing, improve EWoK by a comparable margin despite its rewrites being harder, not easier, to read (\S\ref{sec:difficulty-paraphrase}); we return to why this may be the case in \S\ref{sec:ewok-mechanism}.
+
+\begin{table}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Source} & \textbf{Raw} & \textbf{Tok.} & \textbf{WWM} \\
+\midrule
+\multicolumn{4}{l}{\emph{physical-dynamics}} \\
+FineWeb (Simp.)    & 50.3 & 61.4 & \textbf{69.2} \\
+FineWeb (Expl.)    & 50.3 & 58.6 & \textbf{63.3} \\
+FineWeb (Para.)    & 50.3 & 63.3 & \textbf{66.4} \\
+OpenStax+BCCampus  & 55.0 & \textbf{62.8} & 61.7 \\
+Simple Wikipedia   & 52.8 & 60.8 & \textbf{63.9} \\
+\midrule
+\multicolumn{4}{l}{\emph{quantitative-properties}} \\
+FineWeb (Simp.)    & 51.4 & 66.1 & \textbf{70.4} \\
+FineWeb (Expl.)    & 51.4 & 63.8 & \textbf{66.7} \\
+FineWeb (Para.)    & 51.4 & 58.7 & \textbf{60.9} \\
+OpenStax+BCCampus  & 53.5 & 66.2 & \textbf{69.5} \\
+Simple Wikipedia   & 52.1 & 64.8 & \textbf{68.0} \\
+\midrule
+\multicolumn{4}{l}{\emph{social-properties}} \\
+FineWeb (Simp.)    & 51.4 & 55.4 & \textbf{56.9} \\
+FineWeb (Expl.)    & 51.4 & 48.3 & \textbf{53.2} \\
+FineWeb (Para.)    & 51.4 & 51.9 & \textbf{56.2} \\
+OpenStax+BCCampus  & 47.7 & 60.3 & \textbf{60.9} \\
+Simple Wikipedia   & \textbf{52.2} & 48.1 & 51.3 \\
+\bottomrule
+\end{tabular}
+\caption{Mean EWoK accuracy (3 seeds) on physical-dynamics, quantitative-properties, and social-properties, for the Raw, and Token/WWM7$\to$Token3 conditions of each source. For FineWeb, all three rewrite types (Simplification, Explanation, paraphrasing) are shown against the same FineWeb Raw baseline.}
+\label{tab:ewok-subitem}
+\end{table}
+
+
+\textit{Physical-dynamics} and \textit{quantitative-properties} both improve substantially under simplification for all three sources, making them the clearest source-general component of simplification's EWoK benefit. \textit{Social-properties} tells a different story: it is OpenStax+BCCampus's single largest gain, plausibly reflecting that source's humanities and social science content, yet only gains modestly for FineWeb and regresses for Simple Wikipedia. This suggests simplification's EWoK benefit has both a source-general component (\textit{physical-dynamics}, \textit{quantitative-properties}) and a source-specific one (\textit{social-properties}) tied to a source's particular world-knowledge content.
+
+Our two FineWeb ablations diverge on \textit{quantitative-properties}: both explanation and paraphrasing improve it less than simplification does, paraphrasing least of all. On physical-dynamics, paraphrasing's gain is comparable to simplification's and explanation's, and on social-properties it falls between the other two. No single rewrite type dominates on all three sub-items, but all three produce a gain on \textit{physical-dynamics} and \textit{quantitative-properties}, consistent with these being the most source-general and rewrite-type-general component of the EWoK benefit (\S\ref{sec:ewok-mechanism}).
+
+
+\subsection{Entity Tracking results}
+\label{sec:results-entity}
+
+
+The Entity Tracking task shows a more selective pattern than EWoK. Simplification improves Entity Tracking over source-matched raw Token baselines for all three sources.
+
+Unlike EWoK and GLUE, this gain does not generalize to all meaning-preserving rewrite types. On FineWeb, explanation gives only a small improvement, while paraphrasing falls below the raw Token baseline. Thus, the Entity Tracking result appears to be tied specifically to simplification. This contrasts with EWoK and GLUE, where simplification, explanation, and paraphrasing all improve performance.
+
+
+\subsection{GLUE results}
+\label{sec:results-glue}
+
+As shown in Table~\ref{tab:ewok-glue-std}, simplification substantially improves GLUE over the source-matched raw baselines for all three sources. This pattern is not limited to simplification: explanation and paraphrasing also improve GLUE by similar margins, even though their rewrites are not uniformly easier to read.
+
+Table~\ref{tab:glue-subtask} breaks this down by sub-task (full breakdown in Appendix~\ref{app:glue-full}) for the five that gain consistently across all three sources and all three FineWeb rewrite types.%: MNLI, MRPC, QQP, RTE, and MultiRC.
+
+\begin{table}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Source} & \textbf{Raw} & \textbf{Tok.} & \textbf{WWM} \\
+\midrule
+\multicolumn{4}{l}{\emph{MNLI}} \\
+FineWeb (Simp.)    & 51.2 & 59.4 & \textbf{62.8} \\
+FineWeb (Expl.)    & 51.2 & 59.4 & \textbf{61.1} \\
+FineWeb (Para.)    & 51.2 & 58.7 & \textbf{60.9} \\
+OpenStax+BCCampus  & 51.4 & 60.2 & \textbf{61.8} \\
+Simple Wikipedia   & 52.1 & 59.5 & \textbf{62.5} \\
+\midrule
+\multicolumn{4}{l}{\emph{MRPC (F1)}} \\
+FineWeb (Simp.)    & 82.4 & 87.2 & \textbf{88.6} \\
+FineWeb (Expl.)    & 82.4 & 87.0 & \textbf{88.7} \\
+FineWeb (Para.)    & 82.4 & 86.6 & \textbf{88.6} \\
+OpenStax+BCCampus  & 82.6 & 87.2 & \textbf{88.5} \\
+Simple Wikipedia   & 82.2 & 86.2 & \textbf{88.8} \\
+\midrule
+\multicolumn{4}{l}{\emph{QQP (F1)}} \\
+FineWeb (Simp.)    & 65.9 & 71.7 & \textbf{73.3} \\
+FineWeb (Expl.)    & 65.9 & 71.7 & \textbf{72.9} \\
+FineWeb (Para.)    & 65.9 & 71.8 & \textbf{72.5} \\
+OpenStax+BCCampus  & 67.3 & 72.1 & \textbf{72.5} \\
+Simple Wikipedia   & 66.1 & 71.4 & \textbf{73.1} \\
+\midrule
+\multicolumn{4}{l}{\emph{RTE}} \\
+FineWeb (Simp.)    & 59.0 & 63.6 & \textbf{65.7} \\
+FineWeb (Expl.)    & 59.0 & 64.3 & \textbf{66.4} \\
+FineWeb (Para.)    & 59.0 & 61.2 & \textbf{63.8} \\
+OpenStax+BCCampus  & 62.1 & \textbf{65.5} & 62.4 \\
+Simple Wikipedia   & 57.3 & 65.5 & \textbf{66.9} \\
+\midrule
+\multicolumn{4}{l}{\emph{MultiRC}} \\
+FineWeb (Simp.)    & 66.0 & \textbf{67.1} & 67.1 \\
+FineWeb (Expl.)    & 66.0 & 65.9 & \textbf{67.4} \\
+FineWeb (Para.)    & 66.0 & 66.3 & \textbf{66.5} \\
+OpenStax+BCCampus  & 66.8 & \textbf{67.4} & 67.0 \\
+Simple Wikipedia   & 64.2 & 66.8 & \textbf{67.0} \\
+\bottomrule
+\end{tabular}
+\caption{Mean fine-tuning score (3 seeds) on MNLI, MRPC, QQP, RTE, and MultiRC, for the Raw, and Token/WWM7$\to$Token3 conditions of each source, with FineWeb's explanation and paraphrasing rewrites shown alongside simplification. MRPC and QQP are scored with F1; the remaining tasks with accuracy.}
+\label{tab:glue-subtask}
+\end{table}
+
+MNLI, MRPC, and QQP gain the most consistently across all three sources and both FineWeb rewrite types: all three require relating two given sentences rather than answering questions about a single passage. RTE gains as well under both rewrite types, though more modestly for paraphrasing. BoolQ and WSC move inconsistently; MultiRC gains modestly under simplification but little under paraphrasing. The sentence-pair advantage holds for paraphrasing as well as simplification, consistent with the account in \S\ref{sec:ewok-mechanism}.
+
+\subsection{Mechanisms behind the main gains}
+\label{sec:ewok-mechanism}
+
+\paragraph{EWoK: Improved context-to-concept mapping, shared across rewrite types.} EWoK \citep{ewok2024} tests world knowledge with minimal pairs scored by perplexity. In \emph{concept swap} items, context and target jointly change concept (e.g., "increasing"/"accelerating" vs. "decreasing"/"slowing down"), requiring the model to map context onto the right concept word. In \emph{variable swap} items, concept words stay fixed and only entity role assignment changes --- a different capacity. Our hypothesis concerns concept swap items only. The three specific EWoK sub-items reported in Table~\ref{tab:ewok-subitem} --- \emph{physical-dynamics}, \emph{quantitative-properties}, and \emph{social-properties} --- contain only concept swap items in the evaluation data and therefore fall directly within this analysis.
+
+Under MLM, a masked word in one sentence can be predicted using the other sentence in the pair, even though the two sentences use different words to express the same meaning. This may train the model to associate a given context with a range of words that share the same meaning, rather than always predicting the same word it has seen before.
+
+The observed pattern offers some support for this explanation. Across all rewrite types and sources, Table~\ref{tab:targetdiff} shows gains on concept swap items (which test whether the model picks the right meaning given context), while variable swap items (which test something different) stay flat near chance. The gains are already present in the Token-only rewrite conditions and are further strengthened by WWM7$\to$Token3, whereas applying WWM7$\to$Token3 to raw data does not produce consistent aggregate gains over Raw Token (Appendix~\ref{app:full-aggregate-results}). This selective pattern is consistent with rewrite pairing improving context-to-concept mapping rather than producing a broad improvement on all EWoK items. We treat this interpretation as a post-hoc hypothesis supported by the observed decomposition, not as a demonstrated causal mechanism.
+
+\begin{table}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Condition} & \textbf{Raw} & \textbf{Tok.} & \textbf{WWM} \\
+\midrule
+\multicolumn{4}{l}{\emph{concept swap}} \\
+FineWeb (Simp.)    & 51.4 & 52.3 & \textbf{53.7} \\
+FineWeb (Expl.)    & 51.4 & 52.9 & \textbf{54.0} \\
+FineWeb (Para.)    & 51.4 & 51.7 & \textbf{52.8} \\
+OpenStax+BCCampus  & 49.9 & 52.6 & \textbf{53.8} \\
+Simple Wikipedia   & 49.7 & 50.1 & \textbf{51.8} \\
+\midrule
+\multicolumn{4}{l}{\emph{variable swap}} \\
+FineWeb (Simp.)    & \textbf{50.4} & 49.7 & 50.0 \\
+FineWeb (Expl.)    & \textbf{50.4} & 49.9 & 50.0 \\
+FineWeb (Para.)    & 50.4 & \textbf{50.5} & 49.9 \\
+OpenStax+BCCampus  & 49.9 & \textbf{50.3} & 50.2 \\
+Simple Wikipedia   & 49.8 & 50.2 & \textbf{50.5} \\
+\bottomrule
+\end{tabular}
+\caption{Mean EWoK accuracy (3 seeds) on concept swap vs.\ variable swap items, for the Raw, and Token/WWM7$\to$Token3 conditions of each source, with FineWeb's explanation and paraphrasing rewrites shown alongside simplification. Concept swap items test context-to-concept mapping; variable swap items test entity role binding, holding the concept words fixed.}
+\label{tab:targetdiff}
+\end{table}
+
+This pattern holds for all three rewrite types --- including paraphrasing, whose rewrites are harder to read, not easier. This suggests that what matters is not making the text simpler, but pairing it with a different version that expresses the same meaning.
+
+\paragraph{GLUE: Improved performance from rewritten data.} The same effect may explain why gains on GLUE concentrate on sentence-pair tasks (MNLI, MRPC, QQP, RTE) --- tasks where the model must compare two sentences --- rather than single-passage tasks. Training with paired rewrites may generally improve the model's ability to link meaning across different ways of saying the same thing. \citet{edman2024babylms} also found large GLUE improvements by training with meaning-related rewrites, though their setup (original + paraphrase + hard-negative triplets) differs from ours and the underlying mechanism may not be the same.
+
+\paragraph{Entity Tracking: Simplification may reduce local referential complexity.} The Entity Tracking gain is more selective than the EWoK and GLUE gains, because it appears mainly for simplification. A plausible explanation is that simplified rewrites make entity mentions and their local contexts easier to encode by replacing dense noun phrases, embedded clauses, and domain-specific wording with more direct expressions, while preserving the same referential structure. This gives the model a simpler second view of the same entities and relations; explanation and paraphrasing also preserve meaning, but they do not consistently simplify this local entity context.
+
+
+\paragraph{WWM: Harder predictions may encourage contextual learning.} The WWM curriculum is a separate masking factor rather than a rewrite-aware mechanism. By masking all subword pieces of a selected word, WWM removes partial-word shortcuts and makes prediction harder: the model must recover the full word from its surrounding context rather than from visible fragments of the same word. This may encourage the model to use broader contextual relations during pretraining, although the lower BLiMP scores suggest a possible trade-off with grammar-focused benchmarks.
+
+Overall, the EWoK and GLUE gains are consistent with the model learning to rely more on meaning and context, and less on memorized word patterns, while the Entity Tracking gain may reflect simplification's more direct effect on local entity contexts. Future work could test these hypotheses through probing or causal analysis.
+
+\subsection{Submission}
+\label{sec:submission}
+
+Our main submission focuses on the \textsc{strict-small} track (10M words), where we submit a model trained with WWM7$\to$Token3 simplification pairing.\footnote{Resources: \href{https://github.com/chuanshi31/baby26_rewrite_pairing}{code}; \href{https://huggingface.co/go76dof/wwm_curriculum_simplification_40k}{\textsc{strict-small} WWM simplification model}; \href{https://huggingface.co/datasets/go76dof/Fineweb_simplification_pairs}{corresponding FineWeb simplification-pair training data}; and \href{https://huggingface.co/go76dof/spangeo05_simplification}{additional \textsc{strict} span-masking model}.} Table~\ref{tab:submission} compares this model with the official BabyLM 2026 GPT-2 and interaction baselines \citep{babylm2026eval} from both the \textsc{strict-small} and \textsc{strict} tracks. The most pronounced gains are on EWoK, Entity Tracking, and (Super)GLUE. Notably, our 10M-word model reaches an NLP average of 52.97, exceeding the \textsc{strict-small} baselines and even the 100M-word \textsc{strict} interaction baseline (52.42). It also surpasses the official 100M-word GPT-2 baseline on EWoK (56.07 vs.\ 54.37), Entity Tracking (28.45 vs.\ 16.91), and (Super)GLUE (69.79 vs.\ 67.75). These results show that better downstream performance can be achieved with one-tenth as much training data, demonstrating a substantial improvement in sample efficiency.
+
+We also make one \textsc{strict}-track attempt using span masking. Instead of masking independently selected tokens or whole words, span masking masks contiguous token spans whose lengths are sampled from a geometric distribution \citep{joshi2020spanbert}. This model is trained on a 100M-word simplification-pair mixture from FineWeb, OpenStax, and BCcampus. Although this setting is not our main ablation, it also improves strongly over the official 100M-word GPT2 baseline on EWoK (57.73 vs.\ 54.37) and (Super)GLUE (72.60 vs.\ 67.75), and slightly improves the NLP average (53.10 vs.\ 53.03).
+
+\begin{table*}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llrrrrrrrrrrr}
+\toprule
+\textbf{Model} & \textbf{Track} & \textbf{Overall} & \textbf{NLP} & \textbf{Human} & \textbf{BLiMP} & \textbf{Supp.} & \textbf{EWoK} & \textbf{Entity} & \textbf{COMPS} & \textbf{GPIQA} & \textbf{GLUE} & \textbf{Read.} \\
+\midrule
+Ours (WWM simp.) & strict-small & 41.80 & 52.97 & 2.71 & 67.20 & 56.01 & 56.07 & \textbf{28.45} & 53.57 & \textbf{39.67} & 69.79 & 5.42 \\
+Ours (span mask. simp.) & strict & \textbf{41.93} & \textbf{53.10} & \textbf{2.83} & 72.38 & 59.86 & \textbf{57.73} & 18.43 & 53.98 & 36.69 & \textbf{72.60} & 5.65 \\
+\midrule
+GPT2 baseline & strict-small & 37.38 & 48.99 & -3.26 & 65.23 & 57.25 & 50.63 & 19.10 & 51.81 & 35.09 & 63.80 & 5.63 \\
+Interaction baseline & strict-small & 38.71 & 49.04 & 2.55 & 63.07 & 58.13 & 51.45 & 19.62 & 51.29 & 36.14 & 63.62 & 5.10 \\
+GPT2 baseline & strict & 40.73 & 53.03 & -2.32 & \textbf{74.73} & 65.00 & 54.37 & 16.91 & \textbf{55.85} & 36.62 & 67.75 & \textbf{6.93} \\
+Interaction baseline & strict & 39.89 & 52.42 & -3.96 & 72.89 & \textbf{65.09} & 54.23 & 15.89 & 55.37 & 36.18 & 67.28 & 3.43 \\
+\bottomrule
+\end{tabular}
+}
+\caption{Leaderboard submission results for our \textsc{strict-small} model, our additional \textsc{strict} span-masking attempt, and official BabyLM 2026 baselines. Overall, NLP, and Human are leaderboard aggregate scores; Reading is the mean of Eye-tracking and SPR. GPIQA denotes GlobalPIQA. Bold indicates the best score in each column. Our 10M-word \textsc{strict-small} model exceeds the 100M-word \textsc{strict} interaction baseline in NLP average and exceeds the 100M-word GPT2 baseline on EWoK, Entity Tracking, and (Super)GLUE; our \textsc{strict} span-masking model further improves EWoK and (Super)GLUE.}
+\label{tab:submission}
+\end{table*}
+% =============================================================
+\section{Conclusion}
+\label{sec:conclusion}
+% =============================================================
+Our results suggest that the rewrite direction does not matter for our two main outcomes: simplification, explanation, and harder paraphrasing all produce consistent gains on EWoK and GLUE-style fine-tuning, indicating that what matters there is semantic-preserving variation itself rather than any particular transformation direction. Simplification also improves Entity Tracking across all three sources, but this effect is more selective: the explanation condition gives only a small gain, and the paraphrase condition does not improve it. Across these outcomes, WWM7$\to$Token3 further strengthens the gains in most conditions. Ablations across corpora of different domain, rewrite difficulty, and rewrite length consistently reproduce the EWoK and GLUE pattern, confirming the robustness of the approach while showing that different evaluation tasks can respond to different rewrite properties.
+
+The Ewok and Glue gains are selective in ways consistent with a single underlying shift toward contextual reliance over surface statistics. On EWoK, the improvement concentrates on concept swap items and is absent on variable swap items, a pattern that holds across all three rewrite types and all three sources. On GLUE, the gain concentrates on sentence-pair tasks (MNLI, MRPC, QQP, RTE), not passage-based ones. This selectivity is consistent with the hypothesis that rewrite pairing encourages the model to exploit contextual meaning rather than memorized surface form, with the particular rewrite type shaping which capacities benefit most. \citet{edman2024babylms} also found large GLUE improvements from a different meaning-rewrite setup, though the mechanism may differ.
+
+The key practical implication is a substantial improvement in sample efficiency: our 10M-word strict-small model surpasses the official 100M-word GPT-2 baseline on EWoK, Entity Tracking, and GLUE, suggesting that better organization of limited training data may be as important as increasing its quantity. More broadly, our findings suggest that improving the structure of training data can serve as a complementary scaling axis for small-data language model pretraining --- alongside model size, data volume, and compute --- one that may be particularly valuable when data is the binding constraint. We leave the design of other targeted data transformations to future work.
+
+\section*{Limitations}
+\label{sec:limitations}
+
+All three source corpora used in this work consist of factual, expository text --- web-based educational content, open textbooks, and encyclopedic articles. It remains an open question whether meaning-preserving rewrite pairing produces similar gains on other text types, such as conversational or spoken language, fictional narratives, or informal social media text. In such genres, sentences may be shorter, more context-dependent, or less self-contained, which could reduce the effectiveness of sentence-level pairing.
+
+We also do not test all rewrite types on all sources. Explanation and harder paraphrasing are evaluated only on FineWeb, while OpenStax+BCCampus and Simple Wikipedia are tested only with simplification. Therefore, our cross-source evidence is strongest for simplification; whether explanation and harder paraphrasing generalize similarly across sources remains open.
+% =============================================================
+\section*{Ethics Statement}
+% =============================================================
+Our simplification, explanation and paraphrase corpora are generated by prompting an offline rewrite generator (Qwen2.5-7B-Instruct) to rewrite existing text; this introduces stylistic and content biases specific to that generator into the resulting training data, which may not generalize to rewrites produced by other models or pipelines. Our source corpora (FineWeb, OpenStax, BCCampus, Simple Wikipedia) are all openly licensed for research use, and we do not redistribute the generated rewrites beyond what is needed to reproduce our results. All experiments are conducted on English-language data under the BabyLM \textsc{strict-small} track and do not involve human subjects.
+
+% =============================================================
+\section*{Acknowledgments}
+% =============================================================
+The authors gratefully acknowledge the scientific support and HPC resources provided by the Erlangen National High Performance Computing Center (NHR@FAU) of the Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU) under the NHR project b279bb. NHR funding is provided by federal and Bavarian state authorities. NHR@FAU hardware is partially funded by the German Research Foundation (DFG) -- 440719683.
+
+This work was co-funded by the European Union (ERC, EPICAL, 101141712). Views and opinions expressed are, however, those of the author(s) only and do not necessarily reflect those of the European Union or the European Research Council. Neither the European Union nor the granting authority can be held responsible for them.
+
+% =============================================================
+\bibliography{custom}
+
+\appendix
+
+\section{GlobalPIQA Hidden Task Analysis}
+\label{app:gpiqa}
+
+GlobalPIQA \citep{chang2025globalpiqa} was released as a hidden evaluation task late in the BabyLM evaluation cycle. Table~\ref{tab:gpiqa-hidden} reports the 3-seed mean and standard deviation of the GlobalPIQA average score, computed as the simple average of the parallel and non-parallel splits.
+
+\begin{table}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{llr}
+\toprule
+\textbf{Source} & \textbf{Condition} & \textbf{GlobalPIQA avg.} \\
+\midrule
+BabyLM & Raw Tok. & 36.93 $\pm$ 2.00 \\
+\midrule
+FineWeb & Raw Tok. & 37.34 $\pm$ 1.59 \\
+FineWeb & Raw WWM & \textbf{40.79 $\pm$ 2.22} \\
+FineWeb & Simp. Tok. & 37.16 $\pm$ 1.32 \\
+FineWeb & Simp. WWM & 38.66 $\pm$ 2.59 \\
+FineWeb & Expl. Tok. & 39.29 $\pm$ 2.01 \\
+FineWeb & Expl. WWM & 39.28 $\pm$ 3.12 \\
+FineWeb & Para. Tok. & 39.41 $\pm$ 3.21 \\
+FineWeb & Para. WWM & 38.77 $\pm$ 2.07 \\
+\midrule
+OS+BCC & Raw Tok. & 38.04 $\pm$ 2.58 \\
+OS+BCC & Raw WWM & 39.59 $\pm$ 1.44 \\
+OS+BCC & Simp. Tok. & 40.39 $\pm$ 1.63 \\
+OS+BCC & Simp. WWM & 38.45 $\pm$ 0.55 \\
+\midrule
+SimpleWiki & Raw Tok. & 38.31 $\pm$ 1.03 \\
+SimpleWiki & Raw WWM & 37.49 $\pm$ 1.99 \\
+SimpleWiki & Simp. Tok. & 35.99 $\pm$ 2.50 \\
+SimpleWiki & Simp. WWM & 34.67 $\pm$ 2.27 \\
+\bottomrule
+\end{tabular}
+\caption{GlobalPIQA hidden-task results for the main ablations. Scores are 3-seed mean$\pm$standard deviation. The BB26 Raw Token baseline uses our DeBERTa-style architecture trained on the official BabyLM \textsc{strict-small} data.}
+\label{tab:gpiqa-hidden}
+\end{table}
+
+Overall, the GlobalPIQA results show relatively high variance, making it difficult to draw a firm conclusion from individual differences. Most of our source-specific conditions have higher mean scores than the official GPT2 and interaction baselines in Table~\ref{tab:submission}, whose GlobalPIQA scores range from 35.09 to 36.62. At the same time, the BB26 Raw Token baseline reaches 39.08 in one seed despite being trained on the official BB26 strict-small data rather than on any of our constructed corpora, suggesting that the task may be sensitive to random seed or evaluation instability. We therefore remain cautious about interpreting GlobalPIQA as clear evidence for any single intervention. At most, the pattern suggests that our three source corpora may be mildly favorable for this task because they are educational or knowledge-oriented texts, but this remains a hypothesis rather than a stable finding.
+
+\section{Generation Prompts}
+\label{app:prompts}
+
+We give the system prompts used to generate our simplification, explanation, and paraphrase corpora (\S\ref{sec:data-construction}) with the offline rewrite generator (Qwen2.5-7B-Instruct).
+
+\begin{center}
+\scriptsize
+\renewcommand{\baselinestretch}{0.78}\selectfont
+\begin{verbatim}
+You are simplifying academic sentences
+for a language model training dataset.
+For each input sentence, output exactly
+one line: a simplified version.
+
+Simplification rules:
+- Keep the core meaning intact.
+- Use simpler, more common vocabulary.
+  Replace jargon with plain words.
+- Shorten where possible, but do not
+  omit key information.
+- Write in a clear, direct style
+  accessible to a general audience.
+- Do NOT add explanations, labels, or
+  meta-commentary.
+- Output exactly one line of text,
+  nothing else.
+\end{verbatim}
+\captionof{figure}{System prompt used for simplification generation.}
+\label{fig:simp-prompt}
+\end{center}
+
+\begin{center}
+\scriptsize
+\renewcommand{\baselinestretch}{0.78}\selectfont
+\begin{verbatim}
+You are rewriting text passages so that
+a middle school student (age 12-14) can
+easily understand them.
+
+Rewriting rules:
+- Keep ALL the information and key
+  details from the original.
+- Replace difficult vocabulary and
+  technical jargon with common words.
+- If a key term must be kept, briefly
+  explain what it means in plain
+  language.
+- Break up long or complicated
+  sentences into shorter, clearer ones.
+- The output should be roughly the
+  same length as the input.
+- Write in a clear, natural tone.
+- Do NOT add explanations of what you
+  are doing, labels, headers, or
+  commentary.
+- Output only the rewritten text,
+  nothing else.
+\end{verbatim}
+\captionof{figure}{System prompt used for explanation generation.}
+\label{fig:expl-prompt}
+\end{center}
+
+\begin{center}
+\scriptsize
+\renewcommand{\baselinestretch}{0.78}\selectfont
+\begin{verbatim}
+You are paraphrasing web text for a
+language model training dataset.
+For each input passage, output exactly
+one line: a paraphrase.
+
+Paraphrase rules:
+- Preserve the full meaning. Change
+  structure and vocabulary
+  significantly.
+- Match the original register and
+  tense.
+- Match the original length as closely
+  as possible -- do not compress or
+  expand.
+- Do NOT add explanations, labels, or
+  meta-commentary.
+- Output exactly one line of text,
+  nothing else.
+\end{verbatim}
+\captionof{figure}{System prompt used for paraphrasing's paraphrase generation.}
+\label{fig:para-prompt}
+\end{center}
+
+\section{Full Aggregate Results}
+\label{app:full-aggregate-results}
+
+Tables~\ref{tab:full-results-fineweb}--\ref{tab:full-results-simplewiki} report the full aggregate zero-shot, hidden-task, and fine-tuning results, split by source. Raw WWM refers to training on the original (non-rewritten) corpus with WWM7$\to$Token3 masking. Reading is the mean of Eye-tracking and Self-Paced Reading scores. GlobalPIQA is the average of the parallel and non-parallel splits. GLUE is the mean fine-tuning score across the seven GLUE-style tasks.
+
+\begin{center}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{lccccc}
+\toprule
+& \textbf{Global} & \multicolumn{4}{c}{\textbf{FineWeb Raw/Simp.}} \\
+\cmidrule(lr){2-2} \cmidrule(lr){3-6}
+\textbf{Metric} & Base & Raw & Raw & Simp. & Simp. \\
+& (bb26) & Tok. & WWM & Tok. & WWM \\
+\midrule
+BLiMP & 66.2 & 67.1 & \textbf{67.9} & 65.7 & 67.6 \\
+Supplement & \textbf{58.4} & 54.8 & 55.0 & 54.1 & 54.9 \\
+EWoK & 51.0 & 51.2 & 51.4 & 52.9 & \textbf{55.4} \\
+Ent.\ Tracking & 20.8 & 21.2 & 20.5 & 26.1 & \textbf{28.9} \\
+COMPS & 51.3 & 52.4 & \textbf{52.9} & 52.0 & 52.8 \\
+Reading & \textbf{6.2} & 5.1 & 5.2 & 4.7 & 5.6 \\
+GlobalPIQA & 36.9 & 37.3 & \textbf{40.8} & 37.2 & 38.7 \\
+GLUE & 64.4 & 65.1 & 64.9 & 68.3 & \textbf{69.9} \\
+\bottomrule
+\end{tabular}
+
+\vspace{0.4em}
+\begin{tabular}{lcccccc}
+\toprule
+& \textbf{Global} & \multicolumn{5}{c}{\textbf{FineWeb Additional Rewrites}} \\
+\cmidrule(lr){2-2} \cmidrule(lr){3-7}
+\textbf{Metric} & Base & Raw & Expl. & Expl. & Para. & Para. \\
+& (bb26) & Tok. & Tok. & WWM & Tok. & WWM \\
+\midrule
+BLiMP & 66.2 & 67.1 & 68.4 & \textbf{68.6} & 67.2 & 67.2 \\
+Supplement & \textbf{58.4} & 54.8 & 56.5 & 55.5 & 53.6 & 54.0 \\
+EWoK & 51.0 & 51.2 & 52.8 & \textbf{54.7} & 52.7 & 54.2 \\
+Ent.\ Tracking & 20.8 & 21.2 & 22.1 & \textbf{22.2} & 19.0 & 19.1 \\
+COMPS & 51.3 & 52.4 & 52.5 & \textbf{53.0} & 51.9 & 52.1 \\
+Reading & \textbf{6.2} & 5.1 & 5.7 & 5.5 & 5.4 & 4.6 \\
+GlobalPIQA & 36.9 & 37.3 & 39.3 & 39.3 & \textbf{39.4} & 38.8 \\
+GLUE & 64.4 & 65.1 & 68.7 & \textbf{69.8} & 68.5 & 69.2 \\
+\bottomrule
+\end{tabular}
+\captionof{table}{Full aggregate results for FineWeb conditions, mean over 3 seeds. The global baseline is \texttt{mlm\_regular\_bb26\_40k}, trained on the standard BabyLM-provided corpus. Entity Tracking uses the updated hidden-task evaluation, and GlobalPIQA is the hidden-task split average. FineWeb explanation and paraphrasing variants have no separate raw condition; both compare to the FineWeb Raw baseline.}
+\label{tab:full-results-fineweb}
+\end{center}
+
+\begin{center}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lccccc}
+\toprule
+& \textbf{Global} & \multicolumn{4}{c}{\textbf{OpenStax+BCCampus}} \\
+\cmidrule(lr){2-2} \cmidrule(lr){3-6}
+\textbf{Metric} & Baseline & Raw & Raw & Simp. & Simp. \\
+& (bb26) & Tok. & WWM & Tok. & WWM \\
+\midrule
+BLiMP & 66.2 & 67.9 & \textbf{68.1} & 67.2 & 67.7 \\
+Supplement & \textbf{58.4} & 55.2 & 54.6 & 56.9 & 57.5 \\
+EWoK & 51.0 & 50.5 & 50.9 & 53.7 & \textbf{54.9} \\
+Ent.\ Tracking & 20.8 & 20.4 & 21.4 & 25.5 & \textbf{25.6} \\
+COMPS & 51.3 & 51.0 & 50.9 & 51.0 & \textbf{51.4} \\
+Reading & \textbf{6.2} & 5.7 & 5.7 & 5.0 & 6.1 \\
+GlobalPIQA & 36.9 & 38.0 & 39.6 & \textbf{40.4} & 38.5 \\
+GLUE & 64.4 & 66.0 & 65.6 & \textbf{69.2} & 69.1 \\
+\bottomrule
+\end{tabular}
+\captionof{table}{Full aggregate results for OpenStax+BCCampus conditions, mean over 3 seeds. The global baseline is \texttt{mlm\_regular\_bb26\_40k}. Entity Tracking uses the updated hidden-task evaluation, and GlobalPIQA is the hidden-task split average.}
+\label{tab:full-results-openstax}
+\end{center}
+
+\begin{center}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lccccc}
+\toprule
+& \textbf{Global} & \multicolumn{4}{c}{\textbf{Simple Wikipedia}} \\
+\cmidrule(lr){2-2} \cmidrule(lr){3-6}
+\textbf{Metric} & Baseline & Raw & Raw & Simp. & Simp. \\
+& (bb26) & Tok. & WWM & Tok. & WWM \\
+\midrule
+BLiMP & 66.2 & 64.8 & \textbf{66.3} & 66.1 & 66.2 \\
+Supplement & \textbf{58.4} & 47.5 & 46.8 & 48.2 & 49.0 \\
+EWoK & 51.0 & 50.2 & 50.0 & 51.4 & \textbf{53.4} \\
+Ent.\ Tracking & 20.8 & 20.5 & 20.0 & 23.2 & \textbf{23.8} \\
+COMPS & 51.3 & 52.1 & \textbf{53.1} & 52.0 & 52.5 \\
+Reading & \textbf{6.2} & 5.3 & 4.9 & 4.7 & 5.3 \\
+GlobalPIQA & 36.9 & \textbf{38.3} & 37.5 & 36.0 & 34.7 \\
+GLUE & 64.4 & 65.0 & 65.1 & 68.7 & \textbf{69.8} \\
+\bottomrule
+\end{tabular}
+\captionof{table}{Full aggregate results for Simple Wikipedia conditions, mean over 3 seeds. The global baseline is \texttt{mlm\_regular\_bb26\_40k}. Entity Tracking uses the updated hidden-task evaluation, and GlobalPIQA is the hidden-task split average.}
+\label{tab:full-results-simplewiki}
+\end{center}
+\section{Hyperparameters}
+\label{app:hyperparams}
+
+Table~\ref{tab:hyperparams} lists the training hyperparameters for both submissions.
+
+\begin{center}
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Parameter} & \textbf{Strict-small (10M)} & \textbf{Strict (100M)} \\
+\midrule
+\multicolumn{3}{l}{\emph{Model}} \\
+Architecture        & DeBERTa-v2 & DeBERTa-v2 \\
+Hidden size         & 384        & 768 \\
+Intermediate size   & 1280       & 2560 \\
+Dropout             & 0.1        & 0.1 \\
+Vocabulary size     & 40k        & 40k \\
+\midrule
+\multicolumn{3}{l}{\emph{Training}} \\
+Sequence length     & 64$\to$256 & 64$\to$256 \\
+Batch size (tokens) & 16{,}384   & 131{,}072 \\
+Learning rate       & 7e-3       & 7e-3 \\
+Epochs              & 10         & 10 \\
+Scheduler           & Cosine     & Cosine \\
+Mask ratio          & 0.15       & 0.15 \\
+Random ratio        & 0.1        & 0.1 \\
+Keep ratio          & 0.1        & 0.1 \\
+Weight decay        & 0.01       & 0.01 \\
+Optimizer           & LAMB       & LAMB \\
+Optimizer $\epsilon$& 1e-8       & 1e-8 \\
+Optimizer $\beta_1$ & 0.9        & 0.9 \\
+Optimizer $\beta_2$ & 0.95       & 0.95 \\
+Gradient clipping   & 1.0        & 1.0 \\
+Masking strategy    & WWM7$\to$Token3 & Span geo. \\
+Span geo.\ $p$      & ---        & 0.5 \\
+\bottomrule
+\end{tabular}
+\captionof{table}{Training hyperparameters for the two submissions. Batch size in tokens = sequences $\times$ sequence length. The strict-small model uses WWM7$\to$Token3 simplification pairing; the strict model uses span geometric masking \citep{joshi2020spanbert} with $p{=}0.5$.}
+\label{tab:hyperparams}
+\end{center}
+
+\section{Full EWoK Sub-item Breakdown}
+\label{app:ewok-full}
+Table~\ref{tab:ewok-full} is split into raw/simplification conditions and a continued panel for FineWeb explanation/paraphrasing.
+
+\begin{table}[!htbp]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{1pt}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lccccccccc}
+\toprule
+& \multicolumn{3}{c}{\textbf{FineWeb}} & \multicolumn{3}{c}{\textbf{OS+BCC}} & \multicolumn{3}{c}{\textbf{SimpleWiki}} \\
+\cmidrule(lr){2-4} \cmidrule(lr){5-7} \cmidrule(lr){8-10}
+\textbf{Sub-item} & Raw & Tok. & WWM & Raw & Tok. & WWM & Raw & Tok. & WWM \\
+\midrule
+social-int. & 55.9 & 53.5 & 57.4 & 55.7 & 56.6 & \textbf{60.8} & 49.3 & 51.7 & 55.3 \\
+material-dyn. & \textbf{55.8} & 48.4 & 54.7 & 47.9 & 51.0 & 53.7 & 49.7 & 42.5 & 47.6 \\
+physical-rel. & 51.2 & 51.0 & 50.5 & 49.4 & 50.9 & 49.4 & 47.5 & 52.8 & 51.6 \\
+social-rel. & 49.6 & 50.7 & 50.3 & 49.8 & 50.5 & 51.4 & 50.3 & 51.2 & 50.1 \\
+physical-dyn. & 50.3 & 61.4 & \textbf{69.2} & 55.0 & 62.8 & 61.7 & 52.8 & 60.8 & 63.9 \\
+physical-int. & 50.5 & 52.3 & \textbf{53.9} & 50.5 & 52.2 & 53.7 & 50.7 & 49.5 & 52.0 \\
+material-prop. & 48.0 & 47.8 & 51.8 & 48.0 & 43.7 & 48.4 & 50.6 & 50.0 & 52.2 \\
+social-prop. & 51.4 & 55.4 & 56.9 & 47.7 & 60.3 & \textbf{60.9} & 52.2 & 48.1 & 51.3 \\
+agent-prop. & 50.5 & 50.9 & 50.3 & 50.1 & 50.4 & 50.5 & 49.6 & 50.0 & 51.1 \\
+quant.-prop. & 51.4 & 66.1 & \textbf{70.4} & 53.5 & 66.2 & 69.5 & 52.1 & 64.8 & 68.0 \\
+spatial-rel. & \textbf{48.7} & 44.2 & 43.8 & 48.4 & 45.9 & 44.0 & 48.0 & 44.3 & 44.1 \\
+\midrule
+\textbf{AVG} & 51.2 & 52.9 & \textbf{55.4} & 50.5 & 53.7 & 54.9 & 50.2 & 51.4 & 53.4 \\
+\bottomrule
+\end{tabular}}
+\caption{Full EWoK sub-item breakdown for raw and simplified conditions (UID accuracy, mean over 3 seeds).}
+\label{tab:ewok-full}
+\end{table}
+
+\begin{table}[!htbp]
+\ContinuedFloat
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2pt}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lccccc}
+\toprule
+& \multicolumn{5}{c}{\textbf{FineWeb Additional Rewrites}} \\
+\cmidrule(lr){2-6}
+\textbf{Sub-item} & Raw & E.Tok. & E.WWM & P.Tok. & P.WWM \\
+\midrule
+social-int. & 55.9 & 56.7 & 58.3 & 54.5 & 59.9 \\
+material-dyn. & \textbf{55.8} & 53.5 & 52.1 & 49.0 & 52.2 \\
+physical-rel. & 51.2 & 51.5 & 52.5 & \textbf{53.8} & 52.0 \\
+social-rel. & 49.6 & 51.3 & \textbf{51.8} & 50.9 & 50.3 \\
+physical-dyn. & 50.3 & 58.6 & 63.3 & 63.3 & \textbf{66.4} \\
+physical-int. & 50.5 & 50.8 & 52.8 & 50.6 & 49.3 \\
+material-prop. & 48.0 & 50.6 & 53.3 & 52.2 & \textbf{53.5} \\
+social-prop. & 51.4 & 48.3 & 53.1 & 51.9 & 56.2 \\
+agent-prop. & 50.5 & \textbf{51.3} & 51.0 & 50.9 & 50.6 \\
+quant.-prop. & 51.4 & 63.8 & \textbf{66.7} & 58.7 & 60.9 \\
+spatial-rel. & \textbf{48.7} & 44.5 & 46.7 & 43.9 & 44.4 \\
+\midrule
+\textbf{AVG} & 51.2 & 52.8 & \textbf{54.7} & 52.7 & 54.2 \\
+\bottomrule
+\end{tabular}}
+\caption{Full EWoK sub-item breakdown for FineWeb explanation and paraphrasing variants. These variants have no separate raw condition; both compare to FineWeb Raw.}
+\end{table}
+
+\section{Full GLUE Sub-task Breakdown}
+\label{app:glue-full}
+
+Table~\ref{tab:glue-full} is split into raw/simplification conditions and a continued panel for FineWeb explanation/paraphrasing.
+
+
+\begin{table}[!htbp]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{1pt}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lccccccccc}
+\toprule
+& \multicolumn{3}{c}{\textbf{FineWeb}} & \multicolumn{3}{c}{\textbf{OS+BCC}} & \multicolumn{3}{c}{\textbf{SimpleWiki}} \\
+\cmidrule(lr){2-4} \cmidrule(lr){5-7} \cmidrule(lr){8-10}
+\textbf{Task} & Raw & Tok. & WWM & Raw & Tok. & WWM & Raw & Tok. & WWM \\
+\midrule
+MNLI & 51.2 & 59.4 & \textbf{62.8} & 51.4 & 60.2 & 61.8 & 52.1 & 59.5 & 62.5 \\
+MRPC & 82.4 & 87.2 & 88.6 & 82.6 & 87.2 & 88.5 & 82.2 & 86.2 & \textbf{88.8} \\
+QQP & 65.9 & 71.7 & \textbf{73.3} & 67.3 & 72.1 & 72.5 & 66.1 & 71.4 & 73.1 \\
+RTE & 59.0 & 63.6 & 65.7 & 62.1 & 65.5 & 62.4 & 57.3 & 65.5 & \textbf{66.9} \\
+BoolQ & 68.0 & 66.5 & 68.0 & 67.3 & 66.1 & 67.0 & 68.0 & 67.0 & 67.7 \\
+MultiRC & 66.0 & 67.1 & 67.1 & 66.8 & \textbf{67.4} & 67.0 & 64.2 & 66.8 & 67.0 \\
+WSC & 63.5 & 62.8 & 63.5 & 64.1 & 66.0 & 64.7 & 65.4 & 64.7 & 62.8 \\
+\midrule
+\textbf{AVG} & 65.1 & 68.3 & \textbf{69.9} & 66.0 & 69.2 & 69.1 & 65.0 & 68.7 & 69.8 \\
+\bottomrule
+\end{tabular}}
+\caption{Full fine-tuning sub-task breakdown for raw and simplified conditions, mean over 3 seeds. MRPC and QQP are scored with F1; the remaining tasks are scored with accuracy.}
+\label{tab:glue-full}
+\end{table}
+
+\begin{table}[!htbp]
+\ContinuedFloat
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2pt}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lccccc}
+\toprule
+& \multicolumn{5}{c}{\textbf{FineWeb Additional Rewrites}} \\
+\cmidrule(lr){2-6}
+\textbf{Task} & Raw & E.Tok. & E.WWM & P.Tok. & P.WWM \\
+\midrule
+MNLI & 51.2 & 59.4 & \textbf{61.1} & 58.7 & 60.9 \\
+MRPC & 82.4 & 87.0 & \textbf{88.7} & 86.6 & 88.6 \\
+QQP & 65.9 & 71.7 & \textbf{72.9} & 71.8 & 72.5 \\
+RTE & 59.0 & 64.3 & \textbf{66.4} & 61.2 & 63.8 \\
+BoolQ & 68.0 & 67.3 & 68.3 & 67.5 & \textbf{68.7} \\
+MultiRC & 66.0 & 65.9 & \textbf{67.4} & 66.3 & 66.5 \\
+WSC & 63.5 & 65.4 & 64.1 & \textbf{67.3} & 63.5 \\
+\midrule
+\textbf{AVG} & 65.1 & 68.7 & \textbf{69.8} & 68.5 & 69.2 \\
+\bottomrule
+\end{tabular}}
+\caption{Full fine-tuning sub-task breakdown for FineWeb explanation and paraphrasing variants. These variants have no separate raw condition; both compare to FineWeb Raw.}
+\end{table}
+
+\end{document}

@@ -1,0 +1,121 @@
+{
+  "output": "data/fineweb_os_bcc_100m_simplified_pairs.txt",
+  "bytes": 615810639,
+  "sha256": "654cb508376106c6debf1a4f7feda74b98521ceae5f8d9bf8a9e9c477fcf94f1",
+  "chunks": [
+    {
+      "path": "reproduction/corpus_100m/part-000.gz",
+      "bytes": 12125118,
+      "decoded_bytes": 33554432,
+      "decoded_sha256": "9ded262ef094b60db3112e5bb8b88747bdac83b6b86329214fb95d70e861fc3b"
+    },
+    {
+      "path": "reproduction/corpus_100m/part-001.gz",
+      "bytes": 12115132,
+      "decoded_bytes": 33554432,
+      "decoded_sha256": "faf775a87511a5d2eef7a80f99847e0d496dfbeb1a806043cc4f821a23817cfd"
+    },
+    {
+      "path": "reproduction/corpus_100m/part-002.gz",
+      "bytes": 12118271,
+      "decoded_bytes": 33554432,
+      "decoded_sha256": "186f042a1978e48a173c0794b06c0938af031b658330bb0810bf623a62a498bd"
+    },
+    {
+      "path": "reproduction/corpus_100m/part-003.gz",
+      "bytes": 12123144,
+      "decoded_bytes": 33554432,
+      "decoded_sha256": "d803026ebead7637c45e6661036cbf5a2b94c93cd07b5056c353a881891ebb21"
+    },
+    {
+      "path": "reproduction/corpus_100m/part-004.gz",
+      "bytes": 12118319,
+      "decoded_bytes": 33554432,
+      "decoded_sha256": "c872efc84b85eadaa20aa92e2f38df6b18ccb4cdd2fc958860f95402acc3b969"
+    },
+    {
+      "path": "reproduction/corpus_100m/part-005.gz",
+      "bytes": 12114456,
+      "decoded_bytes": 33554432,
+      "decoded_sha256": "05392b022730e3714da0c21f1d7d4863d3dfbf7806a78dbb45787140a66b480d"
+    },
+    {
+      "path": "reproduction/corpus_100m/part-006.gz",
+      "bytes": 12119674,
+      "decoded_bytes": 33554432,
+      "decoded_sha256": "23e12be80807db0517f1c0e93e7a89f4168806871423f6c444fa0e9ce8f96806"
+    },
+    {
+      "path": "reproduction/corpus_100m/part-007.gz",
+      "bytes": 12120739,
+      "decoded_bytes": 33554432,
+      "decoded_sha256": "7b5982c387986ae620673b5a22d2ebcf7b77c4a66ad9d13177eaa2ea18230837"
+    },
+    {
+      "path": "reproduction/corpus_100m/part-008.gz",
+      "bytes": 12122245,
+      "decoded_bytes": 33554432,
+      "decoded_sha256": "a67e65f7439196550e77ded61e02e17761ca062ef54064761f587ab436f82278"
+    },
+    {
+      "path": "reproduction/corpus_100m/part-009.gz",
+      "bytes": 12120366,
+      "decoded_bytes": 33554432,
+      "decoded_sha256": "1dfdaddf9f8fb4307aa44f3f31308c57516a13f428b30950ed6c7bd4ee9ce30a"
+    },
+    {
+      "path": "reproduction/corpus_100m/part-010.gz",
+      "bytes": 12123748,
+      "decoded_bytes": 33554432,
+      "decoded_sha256": "f7997a24c9802eabd8fff1ce94a67afb604c93ec63041790d3c43de34a7822dc"
+    },
+    {
+      "path": "reproduction/corpus_100m/part-011.gz",
+      "bytes": 12120385,
+      "decoded_bytes": 33554432,
+      "decoded_sha256": "2db7cb67a4b17153bcb3b64642d277a65a40fbed6b7c21391c597f1c3519385d"
+    },
+    {
+      "path": "reproduction/corpus_100m/part-012.gz",
+      "bytes": 12118871,
+      "decoded_bytes": 33554432,
+      "decoded_sha256": "22820324091db358f630f1cf176934b714b8bffc15f6c40b3fd2316d1b9e1ca5"
+    },
+    {
+      "path": "reproduction/corpus_100m/part-013.gz",
+      "bytes": 12119360,
+      "decoded_bytes": 33554432,
+      "decoded_sha256": "30b4daffbfeb9e2b4b4e5328633c64e0a40bec55e93cf408748b6bc2c01a62df"
+    },
+    {
+      "path": "reproduction/corpus_100m/part-014.gz",
+      "bytes": 12124693,
+      "decoded_bytes": 33554432,
+      "decoded_sha256": "3362084acc57a4a6eff814eb43b0300cde991c078d87c771518b2124be971084"
+    },
+    {
+      "path": "reproduction/corpus_100m/part-015.gz",
+      "bytes": 12119455,
+      "decoded_bytes": 33554432,
+      "decoded_sha256": "6f5fa4eaecbff0868156fb41de325b6b9aba34910d9b1682521253bf8f800757"
+    },
+    {
+      "path": "reproduction/corpus_100m/part-016.gz",
+      "bytes": 12122083,
+      "decoded_bytes": 33554432,
+      "decoded_sha256": "44693ad4681be2835682e62d832d62282dc18c0c0c12ceadb598432c8eafbb09"
+    },
+    {
+      "path": "reproduction/corpus_100m/part-017.gz",
+      "bytes": 12114553,
+      "decoded_bytes": 33554432,
+      "decoded_sha256": "95fd2aa6b1235cf2df5445b9cbbab2c10db9c133d7754f56f22566b591c5facb"
+    },
+    {
+      "path": "reproduction/corpus_100m/part-018.gz",
+      "bytes": 4272454,
+      "decoded_bytes": 11830863,
+      "decoded_sha256": "237a05e0b3941b9d6649941f1d78a501c9a2a03f9da980c055f06189928defa1"
+    }
+  ]
+}

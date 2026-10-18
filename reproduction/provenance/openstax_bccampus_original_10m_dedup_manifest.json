@@ -1,0 +1,69 @@
+{
+  "description": "Original-only OpenStax + BCcampus corpus, normalized line-level deduplicated, source-priority ordered, truncated to exactly 10M wc-style whitespace words.",
+  "target_words_wc": 10000000,
+  "actual_words_wc": 10000000,
+  "actual_lines": 184115,
+  "dedup": "case-insensitive normalized full-line deduplication before writing; final line may be truncated to hit target_words_wc exactly",
+  "sources": [
+    {
+      "label": "openstax_humanities_original",
+      "path": "data/openstax_natural_humanities.txt",
+      "available_lines": 50756,
+      "available_words_wc": 2569742,
+      "used_lines": 46457,
+      "used_words_wc": 2395015,
+      "duplicate_lines_skipped": 4299,
+      "truncated_at_target": false
+    },
+    {
+      "label": "bccampus_main_original",
+      "path": "data/bccampus_open_textbooks_natural.txt",
+      "available_lines": 79571,
+      "available_words_wc": 4481360,
+      "used_lines": 74436,
+      "used_words_wc": 4262499,
+      "duplicate_lines_skipped": 5135,
+      "truncated_at_target": false
+    },
+    {
+      "label": "bccampus_extra_original",
+      "path": "data/bccampus_extra_1m_natural.txt",
+      "available_lines": 21534,
+      "available_words_wc": 1024462,
+      "used_lines": 20069,
+      "used_words_wc": 977339,
+      "duplicate_lines_skipped": 1465,
+      "truncated_at_target": false
+    },
+    {
+      "label": "bccampus_humsoc_more_original",
+      "path": "data/bccampus_humsoc_more_natural.txt",
+      "available_lines": 3960,
+      "available_words_wc": 195415,
+      "used_lines": 3715,
+      "used_words_wc": 187791,
+      "duplicate_lines_skipped": 245,
+      "truncated_at_target": false
+    },
+    {
+      "label": "bccampus_humsoc_alt_original",
+      "path": "data/bccampus_humsoc_alt_natural.txt",
+      "available_lines": 12543,
+      "available_words_wc": 750708,
+      "used_lines": 10578,
+      "used_words_wc": 669035,
+      "duplicate_lines_skipped": 1965,
+      "truncated_at_target": false
+    },
+    {
+      "label": "openstax_economics_original",
+      "path": "simplification_method/openstax_processing/openstax_natural_economics.txt",
+      "available_lines": 42252,
+      "available_words_wc": 2289008,
+      "used_lines": 28860,
+      "used_words_wc": 1508321,
+      "duplicate_lines_skipped": 13392,
+      "truncated_at_target": true
+    }
+  ]
+}

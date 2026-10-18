@@ -1,10 +1,16 @@
 # Baby26 Rewrite Pairing
 
-This repository contains the BabyLM 2026 simplification data package and evaluation results for three 10M-token simplification-pair training sets. It also includes the original `train_mask.py` script and the exact notes for running WWM7 -> Token3 with regular MLM.
+This repository contains the BabyLM 2026 simplification data package and evaluation results for three 10M-word simplification-pair training sets. It also includes the original `train_mask.py` script and the exact notes for running WWM7 -> Token3 with regular MLM.
+
+## Paper reproduction release
+
+The paper resources now include the source-matched raw baselines, explanation and paraphrase controls, 51 seed runs for the 10M experiments, and the exact 100M submission corpus (losslessly split into gzip chunks). See [reproduction/README.md](reproduction/README.md) for the run-to-data mapping, commands, dependency snapshots, result aggregation and limitations.
+
+Published submission models: [10M WWM7→Token3](https://huggingface.co/go76dof/wwm_curriculum_simplification_40k) and [100M span p=0.5](https://huggingface.co/go76dof/spangeo05_simplification). Model weights are hosted on Hugging Face rather than duplicated here.
 
 ## Contents
 
-- `data/`: three 10M-token simplification training files.
+- `data/`: three 10M-word simplification training files.
 - `01_fw_simp_v1_sl_10m_40k/`: FineWeb simplification runs and evaluation results.
 - `02_simple_wiki_pairs_10m_40k/`: SimpleWiki sentence-pair runs and evaluation results.
 - `03_openstax_sentences_bccampus_pairs_10m_40k/`: OpenStax + BCcampus sentence-pair runs and evaluation results.

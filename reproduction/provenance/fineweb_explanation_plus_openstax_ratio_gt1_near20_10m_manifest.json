@@ -1,0 +1,23 @@
+{
+  "base_file": "babylm25/data/fineweb_explanation.jsonl",
+  "openstax_source_file": "babylm25/data/openstax_explanation.jsonl",
+  "output_jsonl": "babylm25/data/fineweb_explanation_plus_openstax_ratio_gt1_near20_10m.jsonl",
+  "output_train": "babylm25/data/fineweb_explanation_plus_openstax_ratio_gt1_near20_10m.train",
+  "target_text_words": 10000000,
+  "format": "train has one shuffled line per pair: original + explanation",
+  "selection": "OpenStax pairs with explanation_words/original_words > 1, sorted by closeness of original word count to 20, added until total >= 10M",
+  "fineweb_records": 162478,
+  "fineweb_text_words": 8654645,
+  "openstax_candidates_ratio_gt1": 17934,
+  "openstax_added_records": 15541,
+  "openstax_added_original_words": 531520,
+  "openstax_added_explanation_words": 814003,
+  "openstax_added_text_words": 1345523,
+  "output_records": 178019,
+  "output_text_words": 10000168,
+  "added_original_words_min": 15,
+  "added_original_words_max": 81,
+  "added_original_words_mean": 34.2,
+  "added_original_words_median": 28,
+  "added_ratio_mean": 1.752
+}

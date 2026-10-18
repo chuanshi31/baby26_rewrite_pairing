@@ -1,0 +1,15 @@
+{
+  "output": "data/simple_wiki_pairs_10m_shuffled.train",
+  "source_jsonl": "data/simple_wiki_sentences_simplified.jsonl",
+  "format": "three-line repeating: original sentence, simplified sentence, blank line",
+  "shuffle": {
+    "enabled": true,
+    "seed": 42,
+    "unit": "record"
+  },
+  "target_words": 10000000,
+  "actual_words": 9999984,
+  "records": 264406,
+  "source_records_available": 301161,
+  "source_pair_words_available": 11388830
+}

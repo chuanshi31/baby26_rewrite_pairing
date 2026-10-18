@@ -1,0 +1,599 @@
+{
+  "kind": "compact numerical summary of saved per-seed reports; no model or data payload",
+  "runs": [
+    {
+      "run": "mlm_wwm7tok3_fineweb_10m_combined_source_40k_seed0_fau",
+      "tasks": {
+        "boolq": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_fineweb_10m_combined_source_40k_seed0_fau/main/finetune/boolq/results.txt",
+          "sha256": "33c668ef98c19b9fe12e81bac4e257e2ce6efb92749189a524af40acedcabcd4",
+          "metrics": {
+            "accuracy": 0.672782874617737,
+            "f1": 0.7631695440460381,
+            "mcc": 0.2499206659906854
+          }
+        },
+        "mnli": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_fineweb_10m_combined_source_40k_seed0_fau/main/finetune/mnli/results.txt",
+          "sha256": "8dd8643de3db2f60d6de3621e197332a151c4a029d4c0cc8fd5ad2b2e45ad6f0",
+          "metrics": {
+            "accuracy": 0.5124286878565607
+          }
+        },
+        "mrpc": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_fineweb_10m_combined_source_40k_seed0_fau/main/finetune/mrpc/results.txt",
+          "sha256": "6d6bc8e44bf9d7dbed3fc27a154992c51e6102a82bee2e67d491baddf3559b81",
+          "metrics": {
+            "accuracy": 0.7156862745098039,
+            "f1": 0.823170731707317,
+            "mcc": 0.25073849341181176
+          }
+        },
+        "qqp": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_fineweb_10m_combined_source_40k_seed0_fau/main/finetune/qqp/results.txt",
+          "sha256": "43d9b743cfb00bc365fcd1dc9968560dab3a12d77507b4feb3663f74ce56c895",
+          "metrics": {
+            "accuracy": 0.7283700222606975,
+            "f1": 0.6430011052597361,
+            "mcc": 0.4242103950050418
+          }
+        },
+        "multirc": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_fineweb_10m_combined_source_40k_seed0_fau/main/finetune/multirc/results.txt",
+          "sha256": "d8d9364311017267c7b152796172472a0f84a19071275dc2e5505068b4382944",
+          "metrics": {
+            "accuracy": 0.6637788778877888,
+            "f1": 0.5134328358208955,
+            "mcc": 0.2940620325952054
+          }
+        },
+        "rte": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_fineweb_10m_combined_source_40k_seed0_fau/main/finetune/rte/results.txt",
+          "sha256": "5dd56d5670d51ac64a692dfcf86fa15a24b5de5ddaa0e5ee630fe6f4fe5af37f",
+          "metrics": {
+            "accuracy": 0.5971223021582733,
+            "f1": 0.5409836065573771,
+            "mcc": 0.18425994114765012
+          }
+        },
+        "wsc": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_fineweb_10m_combined_source_40k_seed0_fau/main/finetune/wsc/results.txt",
+          "sha256": "6d616414452cc1364f61788ebe640d41db19c8cb42294c1135d6e537c516ed36",
+          "metrics": {
+            "accuracy": 0.6730769230769231,
+            "f1": 0.41379310344827586,
+            "mcc": 0.2652335521937267
+          }
+        }
+      }
+    },
+    {
+      "run": "mlm_wwm7tok3_fineweb_10m_combined_source_40k_seed1_fau",
+      "tasks": {
+        "boolq": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_fineweb_10m_combined_source_40k_seed1_fau/main/finetune/boolq/results.txt",
+          "sha256": "5ca64616bf30ceda5f1a10cb1da28b3ca559417f22f07f007c63d1ad5149f491",
+          "metrics": {
+            "accuracy": 0.6795107033639144,
+            "f1": 0.7727666955767563,
+            "mcc": 0.25676276185726987
+          }
+        },
+        "mnli": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_fineweb_10m_combined_source_40k_seed1_fau/main/finetune/mnli/results.txt",
+          "sha256": "f1e868c9be2bb1b50717dbd2ad9c1e23bcc4ace6d552a321f0d0dc91aba415bb",
+          "metrics": {
+            "accuracy": 0.5256723716381418
+          }
+        },
+        "mrpc": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_fineweb_10m_combined_source_40k_seed1_fau/main/finetune/mrpc/results.txt",
+          "sha256": "83fb7acc4b5088e9df6f1d23862bf9d66f408c72c7022b75d4dcde1fd7258f9b",
+          "metrics": {
+            "accuracy": 0.7058823529411765,
+            "f1": 0.8192771084337349,
+            "mcc": 0.2093776206155566
+          }
+        },
+        "qqp": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_fineweb_10m_combined_source_40k_seed1_fau/main/finetune/qqp/results.txt",
+          "sha256": "db54e3e3288d8ed43b8ec8ece2c8c68c5ad792b4454628a34ab606d55602c7b0",
+          "metrics": {
+            "accuracy": 0.7346524857778877,
+            "f1": 0.6461274574482122,
+            "mcc": 0.4339221700987284
+          }
+        },
+        "multirc": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_fineweb_10m_combined_source_40k_seed1_fau/main/finetune/multirc/results.txt",
+          "sha256": "5a58c8c3bae737cfc00cc09f43f7d5f0538138af87ac4645e127fe51091091a6",
+          "metrics": {
+            "accuracy": 0.6658415841584159,
+            "f1": 0.49938195302843014,
+            "mcc": 0.29963229271746183
+          }
+        },
+        "rte": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_fineweb_10m_combined_source_40k_seed1_fau/main/finetune/rte/results.txt",
+          "sha256": "13dc5b51e4bf5e2ce46ee55f42787c75dd4e6321bc059f5c7e34c12531c0e41c",
+          "metrics": {
+            "accuracy": 0.5755395683453237,
+            "f1": 0.562962962962963,
+            "mcc": 0.1533035149254049
+          }
+        },
+        "wsc": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_fineweb_10m_combined_source_40k_seed1_fau/main/finetune/wsc/results.txt",
+          "sha256": "c5429eeae819f96d8d19fcb6e1762728f251f9ff39e6e97725b869aaf354379a",
+          "metrics": {
+            "accuracy": 0.6153846153846154,
+            "f1": 0.09090909090909091,
+            "mcc": 0.047434164902525694
+          }
+        }
+      }
+    },
+    {
+      "run": "mlm_wwm7tok3_fineweb_10m_combined_source_40k_seed2_fau",
+      "tasks": {
+        "boolq": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_fineweb_10m_combined_source_40k_seed2_fau/main/finetune/boolq/results.txt",
+          "sha256": "ee649574176c9caec03c3ad94d509d7b69d81abaeca792aae9f58bb056e635bd",
+          "metrics": {
+            "accuracy": 0.6629969418960244,
+            "f1": 0.7454965357967668,
+            "mcc": 0.24961093314959718
+          }
+        },
+        "mnli": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_fineweb_10m_combined_source_40k_seed2_fau/main/finetune/mnli/results.txt",
+          "sha256": "79036779b914cab3ec4fa6deec7ac2d50f82a83f8190c1e73cd5c8bc54c683ac",
+          "metrics": {
+            "accuracy": 0.5287286063569682
+          }
+        },
+        "mrpc": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_fineweb_10m_combined_source_40k_seed2_fau/main/finetune/mrpc/results.txt",
+          "sha256": "c46dd42e79620261e275807930f4b85fe16e410be5c6e0463d151cf4fbf9e948",
+          "metrics": {
+            "accuracy": 0.7107843137254902,
+            "f1": 0.8206686930091185,
+            "mcc": 0.23050138896279038
+          }
+        },
+        "qqp": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_fineweb_10m_combined_source_40k_seed2_fau/main/finetune/qqp/results.txt",
+          "sha256": "927a3d5fe0a328ca5a5a330a6aa3cd6c8b6e30e3abd82c93f092e1edb8569dbf",
+          "metrics": {
+            "accuracy": 0.735295572594608,
+            "f1": 0.6474270277393425,
+            "mcc": 0.43559425379512307
+          }
+        },
+        "multirc": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_fineweb_10m_combined_source_40k_seed2_fau/main/finetune/multirc/results.txt",
+          "sha256": "3291d7eb7fdb9e54afb1b41aebe071ff7e75814d643770e2a01e18e87d7d338c",
+          "metrics": {
+            "accuracy": 0.6641914191419142,
+            "f1": 0.5006134969325153,
+            "mcc": 0.2954858524585763
+          }
+        },
+        "rte": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_fineweb_10m_combined_source_40k_seed2_fau/main/finetune/rte/results.txt",
+          "sha256": "20f2fc7d85009e427498d08d7949fedf816359135c892199f6ac2baf0b1d8919",
+          "metrics": {
+            "accuracy": 0.5827338129496403,
+            "f1": 0.35555555555555557,
+            "mcc": 0.14912192887358314
+          }
+        },
+        "wsc": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_fineweb_10m_combined_source_40k_seed2_fau/main/finetune/wsc/results.txt",
+          "sha256": "f4580dae9fef4cbd2c938cffecba906a0a2c6919e278bc0c96661fa6e84b10a1",
+          "metrics": {
+            "accuracy": 0.6153846153846154,
+            "f1": 0.0,
+            "mcc": 0.0
+          }
+        }
+      }
+    },
+    {
+      "run": "mlm_wwm7tok3_openstax_bccampus_original_10m_40k_seed0_fau",
+      "tasks": {
+        "boolq": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_openstax_bccampus_original_10m_40k_seed0_fau/main/finetune/boolq/results.txt",
+          "sha256": "ff191c4bbb2f6d13ee5cba0852fe2352915cd72717fc2d7a5ab444f7d0e1465c",
+          "metrics": {
+            "accuracy": 0.674006116207951,
+            "f1": 0.7549425287356322,
+            "mcc": 0.27187231661751254
+          }
+        },
+        "mnli": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_openstax_bccampus_original_10m_40k_seed0_fau/main/finetune/mnli/results.txt",
+          "sha256": "cd2946420ee18194cb960570ff53dbff5130399b7558448ba9b828f173c8851a",
+          "metrics": {
+            "accuracy": 0.5303585982070089
+          }
+        },
+        "mrpc": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_openstax_bccampus_original_10m_40k_seed0_fau/main/finetune/mrpc/results.txt",
+          "sha256": "7611a4d0b7dc9b789e5628bda2f27c93914c51906f1d6ef8bd46be01d08b6d99",
+          "metrics": {
+            "accuracy": 0.7107843137254902,
+            "f1": 0.8249258160237388,
+            "mcc": 0.2545621040175949
+          }
+        },
+        "qqp": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_openstax_bccampus_original_10m_40k_seed0_fau/main/finetune/qqp/results.txt",
+          "sha256": "ae1cb4c48fc0e86cd8617d26a8bbc58f106907d6539cdedf7f83285462c33ba6",
+          "metrics": {
+            "accuracy": 0.7407370764283947,
+            "f1": 0.6818430158441086,
+            "mcc": 0.4707950929157673
+          }
+        },
+        "multirc": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_openstax_bccampus_original_10m_40k_seed0_fau/main/finetune/multirc/results.txt",
+          "sha256": "989b00bbe1acbe3c5462519ae82d4fe8c29ffdfb4eb9d40130b5847ff8f08291",
+          "metrics": {
+            "accuracy": 0.6683168316831684,
+            "f1": 0.4911392405063291,
+            "mcc": 0.3068947764772233
+          }
+        },
+        "rte": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_openstax_bccampus_original_10m_40k_seed0_fau/main/finetune/rte/results.txt",
+          "sha256": "abc065d1f6ac5bbda06ab2999426c845acfde839bd395e08a5cae86fae921aa8",
+          "metrics": {
+            "accuracy": 0.5683453237410072,
+            "f1": 0.14285714285714285,
+            "mcc": 0.1589052788165203
+          }
+        },
+        "wsc": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_openstax_bccampus_original_10m_40k_seed0_fau/main/finetune/wsc/results.txt",
+          "sha256": "5df3cc6ecc3cdd39039a0bf9faaf6213d4781cca68225c6484dc629c82572ce7",
+          "metrics": {
+            "accuracy": 0.6730769230769231,
+            "f1": 0.37037037037037035,
+            "mcc": 0.2672612419124244
+          }
+        }
+      }
+    },
+    {
+      "run": "mlm_wwm7tok3_openstax_bccampus_original_10m_40k_seed1_fau",
+      "tasks": {
+        "boolq": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_openstax_bccampus_original_10m_40k_seed1_fau/main/finetune/boolq/results.txt",
+          "sha256": "ff51fa9914c5c1d252c1c1c8434d4e458e07046b34bb68f253e129392ecd9690",
+          "metrics": {
+            "accuracy": 0.6795107033639144,
+            "f1": 0.7523629489603024,
+            "mcc": 0.29855876122977076
+          }
+        },
+        "mnli": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_openstax_bccampus_original_10m_40k_seed1_fau/main/finetune/mnli/results.txt",
+          "sha256": "8538a5a81b725d12bfd570c1cdd686950649fdd3f50d317de31713eaf23ffea1",
+          "metrics": {
+            "accuracy": 0.5006112469437652
+          }
+        },
+        "mrpc": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_openstax_bccampus_original_10m_40k_seed1_fau/main/finetune/mrpc/results.txt",
+          "sha256": "d7f9e2b7d6010ab281f328cb3b66de286c4809c37dba6309aa176fd81031fe9f",
+          "metrics": {
+            "accuracy": 0.7058823529411765,
+            "f1": 0.8203592814371258,
+            "mcc": 0.2117019877410832
+          }
+        },
+        "qqp": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_openstax_bccampus_original_10m_40k_seed1_fau/main/finetune/qqp/results.txt",
+          "sha256": "18560011a729aafa9319c59dbf1a0b8d53f8a0be6505b6187ab162b3b24d5574",
+          "metrics": {
+            "accuracy": 0.7414790996784566,
+            "f1": 0.6782812115242551,
+            "mcc": 0.4676682736229169
+          }
+        },
+        "multirc": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_openstax_bccampus_original_10m_40k_seed1_fau/main/finetune/multirc/results.txt",
+          "sha256": "e312649dca6097a242e75857450c23ae65e6b0afc57d1e372360c6370f8ebb09",
+          "metrics": {
+            "accuracy": 0.6679042904290429,
+            "f1": 0.49906658369632856,
+            "mcc": 0.3048375791353119
+          }
+        },
+        "rte": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_openstax_bccampus_original_10m_40k_seed1_fau/main/finetune/rte/results.txt",
+          "sha256": "5b84d40a466a6a59ce2cce7054d05fe9e3e3fd8bac667be4366a853a42f4e284",
+          "metrics": {
+            "accuracy": 0.60431654676259,
+            "f1": 0.5528455284552846,
+            "mcc": 0.19958687911880427
+          }
+        },
+        "wsc": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_openstax_bccampus_original_10m_40k_seed1_fau/main/finetune/wsc/results.txt",
+          "sha256": "f4580dae9fef4cbd2c938cffecba906a0a2c6919e278bc0c96661fa6e84b10a1",
+          "metrics": {
+            "accuracy": 0.6153846153846154,
+            "f1": 0.0,
+            "mcc": 0.0
+          }
+        }
+      }
+    },
+    {
+      "run": "mlm_wwm7tok3_openstax_bccampus_original_10m_40k_seed2_fau",
+      "tasks": {
+        "boolq": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_openstax_bccampus_original_10m_40k_seed2_fau/main/finetune/boolq/results.txt",
+          "sha256": "b56f07794248fd5f51a299241371785d60fe435a3be95c47fa5d39d50220dc3e",
+          "metrics": {
+            "accuracy": 0.6617737003058104,
+            "f1": 0.7469107551487414,
+            "mcc": 0.24178731247496807
+          }
+        },
+        "mnli": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_openstax_bccampus_original_10m_40k_seed2_fau/main/finetune/mnli/results.txt",
+          "sha256": "7deb4d106062ef8bad09fc702980ad60d290750b3b9c89191404e15d58b23b48",
+          "metrics": {
+            "accuracy": 0.5309698451507743
+          }
+        },
+        "mrpc": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_openstax_bccampus_original_10m_40k_seed2_fau/main/finetune/mrpc/results.txt",
+          "sha256": "83fb7acc4b5088e9df6f1d23862bf9d66f408c72c7022b75d4dcde1fd7258f9b",
+          "metrics": {
+            "accuracy": 0.7058823529411765,
+            "f1": 0.8192771084337349,
+            "mcc": 0.2093776206155566
+          }
+        },
+        "qqp": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_openstax_bccampus_original_10m_40k_seed2_fau/main/finetune/qqp/results.txt",
+          "sha256": "e0fc9f333226ea9816217960fcc54e0e90b788b16a0a13b503799c9927f72931",
+          "metrics": {
+            "accuracy": 0.7396982438783082,
+            "f1": 0.6730052199850858,
+            "mcc": 0.46096159173953183
+          }
+        },
+        "multirc": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_openstax_bccampus_original_10m_40k_seed2_fau/main/finetune/multirc/results.txt",
+          "sha256": "8f172ecb66437dd24e54a40fd65b3da3aa0e0192b14ebca6d681fa93a59c186c",
+          "metrics": {
+            "accuracy": 0.6629537953795379,
+            "f1": 0.4725629438347321,
+            "mcc": 0.2953527533270646
+          }
+        },
+        "rte": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_openstax_bccampus_original_10m_40k_seed2_fau/main/finetune/rte/results.txt",
+          "sha256": "367de3230e73b416540440f4114d29a1ee6fffd97558a2b4e1f3ec67dea0d41e",
+          "metrics": {
+            "accuracy": 0.5611510791366906,
+            "f1": 0.26506024096385544,
+            "mcc": 0.0946141942851807
+          }
+        },
+        "wsc": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_openstax_bccampus_original_10m_40k_seed2_fau/main/finetune/wsc/results.txt",
+          "sha256": "5df3cc6ecc3cdd39039a0bf9faaf6213d4781cca68225c6484dc629c82572ce7",
+          "metrics": {
+            "accuracy": 0.6730769230769231,
+            "f1": 0.37037037037037035,
+            "mcc": 0.2672612419124244
+          }
+        }
+      }
+    },
+    {
+      "run": "mlm_wwm7tok3_simple_wiki_sentences_10m_40k_seed0_fau",
+      "tasks": {
+        "boolq": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_simple_wiki_sentences_10m_40k_seed0_fau/main/finetune/boolq/results.txt",
+          "sha256": "af71db12e74cbb50834aeaf7ea1d1df4a103ff6b6535f666050272c03c0fc0dd",
+          "metrics": {
+            "accuracy": 0.674006116207951,
+            "f1": 0.7640548915449313,
+            "mcc": 0.2528309425379467
+          }
+        },
+        "mnli": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_simple_wiki_sentences_10m_40k_seed0_fau/main/finetune/mnli/results.txt",
+          "sha256": "efadd33adee892cffab12ba977da28882315d093c9738334bd4f94356d3b62f7",
+          "metrics": {
+            "accuracy": 0.513039934800326
+          }
+        },
+        "mrpc": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_simple_wiki_sentences_10m_40k_seed0_fau/main/finetune/mrpc/results.txt",
+          "sha256": "ca2e3a17aad2eaee962afc8a037c94dbc2f2254ce11bd4c34a89133599ae6bd4",
+          "metrics": {
+            "accuracy": 0.7205882352941176,
+            "f1": 0.819047619047619,
+            "mcc": 0.27755020620092236
+          }
+        },
+        "qqp": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_simple_wiki_sentences_10m_40k_seed0_fau/main/finetune/qqp/results.txt",
+          "sha256": "626018c67b9a2d88d8e3ccd3629ce173c66371f2947fc3287c19845d5175a116",
+          "metrics": {
+            "accuracy": 0.7190699975265892,
+            "f1": 0.6886342452985361,
+            "mcc": 0.46988644324417606
+          }
+        },
+        "multirc": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_simple_wiki_sentences_10m_40k_seed0_fau/main/finetune/multirc/results.txt",
+          "sha256": "60d16d4d66b52e08f009da6c0be33dcf52abf86f1497090237a5f3a46cb615cb",
+          "metrics": {
+            "accuracy": 0.6613036303630363,
+            "f1": 0.535895986433013,
+            "mcc": 0.28973965856169814
+          }
+        },
+        "rte": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_simple_wiki_sentences_10m_40k_seed0_fau/main/finetune/rte/results.txt",
+          "sha256": "d0a08c984c0c8e436eb7006b1643e432d102cf8021473a8e9b427bb8f2935ce2",
+          "metrics": {
+            "accuracy": 0.5611510791366906,
+            "f1": 0.6303030303030303,
+            "mcc": 0.17800010344023712
+          }
+        },
+        "wsc": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_simple_wiki_sentences_10m_40k_seed0_fau/main/finetune/wsc/results.txt",
+          "sha256": "6594c0c6eb1fbb05b0831b7673f9bb0c4d5163760e1606f7f7199dc9ce4e0b4f",
+          "metrics": {
+            "accuracy": 0.6538461538461539,
+            "f1": 0.4375,
+            "mcc": 0.22372322931097996
+          }
+        }
+      }
+    },
+    {
+      "run": "mlm_wwm7tok3_simple_wiki_sentences_10m_40k_seed1_fau",
+      "tasks": {
+        "boolq": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_simple_wiki_sentences_10m_40k_seed1_fau/main/finetune/boolq/results.txt",
+          "sha256": "46c8db7eb8ae0b17221d6b4a913e3359693be927cae095f44463c2bb95cfaa56",
+          "metrics": {
+            "accuracy": 0.6813455657492354,
+            "f1": 0.7715914072775099,
+            "mcc": 0.2659746232086776
+          }
+        },
+        "mnli": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_simple_wiki_sentences_10m_40k_seed1_fau/main/finetune/mnli/results.txt",
+          "sha256": "51320b5547298cedbfaede79e1cbed03d2e33b7ed3246feacf894008f170c15d",
+          "metrics": {
+            "accuracy": 0.5185411572942136
+          }
+        },
+        "mrpc": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_simple_wiki_sentences_10m_40k_seed1_fau/main/finetune/mrpc/results.txt",
+          "sha256": "14f04cead251f76a584ad5f15f49c6b47e4668cba5ddab3143b2ea97ef0bd2d2",
+          "metrics": {
+            "accuracy": 0.7107843137254902,
+            "f1": 0.8195718654434251,
+            "mcc": 0.2309529386094649
+          }
+        },
+        "qqp": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_simple_wiki_sentences_10m_40k_seed1_fau/main/finetune/qqp/results.txt",
+          "sha256": "a6d74c0c5fc8d170e5671d5ed3fe86d0f6caec5af35967e14b55e0283b414bb6",
+          "metrics": {
+            "accuracy": 0.7343062082611922,
+            "f1": 0.6851515329151767,
+            "mcc": 0.47046345352427854
+          }
+        },
+        "multirc": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_simple_wiki_sentences_10m_40k_seed1_fau/main/finetune/multirc/results.txt",
+          "sha256": "ddb3a96f99fde9ae32c9a0480128b7fc3796f65dd025e0dd0593c94fb2e359fd",
+          "metrics": {
+            "accuracy": 0.5754950495049505,
+            "f1": 0.0,
+            "mcc": 0.0
+          }
+        },
+        "rte": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_simple_wiki_sentences_10m_40k_seed1_fau/main/finetune/rte/results.txt",
+          "sha256": "952ebcaa2509551781c05148b968790a896f215c8dc6ab5d1d5b3ec320cfc947",
+          "metrics": {
+            "accuracy": 0.5899280575539568,
+            "f1": 0.41237113402061853,
+            "mcc": 0.16302189652298266
+          }
+        },
+        "wsc": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_simple_wiki_sentences_10m_40k_seed1_fau/main/finetune/wsc/results.txt",
+          "sha256": "e4601d4f27ab627b2f4d129094bd485ca07499edacfefeb35567536044512fa8",
+          "metrics": {
+            "accuracy": 0.6538461538461539,
+            "f1": 0.4,
+            "mcc": 0.2160246899469287
+          }
+        }
+      }
+    },
+    {
+      "run": "mlm_wwm7tok3_simple_wiki_sentences_10m_40k_seed2_fau",
+      "tasks": {
+        "boolq": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_simple_wiki_sentences_10m_40k_seed2_fau/main/finetune/boolq/results.txt",
+          "sha256": "88d478ec88482d239bc03d147dbda8dd0dfd1be201efdfba042fa3d9f170f2b4",
+          "metrics": {
+            "accuracy": 0.6648318042813456,
+            "f1": 0.7555753791257805,
+            "mcc": 0.23496011286012775
+          }
+        },
+        "mnli": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_simple_wiki_sentences_10m_40k_seed2_fau/main/finetune/mnli/results.txt",
+          "sha256": "46faa2c3a24ab9fa3c130f291c1cc3f0591871b3698dfc9bbeb833fee6302372",
+          "metrics": {
+            "accuracy": 0.5315810920945395
+          }
+        },
+        "mrpc": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_simple_wiki_sentences_10m_40k_seed2_fau/main/finetune/mrpc/results.txt",
+          "sha256": "d0ce12745bafd0c55705b088c5cf42e60303ae7783eca1147768dbb5a03f963b",
+          "metrics": {
+            "accuracy": 0.7450980392156863,
+            "f1": 0.8300653594771242,
+            "mcc": 0.36069123883761495
+          }
+        },
+        "qqp": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_simple_wiki_sentences_10m_40k_seed2_fau/main/finetune/qqp/results.txt",
+          "sha256": "7f5da8b2c867a5727aa0eafef789aabfae8cff2c5977e1c1423d19ac04165341",
+          "metrics": {
+            "accuracy": 0.722384368043532,
+            "f1": 0.6830094893809309,
+            "mcc": 0.4619192736905011
+          }
+        },
+        "multirc": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_simple_wiki_sentences_10m_40k_seed2_fau/main/finetune/multirc/results.txt",
+          "sha256": "f18f28041b83b770e4adbbb17d1abfe33b624396eba9990ced8a886564f48fff",
+          "metrics": {
+            "accuracy": 0.658003300330033,
+            "f1": 0.5160537069468768,
+            "mcc": 0.2812191914014294
+          }
+        },
+        "rte": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_simple_wiki_sentences_10m_40k_seed2_fau/main/finetune/rte/results.txt",
+          "sha256": "a8261bcabe62f7f226ea0a24cc012af164da9a290e1a24cc18364a44f7b747d7",
+          "metrics": {
+            "accuracy": 0.5683453237410072,
+            "f1": 0.4117647058823529,
+            "mcc": 0.11346341672172182
+          }
+        },
+        "wsc": {
+          "source": "/home/vault/b279bb/b279bb30/babylm25/babylm-eval/strict/results/mlm_wwm7tok3_simple_wiki_sentences_10m_40k_seed2_fau/main/finetune/wsc/results.txt",
+          "sha256": "bfc57d3714526422698f43b0ba8e770758182d17b6241ac4aab7c411517f9ad6",
+          "metrics": {
+            "accuracy": 0.6346153846153846,
+            "f1": 0.17391304347826086,
+            "mcc": 0.14345114601325779
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "upstream": "https://github.com/babylm-org/babylm-eval",
+  "local_checkout_commit": "6f825c291e2c4c78ad33b1935fd64d45f52642dc",
+  "snapshot": "Local evaluation pipeline and scripts are supplied, including local changes. Evaluation datasets remain under upstream distribution terms.",
+  "runtime_note": "requirements.snapshot.txt is the saved local evaluation requirements, not a proof all historical seed runs used identical package versions."
+}
