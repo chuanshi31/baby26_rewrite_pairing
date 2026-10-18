@@ -1,0 +1,28 @@
+TEMPERATURE: 1.00
+
+### UID ACCURACY
+ambiref_0_ops: 36.57
+ambiref_1_ops: 35.58
+ambiref_2_ops: 39.24
+ambiref_3_ops: 38.08
+ambiref_4_ops: 37.24
+ambiref_5_ops: 42.78
+move_contents_0_ops: 40.50
+move_contents_1_ops: 32.34
+move_contents_2_ops: 39.50
+move_contents_3_ops: 38.45
+move_contents_4_ops: 39.13
+move_contents_5_ops: 34.62
+regular_0_ops: 39.27
+regular_1_ops: 35.91
+regular_2_ops: 37.79
+regular_3_ops: 34.65
+regular_4_ops: 41.20
+regular_5_ops: 41.51
+regular: 38.39
+ambiref: 38.25
+move_contents: 37.42
+
+### AVERAGE ACCURACY
+38.02
+

@@ -1,0 +1,11 @@
+RTfirstfix	0.5330
+RTfirstpass	0.5836
+RTgopast	0.6587
+RTrightbound	0.6138
+self_paced_reading_time	0.2717
+ELAN	0.1579
+LAN	0.2274
+N400	0.1948
+P600	0.4202
+EPNP	0.3313
+PNP	0.3790

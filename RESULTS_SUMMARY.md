@@ -1,6 +1,6 @@
 # Paper result summary
 
-Rebuilt from the saved reports for all 51 10M runs. Values are mean ± sample standard deviation over three seeds. The per-seed evidence and EWoK domain/contrast values are in [reproduction/generated_summary.json](reproduction/generated_summary.json). MRPC/QQP use F1. Hidden-task values follow the saved report version.
+Rebuilt from the saved reports for all 51 10M runs. Values are mean ± sample standard deviation over three seeds. The per-seed evidence and EWoK domain/contrast values are in [reports/](reports/). MRPC/QQP use F1. Hidden-task values follow the saved report version.
 
 | Condition | Masking | BLiMP | Supplement | EWoK | Entity | COMPS | GlobalPIQA | GLUE |
 |---|---|---:|---:|---:|---:|---:|---:|---:|
